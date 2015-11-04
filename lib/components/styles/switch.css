@@ -1,7 +1,7 @@
 /*
 
 <div class="display">
-  <label class="label fi-switch--stealth">
+  <label class="label fi-switch--b2spirit">
     <input type="checkbox" class="toggle_input" />
     <div class="toggle-control"></div>
   </label>
@@ -43,11 +43,11 @@
   color     : white;
 }
 
-.fi-switch--stealth {
-  /* TODO */
+.fi-switch--b2spirit {
+  background-color: inherit;
 }
 
-.fi-switch__label--stealth {
+.fi-switch__label--b2spirit {
   text-align: center;
   position  : relative;
   top       : -1.5em;
@@ -55,44 +55,15 @@
 }
 
 /* The switch checked and unchecked states for the button */
-.fi-switch__input--stealth {
+.fi-switch__input--b2spirit {
   /* the stars of the show are the psuedo elements*/
   display: none;
-
-  /* Gotta love the adjacent sibling, even if he gets  all the attention */
-  &:checked + .fi-switch__style--stealth {
-    /* out circle */
-    &:before {
-      left      : calc((var(--b2spirt-width) / 2em) + (var(--b2spirt-circle-size) / 2em));
-      background: var(--b2spirt-color-on);
-    }
-/* inner circle*/
-    &:after {
-      left     : calc((var(--b2spirt-width) / 2em) + (var(--b2spirt-circle-size) / 2em));
-
-      /* shrink to nothing!*/
-      transform: scale(0);
-    }
-  }
 }
 
-/* sets up the track and the pseudo elements (circles)*/
-.fi-switch__style--stealth {
-  position        : relative;
-  display         : block;
-  margin          : 0 auto;
-  /* track size and length*/
-  width           : var(--b2spirt-width);
-  height          : var(--b2spirt-track-height);
-  /* give it a subtle look*/
-  color           : var(--b2spirt-track-color);
-  border-radius   : var(--b2spirt-height);
-  background-color: var(--b2spirt-track-color);
-}
 
 @define-mixin stealth-handle {
   position       : absolute;
-  top            : calc(-(var(--b2spirt-height) / 2em) - (var(--b2spirt-track-height) / 2em) + var(--b2spirt-border-height) / 2em);
+  top            : calc(-(var(--b2spirt-height) / 2em) + (var(--b2spirt-track-height) / 2em) );
   left           : calc(-var(--b2spirt-circle-size) / 2em);
   display        : block;
   width          : var(--b2spirt-circle-size);
@@ -103,25 +74,87 @@
   background-clip: padding-box;
 }
 
-/* The larger outer circle for the handle. Starts hollow and becomes filled when checked*/
-.fi-switch__style--stealth:before {
-  border          : var(--b2spirt-border-height) solid var(--b2spirt-background-color);
-  background-color: var(--b2spirt-color-off);
-  @mixin stealth-handle;
-  content         : '✔';
-  color           : #000;
-  line-height     : calc(var(--b2spirt-circle-size));
-  font-weight     : bolder;
+
+  .fi-switch__style--b2spirit,
+  .fi-switch__extra--b2spirit {
+    position        : relative;
+    display         : block;
+    margin          : 0 auto;
+    left            : 25%;
+        top: -0.5em;
+    background-color: inherit;
+  }
+
+/* sets up the track and the pseudo elements (circles)*/
+.fi-switch__style--b2spirit:before {
+  position        : absolute;
+  display         : block;
+  margin          : 0 auto;
+  content: ' ';
+  /* track size and length*/
+  width           : var(--b2spirt-width);
+  height          : var(--b2spirt-track-height);
+  /* give it a subtle look*/
+  color           : var(--b2spirt-track-color);
+  border-radius   : var(--b2spirt-height);
+  background-color: var(--b2spirt-track-color);
 }
 
+
+/* The larger outer circle for the handle. Starts hollow and becomes filled when checked*/
+.fi-switch__style--b2spirit:after {
+  @mixin stealth-handle;
+  background-color: inherit;
+  transform: scale(1.1);
+
+}
+
+
+/* The middle circle which changes color*/
+.fi-switch__extra--b2spirit:before {
+  @mixin stealth-handle;
+  /* give it a border to keep centered with the :before circle*/
+    background-color: var(--b2spirt-color-off);
+  /*content         : '✔';
+  color           : #000;
+  line-height     : calc(var(--b2spirt-circle-size));
+  font-weight     : bolder;*/
+}
+
+
 /* The smaller circle which gives the handle a hollow effect when unchecked*/
-.fi-switch__style--stealth:after {
+.fi-switch__extra--b2spirit:after {
+  @mixin stealth-handle;
   transform       : scale(.8);
   /* give it a border to keep centered with the :before circle*/
-  border          : var(--b2spirt-border-height) solid rgba(0,0,0,0);
-  background-color: var(--b2spirt-background-color);
-  @mixin stealth-handle;
+  background-color: inherit;
+  /*content         : '✔';
+  color           : #000;
+  line-height     : calc(var(--b2spirt-circle-size));
+  font-weight     : bolder;*/
 }
+
+
+/* Move the background circle */
+.fi-switch__input--b2spirit:checked + .fi-switch__style--b2spirit:after  {
+    left      : calc((var(--b2spirt-width) / 2em) + (var(--b2spirt-circle-size) / 2em));
+
+  }
+
+/* Move and change the background for the main handle circle */
+.fi-switch__input--b2spirit:checked + .fi-switch__style--b2spirit + .fi-switch__extra--b2spirit:before {
+    left      : calc((var(--b2spirt-width) / 2em) + (var(--b2spirt-circle-size) / 2em));
+    background: var(--b2spirt-color-on);
+  }
+
+/* shrink the hollow middle*/
+.fi-switch__input--b2spirit:checked + .fi-switch__style--b2spirit + .fi-switch__extra--b2spirit:after {
+  left     : calc((var(--b2spirt-width) / 2em) + (var(--b2spirt-circle-size) / 2em));
+  /* shrink to nothing!*/
+  transform: scale(0);
+}
+
+
 
 /*
 
@@ -202,10 +235,6 @@ Expand toggle effect
 .fi-switch__style--expand {
   background-color: inherit;
 }
-
-
-
-
 
 
 .fi-switch__input--expand:checked + .fi-switch__style--expand:before {
