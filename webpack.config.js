@@ -6,8 +6,11 @@ var WebpackErrorNotificationPlugin = require('webpack-error-notification');
 
 module.exports = {
   entry: {
-    basic: '/Users/matt/Programming/fancy-input/examples/basic/app'
+    basic: 'examples/basic/app.js'
   },
+  resolve: {
+    root: path.join(__dirname),
+},
   output: {
     filename: '[name].js',
     chunkFilename: '[id].chunk.js',
