@@ -9,8 +9,8 @@ module.exports = {
     basic: 'examples/basic/app.js'
   },
   resolve: {
-    root: path.join(__dirname),
-},
+    root: path.join(__dirname)
+  },
   output: {
     filename: '[name].js',
     chunkFilename: '[id].chunk.js',
@@ -25,22 +25,14 @@ module.exports = {
         exclude: /node_modules/,
         loaders: ['babel']
       }, {
-        test: /\.(scss|css)$/,
-        loader: "style-loader!css-loader!postcss-loader"
+        test: /\.scss$/,
+        loaders: [
+          "style", "css", 'autoprefixer?browsers=last 2 versions', "sass"
+        ]
       }
     ]
   },
-  plugins: [new WebpackErrorNotificationPlugin(/* strategy */)],
-  postcss: function (webpack) {
-    return [require('cssnext')
-      (),
-      require('postcss-bem-linter')
-      ('bem'),
-      require('postcss-nested'),
-      require('postcss-mixins'),
-      require('postcss-import')
-      ({
-        addDependencyTo: webpack
-      })];
-  }
+  plugins: [
+    new webpack.NoErrorsPlugin(), new WebpackErrorNotificationPlugin(/* strategy */)
+  ]
 }
