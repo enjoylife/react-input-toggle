@@ -1,0 +1,166 @@
+
+$b2-color-off: rgb(132,132,132);
+$b2-color-on: white;
+$b2-track-color: rgba(170,170,170,.3);
+$b2-transition: all 300ms cubic-bezier(.455, .030, .515, .955);
+$b2-width: 4em;
+$b2-height: 2em;
+$b2-circle-size: 2em;
+$b2-border-height: .4em;
+$b2-track-height: .5em;
+
+.fi-switch
+{
+    position: relative;
+
+    display: inline-block;
+
+    padding: 3em 1em 1em;
+}
+
+.fi-switch__input
+{
+    display: none;
+}
+
+.fi-switch__style
+{
+    /* TODO */
+}
+
+.fi-switch__label
+{
+    position: relative;
+    top: -1.5em;
+
+    text-align: center;
+
+    color: white;
+}
+
+.fi-switch--b2spirit
+{
+    background-color: inherit;
+}
+
+.fi-switch__label--b2spirit
+{
+    position: relative;
+    top: -1.5em;
+
+    text-align: center;
+
+    color: white;
+}
+
+/* The switch checked and unchecked states for the button */
+.fi-switch__input--b2spirit
+{
+    /* the stars of the show are the psuedo elements*/
+    display: none;
+}
+
+@mixin stealth-handle
+{
+    position: absolute;
+    top: -($b2-height / 2) + ($b2-track-height / 2);
+    left: -$b2-circle-size / 2;
+
+    display: block;
+
+    width: $b2-circle-size;
+    height: $b2-circle-size;
+
+    content: '';
+    transition: $b2-transition;
+
+    border-radius: 50%;
+    background-clip: padding-box;
+}
+
+.fi-switch__style--b2spirit,
+.fi-switch__extra--b2spirit
+{
+    position: relative;
+    top: -.5em;
+    left: 25%;
+
+    display: block;
+
+    margin: 0 auto;
+
+    background-color: inherit;
+}
+
+/* sets up the track and the pseudo elements (circles)*/
+.fi-switch__style--b2spirit:before
+{
+    position: absolute;
+
+    display: block;
+    /* track size and length*/
+
+    width: $b2-width;
+    height: $b2-track-height;
+    margin: 0 auto;
+
+    content: ' ';
+    /* give it a subtle look*/
+
+    color: $b2-track-color;
+    border-radius: $b2-height;
+    background-color: $b2-track-color;
+}
+
+/* The larger outer circle for the handle. Starts hollow and becomes filled when checked*/
+.fi-switch__style--b2spirit:after
+{
+    transform: scale(1.1);
+
+    background-color: inherit;
+
+    @include stealth-handle;
+}
+
+/* The middle circle which changes color*/
+.fi-switch__extra--b2spirit:before
+{
+    /* give it a border to keep centered with the :before circle*/
+    background-color: $b2-color-off;
+
+    @include stealth-handle;
+}
+
+/* The smaller circle which gives the handle a hollow effect when unchecked*/
+.fi-switch__extra--b2spirit:after
+{
+    transform: scale(.8);
+    /* give it a border to keep centered with the :before circle*/
+
+    background-color: inherit;
+
+    @include stealth-handle;
+}
+
+/* Move the background circle */
+.fi-switch__input--b2spirit:checked + .fi-switch__style--b2spirit:after
+{
+    left: ($b2-width / 2) + ($b2-circle-size / 2);
+}
+
+/* Move and change the background for the main handle circle */
+.fi-switch__input--b2spirit:checked + .fi-switch__style--b2spirit + .fi-switch__extra--b2spirit:before
+{
+    left: ($b2-width / 2) + ($b2-circle-size / 2);
+
+    background: $b2-color-on;
+}
+
+/* shrink the hollow middle*/
+.fi-switch__input--b2spirit:checked + .fi-switch__style--b2spirit + .fi-switch__extra--b2spirit:after
+{
+    left: ($b2-width / 2) + ($b2-circle-size / 2);
+    /* shrink to nothing!*/
+
+    transform: scale(0);
+}

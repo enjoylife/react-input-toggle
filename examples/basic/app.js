@@ -34,8 +34,8 @@ let App = React.createClass({
       <div className="container">
         <h1>react-fancy-input</h1>
         <div className='content bg-2'>
-          <FancySwitch/>
-          <FancySwitch effectName="expand"/>
+          <FancySwitch effectName='b2spirit'/>
+          <FancySwitch effectName="simplygreen"/>
         </div>
         <div className='content bg-1'>
           <h3 className="example__head">Haruki</h3>
