@@ -9,34 +9,8 @@ $b2-circle-size: 2em;
 $b2-border-height: .4em;
 $b2-track-height: .5em;
 
-.fi-switch
-{
-    position: relative;
+$b2-label-pad: 2em;
 
-    display: inline-block;
-
-    padding: 3em 1em 1em;
-}
-
-.fi-switch__input
-{
-    display: none;
-}
-
-.fi-switch__style
-{
-    /* TODO */
-}
-
-.fi-switch__label
-{
-    position: relative;
-    top: -1.5em;
-
-    text-align: center;
-
-    color: white;
-}
 
 .fi-switch--b2spirit
 {
@@ -45,19 +19,18 @@ $b2-track-height: .5em;
 
 .fi-switch__label--b2spirit
 {
-    position: relative;
-    top: -1.5em;
+    padding: 0 $b2-label-pad 0 0;
+}
 
-    text-align: center;
-
-    color: white;
+.fi-switch__container
+{
+    background-color: inherit;
 }
 
 /* The switch checked and unchecked states for the button */
 .fi-switch__input--b2spirit
 {
     /* the stars of the show are the psuedo elements*/
-    display: none;
 }
 
 @mixin stealth-handle
@@ -81,15 +54,13 @@ $b2-track-height: .5em;
 .fi-switch__style--b2spirit,
 .fi-switch__extra--b2spirit
 {
-    position: relative;
-    top: -.5em;
-    left: 25%;
+    position: absolute;
 
-    display: block;
-
-    margin: 0 auto;
+    display: inline;
 
     background-color: inherit;
+
+    align-self: center;
 }
 
 /* sets up the track and the pseudo elements (circles)*/
@@ -163,4 +134,12 @@ $b2-track-height: .5em;
     /* shrink to nothing!*/
 
     transform: scale(0);
+}
+
+.fi-switch--label-bottom
+{
+    .fi-switch__label--b2spirit
+    {
+        padding: $b2-label-pad 0 0 0;
+    }
 }

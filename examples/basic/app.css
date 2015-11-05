@@ -26,7 +26,8 @@ overflow: hidden;
 }
 
 .content {
-  padding: 3em 0;
+  padding: 1em 0;
+  color:white;
 }
 
 .bg-1 {
@@ -36,6 +37,11 @@ overflow: hidden;
 .bg-2 {
   background-color: rgb(50,50,50);
 }
+
+.bg-3 {
+  background-color: #505050;
+}
+
 
 .example__info {
   color: grey;

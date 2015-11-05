@@ -66,6 +66,13 @@ $sg-transition-track: all 300ms cubic-bezier(.215, .610, .355, 1.000);
     background-color: $sg-track-color;
 }
 
+.fi-switch__style--simplygreen
+{
+    // Pass the color down
+    background-color: inherit;
+}
+
+/* the subtle clear border around the handle */
 .fi-switch__style--simplygreen:after
 {
     position: absolute;
@@ -84,12 +91,9 @@ $sg-transition-track: all 300ms cubic-bezier(.215, .610, .355, 1.000);
     background-color: inherit;
 }
 
-/* the subtle clear border around the handle */
-.fi-switch__style--simplygreen
-{
-    background-color: inherit;
-}
 
+
+// Enlage the track when checked
 .fi-switch__input--simplygreen:checked + .fi-switch__style--simplygreen:before
 {
     transform: scaleY(1);
@@ -98,6 +102,7 @@ $sg-transition-track: all 300ms cubic-bezier(.215, .610, .355, 1.000);
     background-color: $sg-track-color-on;
 }
 
+// Hide the subtle clear border
 .fi-switch__input--simplygreen:checked + .fi-switch__style--simplygreen:after
 {
     left: $sg-track-width - .3 - $sg-handle-width;
@@ -139,7 +144,7 @@ $sg-transition-track: all 300ms cubic-bezier(.215, .610, .355, 1.000);
 .fi-switch__extra--simplygreen:after
 {
     font-size: .8em;
-    line-height: normal;
+    line-height: 1.5em;
 
     position: absolute;
     left: .5em;
@@ -153,7 +158,6 @@ $sg-transition-track: all 300ms cubic-bezier(.215, .610, .355, 1.000);
 
     opacity: 0;
     color: $sg-handle-color-on;
-    background-color: none;
 }
 
 /* Now show the check mark */

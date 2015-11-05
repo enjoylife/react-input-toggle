@@ -33,8 +33,22 @@ let App = React.createClass({
     return (
       <div className="container">
         <h1>react-fancy-input</h1>
-        <div className='content bg-2'>
+        <div className='content bg-3'>
           <FancySwitch effectName='b2spirit'/>
+        </div>
+        <div className='content bg-2'>
+          <FancySwitch effectName='b2spirit' label='Top Label' labelPostion='top'/>
+        </div>
+        <div className='content bg-3'>
+          <FancySwitch effectName='b2spirit' label='Right label' labelPostion='right'/>
+        </div>
+        <div className='content bg-2'>
+          <FancySwitch effectName='b2spirit' label='Bottom label' labelPostion='bottom'/>
+        </div>
+        <div className='content bg-3'>
+          <FancySwitch effectName='b2spirit' label='Left label' labelPostion='left'/>
+        </div>
+        <div className='content bg-2'>
           <FancySwitch effectName="simplygreen"/>
         </div>
         <div className='content bg-1'>

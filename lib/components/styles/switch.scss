@@ -1,2 +1,91 @@
+.fi-switch
+{
+    position: relative;
+
+    display: flex;
+
+    padding: 1em;
+
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.fi-switch__input
+{
+    position: absolute;
+    z-index: -1; /* Put the input behind the label so it doesn't overlay text */
+
+    opacity: 0;
+}
+
+
+
+.fi-switch__style
+{
+    /* TODO */
+}
+.fi-switch__extra
+{
+    /* TODO */
+}
+
+
+.fi-switch__label
+{
+    position: relative;
+
+    text-align: inherit;
+
+    color: inherit;
+}
+
+.fi-switch--label-top
+{
+    flex-direction: column;
+}
+
+.fi-switch--label-bottom
+{
+    flex-direction: column;
+
+    .fi-switch__style
+    {
+        order: 1;
+    }
+
+    .fi-switch__extra
+    {
+        order: 2;
+    }
+
+    .fi-switch__label
+    {
+        order: 3;
+    }
+}
+
+.fi-switch--label-right
+{
+    flex-direction: row;
+
+    .fi-switch__style
+    {
+        order: 1;
+    }
+
+    .fi-switch__extra
+    {
+        order: 2;
+    }
+
+    .fi-switch__label
+    {
+        order: 3;
+    }
+}
+
+// .fi-switch--label-left
+// is default
+
 @import 'switches/b2spirit';
 @import 'switches/simplygreen';
