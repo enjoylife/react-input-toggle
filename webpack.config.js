@@ -22,7 +22,7 @@ module.exports = {
     loaders: [
       {
         test: /\.jsx?$/,
-        exclude: /node_modules/,
+          exclude: /(node_modules|bower_components|react-a11y)/,
         loaders: ['babel']
       }, {
         test: /\.scss$/,

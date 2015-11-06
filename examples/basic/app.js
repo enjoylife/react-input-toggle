@@ -2,6 +2,9 @@ import React from 'react';
 import {render} from 'react-dom';
 import {FancyInput, FancySwitch} from '../../lib/index';
 
+var a11y = require('react-a11y');
+a11y(React);
+
 let App = React.createClass({
 
   getInitialState: function () {
@@ -17,9 +20,9 @@ let App = React.createClass({
       let v = (value == '')
         ? 'text'
         : value.substr(0, value.length - 1);
-      this.setState({
-        value: v
-      })
+      // this.setState({
+      //   value: v
+      // })
     }
     setInterval(cb, 1000, 2000);
   },
