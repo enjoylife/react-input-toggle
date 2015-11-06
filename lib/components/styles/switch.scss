@@ -1,3 +1,7 @@
+
+.fi-switch *, .fi-switch *:after, .fi-switch *:before {
+  box-sizing : border-box;
+}
 .fi-switch {
   position : relative;
   display : flex;
