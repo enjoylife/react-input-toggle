@@ -1,38 +1,51 @@
-/* Expand and color change toggle effect */
 
+
+// outer dimensions
+$sg-width: 4em;
+$sg-height: 2em;
+
+// track dimensions
 $sg-track-width: 3.5em;
 $sg-track-height: 1.3em;
+
+// track color per state
 $sg-track-color: rgb(196,196,196);
 $sg-track-color-on: rgb(40,166,38);
+
+// handle dimensions
 $sg-handle-height: 1em;
 $sg-handle-width: 1.5em;
+
+// handle color per state
 $sg-handle-color-off: rgb(196,196,196);
 $sg-handle-color-on: rgb(255,255,255);
+
+// in the off state how big is the border colorerd the same as the background
 $sg-handle-clear-border: .2em;
+
+// how far down the track does the handle begin at
 $sg-handle-start-offset: .3em;
+
+// nice lookly timings for the animations
 $sg-transition-handle: all 500ms cubic-bezier(.165, .840, .440, 1.000);
 $sg-transition-track: all 300ms cubic-bezier(.215, .610, .355, 1.000);
 
 
 .fi-switch--simplygreen
 {
-    background-color: inherit;
+    min-width: $sg-track-width;
 }
 
-.fi-switch__label--simplygreen
-{
-    /* Nothing */
-}
 
-/**/
-.fi-switch__input--simplygreen
+.fi-switch__container
 {
-    display: none;
+    width: $sg-width;
+    height: $sg-height;
 }
 
 /*Set up the general position and location of the toggle relative to the label */
-.fi-switch__style--simplygreen,
-.fi-switch__extra--simplygreen
+.fi-simplygreen__track,
+.fi-simplygreen__handle
 {
     position: relative;
     top: -1em;
@@ -46,7 +59,7 @@ $sg-transition-track: all 300ms cubic-bezier(.215, .610, .355, 1.000);
 }
 
 /* Create our track*/
-.fi-switch__style--simplygreen:before
+.fi-simplygreen__track:before
 {
     position: absolute;
 
@@ -66,14 +79,14 @@ $sg-transition-track: all 300ms cubic-bezier(.215, .610, .355, 1.000);
     background-color: $sg-track-color;
 }
 
-.fi-switch__style--simplygreen
+.fi-simplygreen__track
 {
     // Pass the color down
     background-color: inherit;
 }
 
 /* the subtle clear border around the handle */
-.fi-switch__style--simplygreen:after
+.fi-simplygreen__track:after
 {
     position: absolute;
     top: $sg-track-height / 2 - $sg-handle-height / 2 - $sg-handle-clear-border / 2 ;
@@ -94,7 +107,7 @@ $sg-transition-track: all 300ms cubic-bezier(.215, .610, .355, 1.000);
 
 
 // Enlage the track when checked
-.fi-switch__input--simplygreen:checked + .fi-switch__style--simplygreen:before
+.fi-switch__input--simplygreen:checked + .fi-simplygreen__track:before
 {
     transform: scaleY(1);
 
@@ -103,7 +116,7 @@ $sg-transition-track: all 300ms cubic-bezier(.215, .610, .355, 1.000);
 }
 
 // Hide the subtle clear border
-.fi-switch__input--simplygreen:checked + .fi-switch__style--simplygreen:after
+.fi-switch__input--simplygreen:checked + .fi-simplygreen__track:after
 {
     left: $sg-track-width - .3 - $sg-handle-width;
 
@@ -114,7 +127,7 @@ $sg-transition-track: all 300ms cubic-bezier(.215, .610, .355, 1.000);
 }
 
 /*Create the handle which moves across the track */
-.fi-switch__extra--simplygreen:before
+.fi-simplygreen__handle:before
 {
     position: absolute;
     top: ($sg-track-height / 2 - $sg-handle-height / 2 );
@@ -133,7 +146,7 @@ $sg-transition-track: all 300ms cubic-bezier(.215, .610, .355, 1.000);
 }
 
 /* movve our handle across and change the color to signify its enabled */
-.fi-switch__input--simplygreen:checked + .fi-switch__style--simplygreen + .fi-switch__extra--simplygreen:before
+.fi-switch__input--simplygreen:checked + .fi-simplygreen__track + .fi-simplygreen__handle:before
 {
     left: $sg-track-width - $sg-handle-start-offset - $sg-handle-width;
 
@@ -141,7 +154,7 @@ $sg-transition-track: all 300ms cubic-bezier(.215, .610, .355, 1.000);
 }
 
 /* our check mark */
-.fi-switch__extra--simplygreen:after
+.fi-simplygreen__handle:after
 {
     font-size: .8em;
     line-height: 1.5em;
@@ -161,7 +174,7 @@ $sg-transition-track: all 300ms cubic-bezier(.215, .610, .355, 1.000);
 }
 
 /* Now show the check mark */
-.fi-switch__input--simplygreen:checked + .fi-switch__style--simplygreen + .fi-switch__extra--simplygreen:after
+.fi-switch__input--simplygreen:checked + .fi-simplygreen__track + .fi-simplygreen__handle:after
 {
     opacity: 1;
 }
