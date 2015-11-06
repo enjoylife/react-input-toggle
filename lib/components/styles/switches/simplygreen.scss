@@ -3,9 +3,11 @@
 // outer dimensions
 $sg-width: 4em;
 $sg-height: 2em;
+$sg-margin: .5em;
 
 // track dimensions
-$sg-track-width: 3.5em;
+$sg-track-pad: .3em;
+$sg-track-width: $sg-width - 2 * $sg-track-pad ;
 $sg-track-height: 1.3em;
 
 // track color per state
@@ -16,12 +18,14 @@ $sg-track-color-on: rgb(40,166,38);
 $sg-handle-height: 1em;
 $sg-handle-width: 1.5em;
 
+
+
 // handle color per state
 $sg-handle-color-off: rgb(196,196,196);
 $sg-handle-color-on: rgb(255,255,255);
 
 // in the off state how big is the border colorerd the same as the background
-$sg-handle-clear-border: .2em;
+$sg-handle-clear-border: .5em;
 
 // how far down the track does the handle begin at
 $sg-handle-start-offset: .3em;
@@ -31,9 +35,14 @@ $sg-transition-handle: all 500ms cubic-bezier(.165, .840, .440, 1.000);
 $sg-transition-track: all 300ms cubic-bezier(.215, .610, .355, 1.000);
 
 
+// computed off state leftmost position
+$sg-handle-left: $sg-handle-start-offset;
+$sg-handle-top: ($sg-track-height / 2 - $sg-handle-height / 2 );
 .fi-switch--simplygreen
 {
     min-width: $sg-track-width;
+
+    background-color: inherit;
 }
 
 
@@ -41,6 +50,9 @@ $sg-transition-track: all 300ms cubic-bezier(.215, .610, .355, 1.000);
 {
     width: $sg-width;
     height: $sg-height;
+    margin: $sg-margin;
+
+    background-color: inherit;
 }
 
 /*Set up the general position and location of the toggle relative to the label */
@@ -48,8 +60,8 @@ $sg-transition-track: all 300ms cubic-bezier(.215, .610, .355, 1.000);
 .fi-simplygreen__handle
 {
     position: relative;
-    top: -1em;
-    left: 25%;
+    top: $sg-height / 2  - $sg-track-height / 2 ;
+    left: $sg-track-pad;
 
     display: block;
 
@@ -85,20 +97,26 @@ $sg-transition-track: all 300ms cubic-bezier(.215, .610, .355, 1.000);
     background-color: inherit;
 }
 
+@function handleLeft($width)
+{
+    @return $sg-track-pad + $sg-handle-start-offset + $width / 2;
+}
+
 /* the subtle clear border around the handle */
 .fi-simplygreen__track:after
 {
     position: absolute;
-    top: $sg-track-height / 2 - $sg-handle-height / 2 - $sg-handle-clear-border / 2 ;
-    left: $sg-handle-start-offset - $sg-handle-clear-border / 2 ;
+    top: $sg-handle-top;
+    left: $sg-handle-left;
 
     display: block;
 
-    width: $sg-handle-width + .2;
-    height: $sg-handle-height + .2;
+    width: $sg-handle-width;
+    height: $sg-handle-height;
 
     content: ' ';
     transition: $sg-transition-handle;
+    transform: scale(1.15);
 
     border-radius: .5em;
     background-color: inherit;
@@ -130,8 +148,8 @@ $sg-transition-track: all 300ms cubic-bezier(.215, .610, .355, 1.000);
 .fi-simplygreen__handle:before
 {
     position: absolute;
-    top: ($sg-track-height / 2 - $sg-handle-height / 2 );
-    left: $sg-handle-start-offset;
+    top: $sg-handle-top;
+    left: $sg-handle-left;
 
     display: block;
 
