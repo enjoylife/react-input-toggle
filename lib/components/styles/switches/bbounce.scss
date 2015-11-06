@@ -1,0 +1,130 @@
+
+
+// *************************************
+//
+//   Toggle (bbounce)
+//   Created by Pete Lada of Guidebook (guidebook.com)
+//   http://petelada.com
+
+// *************************************
+
+//   VARIABLES
+// -------------------------------------
+
+$toggle-height : 2em;
+$toggle-width : 4em;
+$switch-size : 2em;
+$anim-slight-bounce : cubic-bezier(0.34,1.61,0.7,1);
+$anim-speed-normal : 250ms;
+$border-color : #DADDE1;
+$border-width : 0.1em;
+$blue : #439FD8; // Guidebook blue
+
+//   BASE
+// -------------------------------------
+
+
+.fi-switch__container--bbounce {
+  position : relative;
+  display : inline-block;
+  height : $toggle-height;
+  cursor : pointer;
+  margin : 1em;
+
+  > input {
+    position : absolute;
+    opacity : 0;
+    z-index : -1; /* Put the input behind the label so it doesn't overlay text */
+    visibility : hidden;
+  }
+
+  .bbounce__body {
+    width : $toggle-width;
+    height : $toggle-height;
+    background : white;
+    border : $border-width solid $border-color;
+    display : inline-block;
+    position : relative;
+    border-radius : 2.5em;
+  }
+
+  .bbounce__switch {
+    width : $toggle-height;
+    height : $toggle-height;
+    display : inline-block;
+    background-color : white;
+    position : absolute;
+    left : -$border-width;
+    top : -$border-width;
+    border-radius : 50%;
+    border : $border-width solid darken($border-color, 5%);
+    box-shadow : 0 ($border-width + 0.1em) ($border-width + 0.1em) rgba(0,0,0,0.13);
+    transition : left $anim-speed-normal $anim-slight-bounce, transform $anim-speed-normal $anim-slight-bounce;
+    z-index : 1;
+  }
+
+  .bbounce__track {
+    position : absolute;
+    left : 0;
+    top : 0;
+    right : 0;
+    bottom : 0;
+    overflow : hidden;
+    border-radius : 2.5em;
+  }
+
+  .bbounce__badge {
+    position : absolute;
+    right : -1em;
+    top : 0;
+    bottom : 0;
+    width : $toggle-width + 0.3em;
+    transition : left $anim-speed-normal $anim-slight-bounce, right $anim-speed-normal $anim-slight-bounce;
+    background : $blue;
+  }
+
+  .bbounce__badge:after {
+    content : '✔';
+    line-height : $toggle-height;
+  }
+
+  .bbounce__badge--negative {
+    right : auto;
+    width : 2em;
+    left : -($toggle-width - ($switch-size / 2));
+    background : white;
+    color : grey;
+  }
+  .bbounce__badge-negative:after {
+    content : 'X';
+    line-height : $toggle-height;
+  }
+
+  &:hover {
+    .bbounce__switch {
+      border-color : darken($border-color, 13%);
+      transform : scale(1.09);
+    }
+  }
+
+  &:active {
+    .bbounce__switch {
+      transform : scale(0.95);
+    }
+  }
+
+  > :not(:checked) ~ .bbounce__body {
+    > .bbounce__switch {
+      left : $toggle-width - $switch-size;
+    }
+
+    .bbounce__badge {
+      right : -($toggle-width - ($switch-size / 2));
+
+      &.bbounce__badge--negative {
+        right : auto;
+        left : 0.3em;
+      }
+    }
+  }
+}
