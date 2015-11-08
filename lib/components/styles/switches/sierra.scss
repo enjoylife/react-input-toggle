@@ -23,7 +23,7 @@ $iconStroke: $trackColorOn;
 
 // $handleShadow: 0 .1em .3em  rgba(0, 0, 0, .5), 0 .1em .4em rgba(0, 0, 0, .5);
 $handleShadow: 0 1.5px 4px rgba(0, 0, 0, .1), 0 1.5px 6px rgba(0, 0, 0, .1);
-
+$handleBorder: 1px solid rgba(0, 0, 0, .1);
 $handleTransition: all 500ms cubic-bezier(.34,1.61,.7,1);
 $trackTransition: all 400ms cubic-bezier(.215, .610, .355, 1.000);
 $checkTransition: all 400ms cubic-bezier(.215, .610, .355, 1.000) 100ms;
@@ -91,7 +91,7 @@ $trackShadowOn: inset 0 -.1em .15em .12em darken($trackColorOn, 10%);
 
     transition: $handleTransition;
 
-    border: 1px solid rgba(0, 0, 0, .1);
+    border: $handleBorder;
     border-radius: 50%;
     background-color: $handleColor;
     box-shadow: $handleShadow;
@@ -123,9 +123,6 @@ $trackShadowOn: inset 0 -.1em .15em .12em darken($trackColorOn, 10%);
 {
     left: $handleEnd;
 }
-
-
-
 
 
 .fi-switch__input--sierra:checked ~ .fi-sierra__check

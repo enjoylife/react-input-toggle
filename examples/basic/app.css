@@ -10,6 +10,7 @@ body {
   margin: 0 auto;
 text-align: center;
 overflow: hidden;
+  width: 100%;
 }
 
 .example {
@@ -31,22 +32,27 @@ overflow: hidden;
 }
 
 .inline-content {
-  margin: 0.5em;
-  color:white;
+  width: 100%;
+  color:rgb(135,135,135);
+  background-color: white;
   display: inline-block;
   background-color: inherit;
+  font-size: 5em;
 }
 
 .bg-1 {
   background-color: #f0efee;
+  color: black;
 }
 
 .bg-2 {
   background-color: rgb(50,50,50);
+  color:white;
 }
 
 .bg-3 {
   background-color: #505050;
+  color:white;
 }
 
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import {render} from 'react-dom';
 import {FancyInput, FancySwitch} from '../../lib/index';
+import cs from 'classnames';
 
 var a11y = require('react-a11y');
 a11y(React);
@@ -27,12 +28,12 @@ let App = React.createClass({
     setInterval(cb, 1000, 2000);
   },
 
-  renderSwitch: function (effectName) {
-
+  renderSwitch: function (effectName, background) {
+    const classes = cs('container', background);
     return (
-      <div className='container bg-3'>
+      <div className={classes}>
         <h2>{effectName}</h2>
-        <div className='inline-content '>
+        <div className='inline-content'>
           <FancySwitch label={'label left'} effectName={effectName} labelPostion='left'/>
           <FancySwitch label={'label right'} defaultChecked={true} effectName={effectName} labelPostion='right'/>
         </div>
@@ -55,8 +56,9 @@ let App = React.createClass({
 
     return (
       <div className="container">
+        {this.renderSwitch('charlie')}
         {this.renderSwitch('sierra')}
-        {this.renderSwitch('b2spirit')}
+        {this.renderSwitch('b2spirit', 'bg-2')}
         {this.renderSwitch('simplygreen')}
         {this.renderSwitch('bbounce')}
         {this.renderSwitch('neonpush')}
