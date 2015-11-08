@@ -4,18 +4,17 @@
  *   So if the handle is filled only a solid $b2-color-off it means your parent has not set or inheirited the background.
  * @type {[type]}
  */
-$b2-width: 6em;
+$b2-width: 5em;
 $b2-height: 3em;
 $b2-color-off: rgb(132,132,132);
 $b2-color-on: white;
 $b2-track-color-off: rgba(170,170,170,.3);
 $b2-track-color-on: $b2-color-off;
-$b2-transition: all 300ms cubic-bezier(.455, .030, .515, .955);
+$b2-transition: all 400ms cubic-bezier(.645, .045, .355, 1.000);
 $b2-track-width: 4em;
 $b2-track-height: 2em;
 $b2-circle-size: 2em;
 $b2-track-height: .5em;
-$b2-label-pad: .5em;
 
 @function middleTrack($height)
 {
@@ -128,7 +127,7 @@ $b2-label-pad: .5em;
 /* The larger outer circle for the handle. Starts hollow and becomes filled when checked*/
 .fi-b2spirit__track:after
 {
-    transform: scale(1.1);
+    transform: scale(1.2);
 
     background-color: inherit;
 
