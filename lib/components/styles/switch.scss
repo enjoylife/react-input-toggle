@@ -1,72 +1,98 @@
 
-.fi-switch *, .fi-switch *:after, .fi-switch *:before {
-  box-sizing : border-box;
+.fi-switch *,
+.fi-switch *:after,
+.fi-switch *:before
+{
+    box-sizing: border-box;
 }
-.fi-switch {
-  position : relative;
-  display : flex;
-  padding : 1em;
-  flex-wrap : wrap;
-  align-items : center;
-}
+.fi-switch
+{
+    position: relative;
 
-.fi-switch__input {
-  position : absolute;
-  z-index : -1; /* Put the input behind the label so it doesn't overlay text */
-  opacity : 0;
-}
+    display: flex;
 
+    padding: 1em;
 
-.fi-switch__label {
-  position : relative;
-  text-align : inherit;
-  cursor : pointer;
-  color : inherit;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
+.fi-switch__input
+{
+    position: absolute;
+    z-index: -1; /* Put the input behind the label so it doesn't overlay text */
 
-.fi-switch__container {
-  background-color : inherit;
-  color : inherit;
-  position : relative;
+    opacity: 0;
+}
+
+
+.fi-switch__label
+{
+    position: relative;
+
+    cursor: pointer;
+    text-align: inherit;
+
+    color: inherit;
+}
+
+
+.fi-switch__container
+{
+    position: relative;
+
+    user-select: none;
+
+    color: inherit;
+    background-color: inherit;
 }
 
 
 // force the label to be above
-.fi-switch--label-top {
-  flex-direction : column;
+.fi-switch--label-top
+{
+    flex-direction: column;
 }
 
 // Reorder to have the label be underneath
 // and set to column flex mode
-.fi-switch--label-bottom {
-  flex-direction : column;
+.fi-switch--label-bottom
+{
+    flex-direction: column;
 
-  .fi-switch__container {
-    order : 1;
-  }
+    .fi-switch__container
+    {
+        order: 1;
+    }
 
-  .fi-switch__label {
-    order : 2;
-  }
+    .fi-switch__label
+    {
+        order: 2;
+    }
 }
 
 // Reorder to have the label be underneath
 // set row flex mode
-.fi-switch--label-right {
-  flex-direction : row;
+.fi-switch--label-right
+{
+    flex-direction: row;
 
-  .fi-switch__container {
-    order : 1;
-  }
+    .fi-switch__container
+    {
+        order: 1;
+    }
 
-  .fi-switch__label {
-    order : 2;
-  }
+    .fi-switch__label
+    {
+        order: 2;
+    }
 }
 
 // .fi-switch--label-left is the assumed default
 
 @import 'switches/b2spirit';
 @import 'switches/simplygreen';
-@import 'switches/bbounce';
+@import 'switches/bbounce';
+@import 'switches/neonpush';
+@import 'switches/ios6';
+@import 'switches/sierra';

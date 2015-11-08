@@ -11,120 +11,173 @@
 //   VARIABLES
 // -------------------------------------
 
-$toggle-height : 2em;
-$toggle-width : 4em;
-$switch-size : 2em;
-$anim-slight-bounce : cubic-bezier(0.34,1.61,0.7,1);
-$anim-speed-normal : 250ms;
-$border-color : #DADDE1;
-$border-width : 0.1em;
-$blue : #439FD8; // Guidebook blue
+$toggle-height: 2em;
+$toggle-width: 4em;
+$switch-size: 2em;
+$anim-slight-bounce: cubic-bezier(.34,1.61,.7,1);
+$anim-speed-normal: 250ms;
+$border-color: #dadde1;
+$border-width: .1em;
+$bbounce-radius: 2.5em;
+$blue: #439fd8;
+
+$bbounce-margin: 1em;
 
 //   BASE
 // -------------------------------------
 
 
-.fi-switch__container--bbounce {
-  position : relative;
-  display : inline-block;
-  height : $toggle-height;
-  cursor : pointer;
-  margin : 1em;
+.fi-switch__container--bbounce
+{
+    position: relative;
 
-  > input {
-    position : absolute;
-    opacity : 0;
-    z-index : -1; /* Put the input behind the label so it doesn't overlay text */
-    visibility : hidden;
-  }
+    display: inline-block;
 
-  .bbounce__body {
-    width : $toggle-width;
-    height : $toggle-height;
-    background : white;
-    border : $border-width solid $border-color;
-    display : inline-block;
-    position : relative;
-    border-radius : 2.5em;
-  }
+    height: $toggle-height;
+    margin: $bbounce-margin;
 
-  .bbounce__switch {
-    width : $toggle-height;
-    height : $toggle-height;
-    display : inline-block;
-    background-color : white;
-    position : absolute;
-    left : -$border-width;
-    top : -$border-width;
-    border-radius : 50%;
-    border : $border-width solid darken($border-color, 5%);
-    box-shadow : 0 ($border-width + 0.1em) ($border-width + 0.1em) rgba(0,0,0,0.13);
-    transition : left $anim-speed-normal $anim-slight-bounce, transform $anim-speed-normal $anim-slight-bounce;
-    z-index : 1;
-  }
+    cursor: pointer;
 
-  .bbounce__track {
-    position : absolute;
-    left : 0;
-    top : 0;
-    right : 0;
-    bottom : 0;
-    overflow : hidden;
-    border-radius : 2.5em;
-  }
 
-  .bbounce__badge {
-    position : absolute;
-    right : -1em;
-    top : 0;
-    bottom : 0;
-    width : $toggle-width + 0.3em;
-    transition : left $anim-speed-normal $anim-slight-bounce, right $anim-speed-normal $anim-slight-bounce;
-    background : $blue;
-  }
 
-  .bbounce__badge:after {
-    content : '✔';
-    line-height : $toggle-height;
-  }
+    .bbounce__body
+    {
+        position: relative;
 
-  .bbounce__badge--negative {
-    right : auto;
-    width : 2em;
-    left : -($toggle-width - ($switch-size / 2));
-    background : white;
-    color : grey;
-  }
-  .bbounce__badge-negative:after {
-    content : 'X';
-    line-height : $toggle-height;
-  }
+        display: inline-block;
 
-  &:hover {
-    .bbounce__switch {
-      border-color : darken($border-color, 13%);
-      transform : scale(1.09);
-    }
-  }
+        width: $toggle-width;
+        height: $toggle-height;
 
-  &:active {
-    .bbounce__switch {
-      transform : scale(0.95);
-    }
-  }
-
-  > :not(:checked) ~ .bbounce__body {
-    > .bbounce__switch {
-      left : $toggle-width - $switch-size;
+        border: $border-width solid $border-color;
+        border-radius: $bbounce-radius;
+        background: white;
     }
 
-    .bbounce__badge {
-      right : -($toggle-width - ($switch-size / 2));
+    .bbounce__switch
+    {
+        position: absolute;
+        z-index: 1;
+        top: -$border-width;
+        left: -$border-width;
 
-      &.bbounce__badge--negative {
-        right : auto;
-        left : 0.3em;
-      }
+        display: inline-block;
+
+        width: $toggle-height;
+        height: $toggle-height;
+
+        transition: left $anim-speed-normal $anim-slight-bounce, transform $anim-speed-normal $anim-slight-bounce;
+
+        border: $border-width solid darken($border-color, 5%);
+        border-radius: 50%;
+        background-color: white;
+        box-shadow: 0 ($border-width + .1em) ($border-width + .1em) rgba(0,0,0,.13);
     }
-  }
-}
+
+    .bbounce__track
+    {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        overflow: hidden;
+
+        border-radius: $bbounce-radius;
+    }
+
+    .bbounce__badge
+    {
+        position: absolute;
+        top: 0;
+        right: -1em;
+        bottom: 0;
+
+        width: $toggle-width + .2em;
+
+        transition: left $anim-speed-normal $anim-slight-bounce, right $anim-speed-normal $anim-slight-bounce;
+
+        background: $blue;
+    }
+
+    .bbounce__badge:after
+    {
+        font-size: 1.5em;
+        line-height: 2em;
+
+        position: absolute;
+        left: 1em;
+
+        width: 1em;
+        height: 1em;
+
+        content: ' ';
+
+        background: url('svgs/ic_check_black_24px.svg');
+        background-repeat: no-repeat;
+        // background-color: $sg-handle-color-on;
+        background-repeat: no-repeat;
+        background-size: 1em 1.2em;
+    }
+
+    .bbounce__badge--negative
+    {
+        right: auto;
+        left: -($toggle-width - ($switch-size / 2));
+
+        width: 2em;
+
+        color: grey;
+        background: white;
+    }
+    .bbounce__badge--negative:after
+    {
+        line-height: $toggle-height;
+
+        left: .2em;
+
+        background: url('svgs/ic_close_black_24px.svg');
+        background-repeat: no-repeat;
+        // background-color: $sg-handle-color-on;
+        background-repeat: no-repeat;
+        background-size: 1em 1.2em;
+    }
+
+    &:hover
+    {
+        .bbounce__switch
+        {
+            transform: scale(1.09);
+
+            border-color: darken($border-color, 13%);
+        }
+    }
+
+    &:active
+    {
+        .bbounce__switch
+        {
+            transform: scale(.95);
+        }
+    }
+
+    > :not(:checked) ~ .bbounce__body
+    {
+        > .bbounce__switch
+        {
+            left: $toggle-width - $switch-size;
+        }
+
+        .bbounce__badge
+        {
+            right: -($toggle-width - ($switch-size / 2));
+
+            &.bbounce__badge--negative
+            {
+                right: auto;
+                left: .3em;
+            }
+        }
+    }
+}

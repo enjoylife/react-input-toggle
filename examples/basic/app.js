@@ -26,6 +26,26 @@ let App = React.createClass({
     }
     setInterval(cb, 1000, 2000);
   },
+
+  renderSwitch: function (effectName) {
+
+    return (
+      <div className='container bg-3'>
+        <h2>{effectName}</h2>
+        <div className='inline-content '>
+          <FancySwitch label={'label left'} effectName={effectName} labelPostion='left'/>
+          <FancySwitch label={'label right'} effectName={effectName} labelPostion='right'/>
+        </div>
+
+        <div className='inline-content '>
+          <FancySwitch label={'label top'} effectName={effectName} labelPostion='top'/>
+          <FancySwitch label={'label bottom'} effectName={effectName} labelPostion='bottom'/>
+        </div>
+
+      </div>
+    )
+
+  },
   render () {
 
     const l = 'Test-Label';
@@ -35,33 +55,12 @@ let App = React.createClass({
 
     return (
       <div className="container">
-        <h1>react-fancy-input</h1>
-        <div className='content bg-3'>
-          <FancySwitch effectName='b2spirit'/>
-        </div>
-        <div className='content bg-2'>
-          <FancySwitch effectName="simplygreen"/>
-        </div>
-  <div className='content bg-3'>
-    <FancySwitch effectName='bbounce'/>
-  </div>
-        <div className='content bg-1'>
-          <h3 className="example__head">Haruki</h3>
-
-          <div className="example">
-            <FancyInput label={l}/>
-          </div>
-
-          <div className="example">
-            <FancyInput label={l} defaultValue={dv}/>
-          </div>
-
-          <div className="example">
-            <FancyInput label={l} value={value}/>
-          </div>
-
-        </div>
-
+        {this.renderSwitch('sierra')}
+        {this.renderSwitch('b2spirit')}
+        {this.renderSwitch('simplygreen')}
+        {this.renderSwitch('bbounce')}
+        {this.renderSwitch('neonpush')}
+        {this.renderSwitch('ios6')}
       </div>
     );
   }

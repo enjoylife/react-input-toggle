@@ -1,0 +1,91 @@
+/**
+ * iOS 6 style switch checkboxes
+ * by Lea Verou http://lea.verou.me
+ */
+
+
+:root input[type='checkbox'].fi-switch__input--ios6 + div
+{
+    font-size: 150%;
+
+    display: inline-block;
+    overflow: hidden;
+
+    width: 3em;	height: 1em;
+    margin: 0 .5em;
+
+    transition-duration: .4s;
+    transition-property: padding, width, background-position, text-indent;
+    vertical-align: middle;
+
+    border: 1px solid rgba(0,0,0,.3);
+    border-radius: 999px;
+    background: white;
+    background-image: linear-gradient(rgba(0,0,0,.1), transparent),
+    linear-gradient(90deg, hsl(210, 90%, 60%) 50%, transparent 50%);
+    background-position: 100% 0;
+    background-clip: border-box;
+    background-origin: border-box;
+    background-size: 200% 100%;
+    box-shadow: 0 .1em .1em rgba(0,0,0,.2) inset,
+    0 .45em 0 .1em rgba(0,0,0,.05) inset;
+}
+
+:root input[type='checkbox'].fi-switch__input--ios6:checked + div
+{
+    width: 3em;
+    padding-left: 2em;
+
+    background-position: 0 0;
+}
+
+:root input[type='checkbox'].fi-switch__input--ios6 + div:before
+{
+    float: left;
+
+    width: 1.65em; height: 1.65em;
+    margin: -.05em;
+
+    content: 'On';
+    text-indent: -4.5em;
+
+    color: white;
+    border: 1px solid rgba(0,0,0,.35);
+    border-radius: inherit;
+    background: white;
+    background-image: linear-gradient(rgba(0,0,0,.2), transparent);
+    box-shadow: 0 .1em .1em .1em hsla(0,0%,100%,.8) inset,
+    0 0 .5em rgba(0,0,0,.3);
+    text-shadow: 0 -1px 1px rgba(0,0,0,.3);
+}
+
+:root input[type='checkbox'].fi-switch__input--ios6:active + div:before
+{
+    background-color: #eee;
+}
+
+// :root input[type='checkbox'].fi-switch__input--ios6:focus + div
+// {
+//     box-shadow: 0 .1em .1em rgba(0,0,0,.2) inset,
+//     0 .45em 0 .1em rgba(0,0,0,.05) inset,
+//     0 0 .4em 1px rgba(255,0,0,.5);
+// }
+
+:root input[type='checkbox'].fi-switch__input--ios6 + div:before,
+:root input[type='checkbox'].fi-switch__input--ios6 + div:after
+{
+    font: bold 60%/1.9 sans-serif;
+
+    text-transform: uppercase;
+}
+
+:root input[type='checkbox'].fi-switch__input--ios6 + div:after
+{
+    float: left;
+
+    content: 'Off';
+    text-indent: .5em;
+
+    color: rgba(0,0,0,.45);
+    text-shadow: none;
+}

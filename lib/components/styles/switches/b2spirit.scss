@@ -1,118 +1,184 @@
+/**
+ * Notes:
+ *   This style relies on a parent element which either has its background set to a color, or inheirts from its parent.
+ *   So if the handle is filled only a solid $b2-color-off it means your parent has not set or inheirited the background.
+ * @type {[type]}
+ */
+$b2-width: 6em;
+$b2-height: 3em;
+$b2-color-off: rgb(132,132,132);
+$b2-color-on: white;
+$b2-track-color-off: rgba(170,170,170,.3);
+$b2-track-color-on: $b2-color-off;
+$b2-transition: all 300ms cubic-bezier(.455, .030, .515, .955);
+$b2-track-width: 4em;
+$b2-track-height: 2em;
+$b2-circle-size: 2em;
+$b2-track-height: .5em;
+$b2-label-pad: .5em;
 
-$b2-width : 6em;
-$b2-height : 3em;
-$b2-color-off : rgb(132,132,132);
-$b2-color-on : white;
-$b2-track-color : rgba(170,170,170,0.3);
-$b2-transition : all 300ms cubic-bezier(0.455, 0.030, 0.515, 0.955);
-$b2-track-width : 4em;
-$b2-track-height : 2em;
-$b2-circle-size : 2em;
-$b2-track-height : 0.5em;
-$b2-label-pad : 0.5em;
-
-@function middleTrack($height) {
-  @return ($b2-height / 2) - ($height / 2);
+@function middleTrack($height)
+{
+    @return ($b2-height / 2) - ($height / 2);
 }
 
 
-.fi-switch--b2spirit {
-  background-color : inherit;
-  min-width : $b2-track-width;
+.fi-switch--b2spirit
+{
+    min-width: $b2-track-width;
+
+    background-color: inherit;
 }
 
-.fi-switch__container--b2spirit {
-  width : $b2-width;
-  height : $b2-height;
-  margin : $b2-label-pad ;
+.fi-switch--label-left
+{
+    .fi-switch__label--b2spirit
+    {
+        margin-right: 1em;
+    }
+}
+
+.fi-switch--label-right
+{
+    .fi-switch__label--b2spirit
+    {
+        margin-left: 1em;
+    }
+}
+
+
+.fi-switch__container--b2spirit
+{
+    width: $b2-width;
+    height: $b2-height;
+
+    &:hover
+    {
+        .fi-b2spirit__handle:before,
+        {
+            background-color: lighten($b2-color-off, 30%);
+        }
+    }
 }
 
 
 /* The switch checked and unchecked states for the button */
-.fi-switch__input--b2spirit {
-  /* the stars of the show are the psuedo elements*/
+.fi-switch__input--b2spirit
+{
+    /* the stars of the show are the psuedo elements*/
 }
 
 
-@mixin stealth-handle {
-  position : absolute;
-  // top : ($b2-height / 2) - ($b2-track-height /2);
-  top : middleTrack($b2-circle-size/2) / 2;
-  left : -$b2-circle-size * 1.5;
-  display : block;
-  width : $b2-circle-size;
-  height : $b2-circle-size;
-  content : '';
-  transition : $b2-transition;
-  border-radius : 50%;
-  background-clip : padding-box;
+@mixin stealth-handle
+{
+    position: absolute;
+    // top : ($b2-height / 2) - ($b2-track-height /2);
+    top: middleTrack($b2-circle-size/2) / 2;
+    left: -$b2-circle-size * 1.5;
+
+    display: block;
+
+    width: $b2-circle-size;
+    height: $b2-circle-size;
+
+    content: '';
+    transition: $b2-transition;
+
+    border-radius: 50%;
+    background-clip: padding-box;
 }
 
-.fi-b2spirit__track, .fi-b2spirit__handle {
-  position : absolute;
-  display : inline-block;
-  background-color : inherit;
-  align-self : center;
+.fi-b2spirit__track,
+.fi-b2spirit__handle
+{
+    position: absolute;
+
+    display: inline-block;
+
+    background-color: inherit;
+
+    align-self: center;
 }
+
+
 
 /* sets up the track and the pseudo elements (circles)*/
-.fi-b2spirit__track:before {
-  position : absolute;
-  display : block;
-  /* track size and length*/
-  width : $b2-track-width;
-  height : $b2-track-height;
-  top : middleTrack($b2-track-height);
-  left : -$b2-circle-size;
-  margin : 0 auto;
-  content : ' ';
-  /* give it a subtle look*/
-  color : $b2-track-color;
-  border-radius : $b2-track-height;
-  background-color : $b2-track-color;
+.fi-b2spirit__track:before
+{
+    position: absolute;
+    top: middleTrack($b2-track-height);
+    left: -$b2-circle-size;
+
+    display: block;
+    /* track size and length*/
+
+    width: $b2-track-width;
+    height: $b2-track-height;
+    margin: 0 auto;
+
+    content: ' ';
+    /* give it a subtle look*/
+    transition: $b2-transition;
+
+    color: $b2-track-color-off;
+    border-radius: $b2-track-height;
+    background-color: $b2-track-color-off;
 }
 
 /* The larger outer circle for the handle. Starts hollow and becomes filled when checked*/
-.fi-b2spirit__track:after {
-  transform : scale(1.1);
-  background-color : inherit;
+.fi-b2spirit__track:after
+{
+    transform: scale(1.1);
 
-  @include stealth-handle;
+    background-color: inherit;
+
+    @include stealth-handle;
 }
 
 /* The middle circle which changes color*/
-.fi-b2spirit__handle:before {
-  /* give it a border to keep centered with the :before circle*/
-  background-color : $b2-color-off;
+.fi-b2spirit__handle:before
+{
+    /* give it a border to keep centered with the :before circle*/
+    background-color: $b2-color-off;
 
-  @include stealth-handle;
+    @include stealth-handle;
 }
 
 /* The smaller circle which gives the handle a hollow effect when unchecked*/
-.fi-b2spirit__handle:after {
-  transform : scale(0.8);
-  /* give it a border to keep centered with the :before circle*/
+.fi-b2spirit__handle:after
+{
+    transform: scale(.8);
+    /* give it a border to keep centered with the :before circle*/
 
-  background-color : inherit;
+    background-color: inherit;
 
-  @include stealth-handle;
+    @include stealth-handle;
+}
+
+.fi-switch__input--b2spirit:checked + .fi-b2spirit__track:before
+{
+    background-color: $b2-track-color-on;
 }
 
 /* Move the background circle */
-.fi-switch__input--b2spirit:checked + .fi-b2spirit__track:after {
-  left : ($b2-track-width / 2) - ($b2-circle-size / 2);
+.fi-switch__input--b2spirit:checked + .fi-b2spirit__track:after
+{
+    left: ($b2-track-width / 2) - ($b2-circle-size / 2);
 }
 
 /* Move and change the background for the main handle circle */
-.fi-switch__input--b2spirit:checked + .fi-b2spirit__track + .fi-b2spirit__handle:before {
-  left : ($b2-track-width / 2) - ($b2-circle-size / 2);
-  background : $b2-color-on;
+.fi-switch__input--b2spirit:checked + .fi-b2spirit__track + .fi-b2spirit__handle:before
+{
+    left: ($b2-track-width / 2) - ($b2-circle-size / 2);
+
+    background: $b2-color-on;
 }
 
 /* shrink the hollow middle*/
-.fi-switch__input--b2spirit:checked + .fi-b2spirit__track + .fi-b2spirit__handle:after {
-  left : ($b2-track-width / 2) - ($b2-circle-size / 2);
-  /* shrink to nothing!*/
+.fi-switch__input--b2spirit:checked + .fi-b2spirit__track + .fi-b2spirit__handle:after
+{
+    left: ($b2-track-width / 2) - ($b2-circle-size / 2);
+    /* shrink to nothing!*/
 
-  transform : scale(0);
-}
+    transform: scale(0);
+}

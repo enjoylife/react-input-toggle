@@ -30,6 +30,13 @@ overflow: hidden;
   color:white;
 }
 
+.inline-content {
+  margin: 0.5em;
+  color:white;
+  display: inline-block;
+  background-color: inherit;
+}
+
 .bg-1 {
   background-color: #f0efee;
 }

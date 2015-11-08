@@ -23,6 +23,7 @@ $sg-handle-width: 1.5em;
 // handle color per state
 $sg-handle-color-off: rgb(196,196,196);
 $sg-handle-color-on: rgb(255,255,255);
+$sg-handle-color-hover: lighten($sg-handle-color-off, 30%);
 
 // in the off state how big is the border colorerd the same as the background
 $sg-handle-clear-border: .5em;
@@ -53,6 +54,14 @@ $sg-handle-top: ($sg-track-height / 2 - $sg-handle-height / 2 );
     margin: $sg-margin;
 
     background-color: inherit;
+
+    &:hover
+    {
+        .fi-simplygreen__handle:before,
+        {
+            background-color: lighten($b2-color-off, 40%);
+        }
+    }
 }
 
 /*Set up the general position and location of the toggle relative to the label */
@@ -174,21 +183,26 @@ $sg-handle-top: ($sg-track-height / 2 - $sg-handle-height / 2 );
 /* our check mark */
 .fi-simplygreen__handle:after
 {
-    font-size: .8em;
-    line-height: 1.5em;
+    font-size: 1em;
+    line-height: 1em;
 
     position: absolute;
     left: .5em;
 
     display: block;
 
+    width: 1em;
+    height: 1em;
     margin: 0 auto;
 
-    content: '✔';
+    content: '';
     transition: $sg-transition-track;
 
     opacity: 0;
-    color: $sg-handle-color-on;
+    background: url('svgs/ic_check_black_24px.svg');
+    background-repeat: no-repeat;
+    // background-color: $sg-handle-color-on;
+    background-size: 1em 1.2em;
 }
 
 /* Now show the check mark */

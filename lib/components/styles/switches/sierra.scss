@@ -1,0 +1,138 @@
+$width: 5em;
+$height: 2em;
+
+$handleSize: 2em;
+$handleStart: 0;
+$handleEnd: $width - $handleSize;
+
+
+$handleColor: rgb(255,255,255);
+$shadowColor: darken($handleColor, 20%);
+
+$handleMiddle: $height /2 - $handleSize / 2;
+
+$trackLeft: $handleSize/2;
+$trackLength: $width - $trackLeft*2;
+$trackHeight: .5em;
+$trackMiddle: $height /2 - $trackHeight / 2;
+
+$trackColorOff: rgb(255,255,255);
+$trackColorOn: rgb(56,219,162);
+
+$iconStroke: $trackColorOn;
+
+// $handleShadow: 0 .1em .3em  rgba(0, 0, 0, .5), 0 .1em .4em rgba(0, 0, 0, .5);
+$handleShadow: 0 1.5px 4px rgba(0, 0, 0, .1), 0 1.5px 6px rgba(0, 0, 0, .1);
+
+$handleTransition: all 500ms cubic-bezier(.34,1.61,.7,1);
+$trackTransition: all 400ms cubic-bezier(.215, .610, .355, 1.000);
+$checkTransition: all 400ms cubic-bezier(.215, .610, .355, 1.000) 100ms;
+
+// $trackShadowOff: inset 1px -1px 56px 2px #ABABAB;
+$trackShadowOff: inset -.1em 0 .15em .12em $shadowColor;
+
+$trackShadowOn: inset 0 -.1em .15em .12em darken($trackColorOn, 10%);
+.fi-switch--sierra
+{
+    min-width: $width;
+
+    background-color: inherit;
+}
+
+.fi-switch__container--sierra
+{
+    width: $width;
+    height: $height;
+    margin: .5em;
+}
+
+.fi-sierra__check
+{
+    position: absolute;
+    top: $handleMiddle;
+    left: $handleStart ;
+
+    width: $handleSize ;
+    height: $handleSize ;
+
+    transition: $handleTransition;
+    .fi-sierra__path
+    {
+        transition: $checkTransition;
+
+        stroke: $iconStroke;
+        stroke-width: .1em;
+        fill: none;
+        stroke-dasharray: 50;
+        stroke-dashoffset: 50;
+    }
+}
+
+
+
+// general setup
+.fi-sierra__handle,
+.fi-sierra__track,
+.fi-sierra__icon
+{
+    position: absolute;
+}
+
+// Positioning
+// Look
+// set up inital values for transitions
+.fi-sierra__handle
+{
+    top: $handleMiddle;
+    left: $handleStart;
+
+    width: $handleSize;
+    height: $handleSize;
+
+    transition: $handleTransition;
+
+    border: 1px solid rgba(0, 0, 0, .1);
+    border-radius: 50%;
+    background-color: $handleColor;
+    box-shadow: $handleShadow;
+}
+
+.fi-sierra__track
+{
+    // Positioning
+    top: $trackMiddle;
+    left: $trackLeft;
+
+    width: $trackLength;
+    height: $trackHeight;
+
+    transition: $trackTransition;
+
+    border-radius: $trackHeight / 1.5;
+    background-color: $trackColorOff;
+    box-shadow: $trackShadowOff;
+}
+
+.fi-switch__input--sierra:checked + .fi-sierra__track
+{
+    background-color: $trackColorOn;
+    box-shadow: $trackShadowOn;
+}
+
+.fi-switch__input--sierra:checked ~ .fi-sierra__handle
+{
+    left: $handleEnd;
+}
+
+
+
+
+
+.fi-switch__input--sierra:checked ~ .fi-sierra__check
+{
+    left: $handleEnd;
+    .fi-sierra__path
+    {
+        stroke-dashoffset: 0;
+    }
+}

@@ -1,0 +1,139 @@
+
+.neonpush__btn
+{
+    font-size: 1.4em;
+
+    display: block;
+
+    margin: 0 auto;
+
+    transition: all 350ms ease-in;
+
+    &:hover
+    {
+        cursor: pointer;
+    }
+}
+
+.neonpush__btn,
+.fi-switch__input--neonpush,
+.toggle--feature
+{
+    &,
+    &:before,
+    &:after
+    {
+        transition: all 250ms ease-in;
+    }
+    &:before,
+    &:after
+    {
+        display: block;
+
+        content: '';
+    }
+}
+
+
+$toggleBtnRadius: 50px;
+$toggleBtnColor: #f9f8f6;
+
+$toggleShadowColor: #333;
+$toggleActiveColor: #f90;
+$toggleInactiveColor: #ccc;
+
+.fi-switch__container--neonpush,
+.fi-switch__container--neonpull
+{
+    display: block;
+
+    margin: .3em;
+
+    user-select: none;
+    text-align: center;
+    & .neonpush__btn
+    {
+        position: relative;
+
+        width: $toggleBtnRadius;
+        height: $toggleBtnRadius;
+
+        border-radius: 50%;
+        background-color: $toggleBtnColor;
+        // box-shadow: 0 5px 10px 0 $toggleShadowColor, 0 15px 20px 0 lighten($toggleShadowColor, 60%);
+
+        &,
+        &:before,
+        &:after
+        {
+            transition-duration: 150ms;
+        }
+
+        &:before
+        {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+
+            width: $toggleBtnRadius / 2.2;
+            height: $toggleBtnRadius / 2.2;
+
+            transform: translate(-50%, -50%);
+
+            border-radius: 50%;
+            background-color: $toggleActiveColor;
+            box-shadow: inset 0 0 0 5px $toggleInactiveColor,
+            inset 0 0 0 14px $toggleBtnColor;
+        }
+        &:after
+        {
+            position: absolute;
+            top: 35%;
+            left: 50%;
+
+            width: 4px;
+            height: 12px;
+
+            transform: translate(-50%, -50%);
+
+            background-color: $toggleInactiveColor;
+            box-shadow: 0 0 0 2.5px $toggleBtnColor;
+        }
+
+        &:hover
+        {
+            &:before
+            {
+                box-shadow: inset 0 0 0 5px darken($toggleInactiveColor, 10%),
+                inset 0 0 0 14px $toggleBtnColor;
+            }
+            &:after
+            {
+                background-color: darken($toggleInactiveColor, 10%);
+            }
+        }
+    }
+
+    & .fi-switch__input--neonpush,
+    & .fi-switch__input--neonull
+    {
+        &:checked
+        {
+            & + .neonpush__btn
+            {
+                box-shadow: 0 2px 5px 0 lighten($toggleShadowColor, 30%),
+                0 15px 20px 0 transparent;
+
+                &:before
+                {
+                    box-shadow: inset 0 0 0 5px $toggleActiveColor,
+                    inset 0 0 0 14px $toggleBtnColor;
+                }
+                &:after
+                {
+                    background-color: $toggleActiveColor;
+                }
+            }
+        }
+    }
+}

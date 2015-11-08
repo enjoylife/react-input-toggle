@@ -22,14 +22,18 @@ module.exports = {
     loaders: [
       {
         test: /\.jsx?$/,
-          exclude: /(node_modules|bower_components|react-a11y)/,
+        exclude: /(node_modules|bower_components|react-a11y)/,
         loaders: ['babel']
       }, {
         test: /\.scss$/,
         loaders: [
           "style", "css", 'autoprefixer?browsers=last 2 versions', "sass"
         ]
+      }, {
+        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+        loader: "url?mimetype=image/svg+xml"
       }
+
     ]
   },
   plugins: [
@@ -37,7 +41,6 @@ module.exports = {
       'process.env': {
         'NODE_ENV': JSON.stringify('production')
       }
-    }),
-    new webpack.NoErrorsPlugin(), new WebpackErrorNotificationPlugin(/* strategy */)
+    }), new webpack.NoErrorsPlugin(), new WebpackErrorNotificationPlugin(/* strategy */)
   ]
 }
