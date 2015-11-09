@@ -24,7 +24,7 @@ $trackColorOn: $onColor;
 $trackBorderColorOff: lighten($borderOffColor, 5%);
 $trackBorderColorOn: $handleBorderColorOn;
 
-$totalAnimationTime: .8s;
+$totalAnimationTime: .5s;
 $backgroundAnimationTime: $totalAnimationTime / 10;
 $animationTiming: ease-in-out;
 

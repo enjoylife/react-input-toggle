@@ -49,6 +49,7 @@ let App = React.createClass({
 
     return (
       <div className="container">
+        {this.renderSwitch('echo')}
         {this.renderSwitch('charlie')}
         {this.renderSwitch('sierra')}
         {this.renderSwitch('b2spirit', 'bg-2')}
