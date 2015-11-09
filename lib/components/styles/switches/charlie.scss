@@ -19,9 +19,9 @@ $handleBorderColorOff: $borderOffColor;
 
 $borderSize: .08em;
 
-$trackColorOff: lighten($borderOffColor, 50%);
+$trackColorOff: lighten($borderOffColor, 15%);
 $trackColorOn: $onColor;
-$trackBorderColorOff: lighten($borderOffColor, 10%);
+$trackBorderColorOff: lighten($borderOffColor, 5%);
 $trackBorderColorOn: $handleBorderColorOn;
 
 $totalAnimationTime: .8s;
