@@ -32,17 +32,10 @@ let App = React.createClass({
     const classes = cs('container', background);
     return (
       <div className={classes}>
-        <h2>{effectName}</h2>
         <div className='inline-content'>
-          <FancySwitch label={'label left'} effectName={effectName} labelPostion='left'/>
-          <FancySwitch label={'label right'} defaultChecked={true} effectName={effectName} labelPostion='right'/>
+          <FancySwitch label={effectName} effectName={effectName} labelPostion='left'/>
+          <FancySwitch label={effectName} defaultChecked={true} effectName={effectName} labelPostion='right'/>
         </div>
-
-        <div className='inline-content '>
-          <FancySwitch label={'label top'} defaultChecked={true} effectName={effectName} labelPostion='top'/>
-          <FancySwitch label={'label bottom'} effectName={effectName} labelPostion='bottom'/>
-        </div>
-
       </div>
     )
 

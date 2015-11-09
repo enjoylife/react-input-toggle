@@ -11,6 +11,7 @@ body {
 text-align: center;
 overflow: hidden;
   width: 100%;
+  background-color: white;
 }
 
 .example {
@@ -32,7 +33,6 @@ overflow: hidden;
 }
 
 .inline-content {
-  width: 100%;
   color:rgb(135,135,135);
   background-color: white;
   display: inline-block;
