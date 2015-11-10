@@ -19,6 +19,20 @@
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+
+
+.fi-switch--focused
+{
+    .fi-switch__label
+    {
+        text-decoration: underline;
+
+        text-decoration-color: rgba(155,155,155,.5);
+        text-decoration-style: solid;
+    }
+}
+
+
 .fi-switch__input
 {
     position: absolute;

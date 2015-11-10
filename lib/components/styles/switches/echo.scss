@@ -30,7 +30,8 @@ $squishy: scale(1.1, .9);
 {
     min-width: $width;
 
-    &:active
+    &:active,
+    &:focus
     {
         .fi-echo__handle
         {
