@@ -1,0 +1,164 @@
+/**
+ * Inspiration from Andrew Verboncouer
+ * https://dribbble.com/shots/2338506-015-On-Off-Switch
+ */
+$width: 5em;
+$height: 2.5em;
+
+$trackLength: $width;
+$trackHeight: $height;
+
+$handlePad: .35em;
+$handleSize: $height - 2 * $handlePad;
+
+$handleStart: $handlePad;
+$handleTop: $handlePad;
+$handleEnd: $width - $handlePad - $handleSize;
+
+$handleColor: rgb(240,240,240);
+
+
+$trackWidth: $width;
+$trackHeight: $height;
+$trackColorOff: rgb(31, 78,133);
+$trackColorOn: rgb(133, 228,53);
+
+$trackBorderColor: rgb(34,34,34);
+$trackBorderWidth: .21em;
+
+$handleIconColor: lighten($handleColor, 10%);
+$handleIconStrokeWidth: .02em;
+$handleIconColorOff: rgba($trackColorOff, .5);
+
+$transition: all 400ms cubic-bezier(.645, .045, .355, 1.000);
+$textTransition: opacity 200ms 100ms cubic-bezier(.645, .045, .355, 1.000);
+
+$textSize: 1em;
+
+$handleShadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);
+$handleShadowHover: 0 10px 20px rgba(0,0,0,.19), 0 6px 6px rgba(0,0,0,.23);
+
+.fi-switch--foxtrot
+{
+    min-width: $width;
+    &:active,
+    &:hover
+    {
+        .fi-foxtrot__handle
+        {
+            box-shadow: $handleShadowHover;
+        }
+    }
+}
+
+
+
+.fi-switch__container--foxtrot
+{
+    width: $width;
+    height: $height;
+    margin: .5em;
+}
+
+.fi-foxtrot__track
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: $trackLength;
+    height: $trackHeight;
+
+    transition: $transition;
+
+    border: $trackBorderWidth solid $trackBorderColor;
+    border-radius: $handleSize;
+    background-color: $trackColorOff;
+}
+.fi-foxtrot__handle
+{
+    position: absolute;
+    top: $handleTop;
+    left: $handleStart;
+
+    width: $handleSize;
+    height: $handleSize;
+
+    transition: $transition;
+
+    border-radius: $handleSize;
+    background-color: $handleColor;
+    box-shadow: $handleShadow;
+}
+
+.fi-foxtrot__handle-icon
+{
+    position: absolute;
+    top: $handleTop;
+    left: $handleStart;
+
+    width: $handleSize;
+    height: $handleSize;
+
+    transition: $transition;
+    transform: scale(.5);
+
+    fill: $handleIconColor;
+}
+
+.fi-foxtrot__text
+{
+    font-size: $textSize;
+    line-height: $height;
+
+    position: absolute;
+    top: 0;
+
+    height: $height;
+
+    transition: $textTransition;
+}
+
+.fi-foxtrot__text--off
+{
+    opacity: 1;
+    color: lighten($trackColorOff, 15%);
+}
+
+.fi-foxtrot__text--on
+{
+    left: $textSize;
+
+    opacity: 0;
+    color: $handleColor;
+}
+
+
+
+.fi-switch__input--foxtrot:checked
+{
+    & ~ .fi-foxtrot__track
+    {
+        background-color: $trackColorOn;
+    }
+
+    & ~ .fi-foxtrot__handle
+    {
+        left: $handleEnd;
+    }
+
+    & ~ .fi-foxtrot__handle-icon
+    {
+        left: $handleEnd;
+    }
+
+    & ~ .fi-foxtrot__text--on
+    {
+        opacity: 1;
+    }
+
+    & ~ .fi-foxtrot__text--off
+    {
+        opacity: 0;
+    }
+}
