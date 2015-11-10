@@ -23,12 +23,20 @@ $iconSize: $handleSize / 1.3;
 $iconOffLeft: $width - $handleSize;
 $iconOnLeft: $iconSize/2;
 $iconTop: $height / 2 - $iconSize / 2.1;
-$transition: all 400ms cubic-bezier(.645, .045, .355, 1.000);
-
+$transition: left 400ms cubic-bezier(.645, .045, .355, 1.000), transform 650ms ease, background-color 400ms cubic-bezier(.645, .045, .355, 1.000);
+$squishy: scale(1.1, .9);
 
 .fi-switch--echo
 {
     min-width: $width;
+
+    &:active
+    {
+        .fi-echo__handle
+        {
+            transform: $squishy;
+        }
+    }
 }
 
 .fi-switch__container--echo
@@ -66,6 +74,7 @@ $transition: all 400ms cubic-bezier(.645, .045, .355, 1.000);
     border-radius: $handleSize;
     background-color: $handleColor;
 }
+
 
 .fi-echo__icon,
 .fi-echo__icon
