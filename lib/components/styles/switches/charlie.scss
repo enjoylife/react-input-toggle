@@ -179,12 +179,12 @@ $animationTiming: ease-in-out;
         opacity: 0;
     }
 
-    10%
+    20%
     {
         opacity: 1;
     }
 
-    90%
+    80%
     {
         opacity: 1;
     }
@@ -208,7 +208,7 @@ $animationTiming: ease-in-out;
     }
 
 
-    10%
+    20%
     {
         left: $handleStart;
 
@@ -217,7 +217,7 @@ $animationTiming: ease-in-out;
         border-color: $handleBorderColorOff;
     }
 
-    90%
+    80%
     {
         width: $width;
     }
@@ -236,7 +236,7 @@ $animationTiming: ease-in-out;
         border-color: $handleBorderColorOff;
     }
 
-    10%
+    20%
     {
         width: $width;
 
@@ -245,7 +245,7 @@ $animationTiming: ease-in-out;
 
 
 
-    90%
+    80%
     {
         left: $handleStart;
 
