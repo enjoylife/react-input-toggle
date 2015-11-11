@@ -1,111 +1,94 @@
-
+/**
+ * Common and top level styles needed for the fi-switch
+ */
 .fi-switch *,
 .fi-switch *:after,
-.fi-switch *:before
-{
-    box-sizing: border-box;
-}
-.fi-switch
-{
-    position: relative;
-
-    display: flex;
-
-    padding: 1em;
-
-    flex-wrap: wrap;
-    align-items: center;
-    // http://stackoverflow.com/questions/11885161
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+.fi-switch *:before {
+  box-sizing: border-box;
 }
 
-
-
-.fi-switch--focused
-{
-    .fi-switch__label
-    {
-        text-decoration: underline;
-
-        text-decoration-color: rgba(155,155,155,.5);
-        text-decoration-style: solid;
-    }
+.fi-switch {
+  position: relative;
+  display: flex;
+  padding: 1em;
+  flex-wrap: wrap;
+  align-items: center;
+  
+  // http://stackoverflow.com/questions/11885161
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-
-.fi-switch__input
-{
-    position: absolute;
-    z-index: -1; /* Put the input behind the label so it doesn't overlay text */
-
-    opacity: 0;
+.fi-switch--focused {
+  .fi-switch__label {
+    text-decoration: underline;
+    text-decoration-color: rgba(155,155,155,.5);
+    text-decoration-style: solid;
+  }
 }
 
-
-.fi-switch__label
-{
-    position: relative;
-
-    cursor: pointer;
-    text-align: inherit;
-
-    color: inherit;
+.fi-switch__input {
+  
+  // Hide the input, but keep it in the dom for tabbing and accessbility
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  
+  // have it be at the bottom so if a user tabs into the input
+  // the whole switch comes into view
+  bottom: 0;
 }
 
-
-.fi-switch__container
-{
-    position: relative;
-
-    user-select: none;
-
-    color: inherit;
-    background-color: inherit;
+.fi-switch__label {
+  position: relative;
+  cursor: pointer;
+  text-align: inherit;
+  color: inherit;
 }
 
+.fi-switch__container {
+  position: relative;
+  user-select: none;
+  color: inherit;
+  background-color: inherit;
+}
 
 // force the label to be above
-.fi-switch--label-top
-{
-    flex-direction: column;
+.fi-switch--label-top {
+  flex-direction: column;
+}
+
+.fi-switch--label-left {
+  
+  // .fi-switch--label-left is the assumed default
 }
 
 // Reorder to have the label be underneath
 // and set to column flex mode
-.fi-switch--label-bottom
-{
-    flex-direction: column;
+.fi-switch--label-bottom {
+  flex-direction: column;
+  
+  .fi-switch__container {
+    order: 1;
+  }
 
-    .fi-switch__container
-    {
-        order: 1;
-    }
-
-    .fi-switch__label
-    {
-        order: 2;
-    }
+  .fi-switch__label {
+    order: 2;
+  }
 }
 
 // Reorder to have the label be underneath
 // set row flex mode
-.fi-switch--label-right
-{
-    flex-direction: row;
+.fi-switch--label-right {
+  flex-direction: row;
+  
+  .fi-switch__container {
+    order: 1;
+  }
 
-    .fi-switch__container
-    {
-        order: 1;
-    }
-
-    .fi-switch__label
-    {
-        order: 2;
-    }
+  .fi-switch__label {
+    order: 2;
+  }
 }
-
-// .fi-switch--label-left is the assumed default
-
 @import 'switches/b2spirit';
 @import 'switches/simplygreen';
 @import 'switches/bbounce';
