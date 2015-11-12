@@ -1,13 +1,22 @@
 {
-  "name": "react-fancy-input",
-  "version": "0.0.0",
-  "description": "A react component for form inputs with subtle and interesting effects",
+  "name": "react-input-toggle",
+  "version": "0.1.0",
+  "description": "A collection of aesthetically pleasing, accessible and customizable toggles build with React.",
+  "keywords": [
+    "react",
+    "react-component",
+    "toggle",
+    "switch",
+    "input",
+    "checkbox",
+    "react-input"
+  ],
   "main": "./lib/index.js",
   "repository": {
     "type": "git",
-    "url": "github.com/enjoylife/react-fancy-input.git"
+    "url": "github.com/enjoylife/react-input-toggle.git"
   },
-  "bugs": "github.com/enjoylife/react-fancy-input/issues",
+  "bugs": "github.com/enjoylife/react-input-toggle/issues",
   "directories": {
     "example": "examples"
   },
@@ -51,21 +60,5 @@
   "peerDependencies": {
     "react": "0.14"
   },
-  "tags": [
-    "react",
-    "forms",
-    "input",
-    "animation",
-    "react component",
-    "ui/ux"
-  ],
-  "keywords": [
-    "react",
-    "forms",
-    "input",
-    "animation",
-    "react component",
-    "ui/ux"
-  ],
   "dependencies": {}
 }
