@@ -1,8 +1,11 @@
 /**
+ * Original Design: Mark Lamb
+
+ * URL: https://dribbble.com/shots/2326459-Toggle-Switch
  * Notes:
  *   This style relies on a parent element which either has its background set to a color, or inheirts from its parent.
  *   So if the handle is filled only a solid $b2-color-off it means your parent has not set or inheirited the background.
- * @type {[type]}
+ *
  */
 $b2-width: 5em;
 $b2-height: 3em;

@@ -44,6 +44,18 @@ $trackShadowOn: inset 0 -.1em .15em .12em darken($trackColorOn, 10%);
     width: $width;
     height: $height;
     margin: .5em;
+
+    &:hover
+    {
+        .fi-sierra__handle
+        {
+            animation-name: pulse;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+
+            animation-fill-mode: both;
+        }
+    }
 }
 
 .fi-sierra__check
@@ -131,5 +143,24 @@ $trackShadowOn: inset 0 -.1em .15em .12em darken($trackColorOn, 10%);
     .fi-sierra__path
     {
         stroke-dashoffset: 0;
+    }
+}
+
+
+@keyframes pulse
+{
+    from
+    {
+        transform: scale3d(1, 1, 1);
+    }
+
+    50%
+    {
+        transform: scale3d(1.05, 1.05, 1.05);
+    }
+
+    to
+    {
+        transform: scale3d(1, 1, 1);
     }
 }
