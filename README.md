@@ -1,3 +1,8 @@
-# react-fancy-input
+# react-input-toggle
 
-A react component for form inputs with subtle and interesting effects
+A collection of aesthetically pleasing, accessible and customizable toggles build with React.
+
+
+### License
+
+MIT
