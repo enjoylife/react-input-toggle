@@ -14,7 +14,7 @@ module.exports = function (config) {
       'mocha', 'chai'
     ],
 
-    files: ['tests.webpack.js'],
+    files: [path.resolve(__dirname, 'tests.webpack.js')],
 
     preprocessors: {
       'tests.webpack.js': ['webpack', 'sourcemap']
