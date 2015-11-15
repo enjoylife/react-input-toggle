@@ -2,7 +2,7 @@ var webpack = require('webpack');
 var webpackConfig = require('./webpack.config');
 
 webpackConfig.devtool = 'inline';
-
+webpackConfig.entry = {};
 var extraLoader = {
   test: /\.(js|jsx)$/,
   exclude: /(test|node_modules|bower_components)\//,
