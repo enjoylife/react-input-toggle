@@ -26,21 +26,16 @@ module.exports = {
         loaders: ['babel']
       }, {
         test: /\.scss$/,
-        loaders: [
-          "style", "css", 'autoprefixer?browsers=last 2 versions', "sass"
-        ]
+        loaders: ["style", "css", 'autoprefixer?browsers=last 2 versions', "sass"]
       }, {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
         loader: "url?mimetype=image/svg+xml"
       }
-
     ]
   },
-  plugins: [
-    new webpack.DefinePlugin({
+  plugins: [new webpack.DefinePlugin({
       'process.env': {
         // 'NODE_ENV': JSON.stringify('production')
       }
-    }), new webpack.NoErrorsPlugin(), new WebpackErrorNotificationPlugin(/* strategy */)
-  ]
+    }), new webpack.NoErrorsPlugin(), new WebpackErrorNotificationPlugin(/* strategy */)]
 }

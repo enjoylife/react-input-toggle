@@ -1,41 +1,46 @@
-import './testdom.js';
-
 import React from 'react';
 import {
-  findDOMNode
+  findDOMNode,
+  unmountComponentAtNode,
+  render
 } from 'react-dom';
 
-import sinon from 'sinon';
-import should from 'should';
-import 'should-sinon';
+// var chai = require('chai');
+import chai from 'chai';
+import spies from 'chai-spies';
+chai.use(spies);
+
+var expect = chai.expect;
 
 import TestUtils from 'react-addons-test-utils';
 
-import FancySwitch from '../lib/components/FancySwitch';
+import FancySwitch from '../FancySwitch';
 
 describe("FancySwitch", () => {
   let label = 'my test label';
   var dom,
     component;
-  beforeEach(function () {
 
-    component = TestUtils.renderIntoDocument(
-      <FancySwitch label={label}/>
-    );
-    dom = findDOMNode(component);
+  var div = document.createElement("div");
+  document.body.appendChild(div);
+
+  beforeEach(() => {});
+
+  afterEach(() => {
+    unmountComponentAtNode(div);
   });
 
   it("respects a defaultChecked prop", () => {
     let unChecked = TestUtils.renderIntoDocument(
       <FancySwitch defaultChecked={false}/>
     );
-    should(unChecked.state.fiChecked).be.a.Boolean();
-    should(unChecked.state.fiChecked).be.false();
+    expect(unChecked.state.fiChecked).to.be.false;
+
     let checked = TestUtils.renderIntoDocument(
       <FancySwitch defaultChecked={true}/>
     );
-    should(checked.state.fiChecked).be.a.Boolean();
-    should(checked.state.fiChecked).be.true();
+
+    expect(checked.state.fiChecked).to.be.true;
   });
 
   it("modifies the css classes per the effectName prop", () => {
@@ -44,8 +49,7 @@ describe("FancySwitch", () => {
     );
 
     let dom = findDOMNode(sierra);
-    let switchClasses = dom.classList;
-    should(switchClasses).matchAny(/sierra/);
+    expect(dom.className).to.match(/sierra/);
 
   });
   it("adds a css class corrasponding to the labelPostion prop", () => {
@@ -54,13 +58,13 @@ describe("FancySwitch", () => {
     );
     let dom = findDOMNode(upLabel);
     let switchClasses = dom.classList;
-    should(switchClasses).matchAny(/top/);
+    expect(dom.className).match(/top/);
   });
   it("still calls overriden event handlers passed in by prop", () => {
 
-    var spyChange = sinon.spy();
-    var spyBlur = sinon.spy();
-    var spyFocus = sinon.spy();
+    var spyChange = chai.spy(() => {});
+    var spyBlur = chai.spy(() => {});
+    var spyFocus = chai.spy(() => {});
 
     const toggle = TestUtils.renderIntoDocument(
       <FancySwitch onChange={spyChange} onFocus={spyFocus} onBlur={spyBlur}/>
@@ -68,47 +72,46 @@ describe("FancySwitch", () => {
 
     let dom = findDOMNode(toggle);
     TestUtils.Simulate.change(toggle._input);
-    spyChange.should.be.called();
+    expect(spyChange).to.have.been.called();
 
     TestUtils.Simulate.focus(toggle._input);
-    spyFocus.should.be.called();
+    expect(spyFocus).to.have.been.called();
 
     TestUtils.Simulate.blur(toggle._input);
-    spyFocus.should.be.called();
+    expect(spyFocus).to.have.been.called();
   });
 
   it("allows for calling arrbitray event handlers", () => {
 
-    var spyChange = sinon.spy();
-    var spyKeyDown = sinon.spy();
+    var spyChange = chai.spy(() => {});
+    var spyKeyDown = chai.spy(() => {});
     const toggle = TestUtils.renderIntoDocument(
       <FancySwitch onChangeCapture={spyChange} onKeyDown={spyKeyDown}/>
     );
 
     let dom = findDOMNode(toggle);
     TestUtils.Simulate.change(toggle._input);
-    spyChange.should.be.called();
+    expect(spyChange).to.have.been.called();
     TestUtils.Simulate.keyDown(toggle._input);
-    spyKeyDown.should.be.called();
-
+    expect(spyKeyDown).to.have.been.called();
   });
 
   it("allows for passing aribitrary props down to the input", () => {
-    const toggle = TestUtils.renderIntoDocument(
-      <FancySwitch autoFocus/>
-    );
-    const input = TestUtils.findRenderedDOMComponentWithTag(toggle, 'input');
-    // console.log(findDOMNode(input).getAttribute('autoFocus'));
-    should(input).be.equal(document.activeElement)
+    const toggle = render(
+      <FancySwitch autoFocus data-fake={'test'}/>, div);
+    expect(document.activeElement).to.equal(toggle._input);
+    expect(toggle._input.dataset.fake).to.equal('test');
   });
+
   it("gives its underlying input focus when the component is toggled", () => {
-    const toggle = TestUtils.renderIntoDocument(
-      <FancySwitch/>
-    );
+    const toggle = render(
+      <FancySwitch/>, div);
     let dom = findDOMNode(toggle);
     TestUtils.Simulate.click(dom);
-    // should(toggle._input).be.equal(document.activeElement);
+    dom.click();
+    expect(toggle._input).to.equal(document.activeElement);
   });
+
   it("gives a unique id and for attribute to the input and label", () => {
     const toggle = TestUtils.renderIntoDocument(
       <FancySwitch/>
@@ -116,7 +119,7 @@ describe("FancySwitch", () => {
     const toggle2 = TestUtils.renderIntoDocument(
       <FancySwitch/>
     );
-    should(toggle._input.id).not.equal(toggle2._input.id)
+    expect(toggle._input.id).to.not.equal(toggle2._input.id)
   });
 
 });
