@@ -15,6 +15,7 @@ var expect = chai.expect;
 import TestUtils from 'react-addons-test-utils';
 
 import FancySwitch from '../FancySwitch';
+import switchStyles from '../switchStyles';
 
 describe("FancySwitch", () => {
   let label = 'my test label';
@@ -44,12 +45,15 @@ describe("FancySwitch", () => {
   });
 
   it("modifies the css classes per the effectName prop", () => {
-    let sierra = TestUtils.renderIntoDocument(
-      <FancySwitch effectName={'sierra'}/>
-    );
+    const effects = Object.keys(switchStyles);
+    for (let effect of effects) {
+      let component = TestUtils.renderIntoDocument(
+        <FancySwitch effectName={effect}/>
+      );
 
-    let dom = findDOMNode(sierra);
-    expect(dom.className).to.match(/sierra/);
+      let dom = findDOMNode(component);
+      expect(dom.className).to.have.string(effect);
+    }
 
   });
   it("adds a css class corrasponding to the labelPostion prop", () => {
@@ -109,6 +113,15 @@ describe("FancySwitch", () => {
     let dom = findDOMNode(toggle);
     TestUtils.Simulate.click(dom);
     dom.click();
+    expect(toggle._input).to.equal(document.activeElement);
+  });
+
+  it('stops default browser behavior of switching focus when mouseDown on label', () => {
+    const toggle = render(
+      <FancySwitch autoFocus data-fake={'test'}/>, div);
+
+    let dom = findDOMNode(toggle);
+    TestUtils.Simulate.mouseDown(dom);
     expect(toggle._input).to.equal(document.activeElement);
   });
 
