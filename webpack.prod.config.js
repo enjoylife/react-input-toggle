@@ -6,7 +6,7 @@ var WebpackErrorNotificationPlugin = require('webpack-error-notification');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
   entry: {
-    basic: 'examples/basic/app.js'
+    basic: 'lib'
   },
   resolve: {
     root: path.join(__dirname)
@@ -28,7 +28,6 @@ module.exports = {
       }
     }
   ],
-  devtool: 'source-map',
   module: {
     loaders: [
       {
@@ -37,7 +36,7 @@ module.exports = {
         loaders: ['babel']
       }, {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('style', "css", 'autoprefixer?browsers=last 2 versions', "sass")
+        loader: ExtractTextPlugin.extract('style', "css!autoprefixer?browsers=last 2 versions!sass")
       }, {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
         loader: "url?mimetype=image/svg+xml"
@@ -46,7 +45,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(), new ExtractTextPlugin("[name].css"), new webpack.DefinePlugin({
+    new webpack.optimize.OccurenceOrderPlugin(), new ExtractTextPlugin("react-input-toggle.css"), new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('production')
       }
