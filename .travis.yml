@@ -10,6 +10,7 @@ before_install:
 
 install:
   - npm install -g codecov
+  - npm install
 
 
 after_success:
