@@ -9,7 +9,7 @@ before_install:
   - npm install -g npm@latest
 
 script:
-  - npm test
+  - npm test:ci
 
 cache:
   directories:
