@@ -11,7 +11,7 @@ module.exports = function (config) {
     singleRun: false,
 
     frameworks: [
-      'mocha', 'should-sinon', 'should', 'sinon'
+      'mocha', 'chai'
     ],
 
     files: ['tests.webpack.js'],
