@@ -15,9 +15,11 @@ var path = require('path');
 module.exports = function (config) {
   config.set({
 
-    browsers: [process.env.CONTINUOUS_INTEGRATION
-        ? 'Firefox'
-        : 'Chrome'],
+    browsers: process.env.CONTINUOUS_INTEGRATION
+      ? ['Firefox']
+      : [
+        'Chrome', 'Firefox'
+      ],
 
     singleRun: false,
 

@@ -46,11 +46,11 @@ describe("FancySwitch", () => {
 
   it("modifies the css classes per the effectName prop", () => {
     const effects = Object.keys(switchStyles);
-    for (let effect of effects) {
+    for (var i = 0; i < effects.length; i++) {
+      let effect = effects[i];
       let component = TestUtils.renderIntoDocument(
         <FancySwitch effectName={effect}/>
       );
-
       let dom = findDOMNode(component);
       expect(dom.className).to.have.string(effect);
     }
