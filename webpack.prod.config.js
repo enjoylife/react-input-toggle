@@ -3,7 +3,7 @@ var webpack = require('webpack');
 var EXAMPLES_DIR = path.resolve(process.cwd(), 'examples');
 
 var WebpackErrorNotificationPlugin = require('webpack-error-notification');
-
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
   entry: {
     basic: 'examples/basic/app.js'
@@ -15,10 +15,19 @@ module.exports = {
     path: path.join(__dirname, 'dist'),
     publicPath: 'dist/',
     filename: 'react-input-toggle.js',
-    sourceMapFilename: 'react-input-toggle.sourcemap.js',
     library: 'InputToggle',
     libraryTarget: 'umd'
   },
+  externals: [
+    {
+      react: {
+        root: 'React',
+        commonjs2: 'react',
+        commonjs: 'react',
+        amd: 'react'
+      }
+    }
+  ],
   devtool: 'source-map',
   module: {
     loaders: [
@@ -28,9 +37,7 @@ module.exports = {
         loaders: ['babel']
       }, {
         test: /\.scss$/,
-        loaders: [
-          "style", "css", 'autoprefixer?browsers=last 2 versions', "sass"
-        ]
+        loader: ExtractTextPlugin.extract('style', "css", 'autoprefixer?browsers=last 2 versions', "sass")
       }, {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
         loader: "url?mimetype=image/svg+xml"
@@ -39,18 +46,11 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.optimize
-      .OccurenceOrderPlugin(),
-    new webpack.DefinePlugin({
+    new webpack.optimize.OccurenceOrderPlugin(), new ExtractTextPlugin("[name].css"), new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('production')
       }
     }),
-    new webpack.optimize
-      .UglifyJsPlugin({
-        compressor: {
-          warnings: false
-        }
-      })
+    //  new webpack.optimize.UglifyJsPlugin({ compressor: { warnings: false } })
   ]
 }

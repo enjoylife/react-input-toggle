@@ -1,6 +1,11 @@
 import React from 'react';
-import {render} from 'react-dom';
-import {FancyInput, FancySwitch} from '../../lib/index';
+import {
+  render
+} from 'react-dom';
+import {
+  FancyInput,
+  FancySwitch
+} from '../../lib/index';
 import cs from 'classnames';
 
 var a11y = require('react-a11y');
@@ -9,9 +14,7 @@ a11y(React);
 let App = React.createClass({
 
   getInitialState: function () {
-    return {
-      value: ''
-    }
+    return {value: ''}
   },
   componentDidMount: function () {
 
@@ -28,13 +31,17 @@ let App = React.createClass({
     setInterval(cb, 1000, 2000);
   },
 
+  fakeOnChange: function () {
+    console.log("fakeOnChange");
+  },
+
   renderSwitch: function (effectName, background) {
     const classes = cs('container', background);
     return (
       <div className={classes}>
         <div className='inline-content'>
           <FancySwitch label={effectName} effectName={effectName} labelPostion='left'/>
-          <FancySwitch label={effectName} defaultChecked={true} effectName={effectName} labelPostion='right'/>
+          <FancySwitch label={effectName} defaultChecked={true} effectName={effectName} onChange={this.fakeOnChange} labelPostion='right'/>
         </div>
       </div>
     )
@@ -45,7 +52,9 @@ let App = React.createClass({
     const l = 'Test-Label';
     const dv = 'lorem ipsum';
 
-    const {value} = this.state;
+    const {
+      value
+    } = this.state;
 
     return (
       <div className="container">
