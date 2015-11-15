@@ -24,8 +24,8 @@
     "build": "NODE_ENV=production TARGET=minify webpack --config webpack.prod.config.js",
     "prebuild": "rm -rf dist && mkdir dist",
     "test": "karma start",
-    "test:ci": "karma start --browsers Firefox --single-run",
-    "cov:ci" : "codecov < ./coverage/lcov/lcov.info",
+    "test:ci": "node_modules/.bin/karma start --browsers Firefox --single-run",
+    "cov:ci" : "node_modules/.bin/codecov < ./coverage/lcov/lcov.info",
     "dev": "webpack-dev-server --inline --progress --colors --config -./webpack.config.js --host 0.0.0.0 --content-base examples/"
   },
   "authors": [
