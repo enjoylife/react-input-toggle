@@ -8,8 +8,13 @@ before_script:
 before_install:
   - npm install -g npm@latest
 
+install:
+  - npm install -g codecov
+
 script:
   - npm run test:ci
+  - npm run cov:ci
+
 
 cache:
   directories:

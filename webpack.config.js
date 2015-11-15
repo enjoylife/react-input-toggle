@@ -19,6 +19,7 @@ module.exports = {
   },
   devtool: 'source-map',
   module: {
+    preLoaders: [],
     loaders: [
       {
         test: /\.jsx?$/,
@@ -31,7 +32,8 @@ module.exports = {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
         loader: "url?mimetype=image/svg+xml"
       }
-    ]
+    ],
+    postLoaders: []
   },
   plugins: [new webpack.DefinePlugin({
       'process.env': {

@@ -1,5 +1,6 @@
 **/.*
 **/__tests__
 examples
+coverage
 CONTRIBUTING.md
 bower.json

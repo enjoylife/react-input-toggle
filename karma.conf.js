@@ -1,6 +1,15 @@
 var webpack = require('webpack');
 var webpackConfig = require('./webpack.config');
-webpackConfig.devtool = 'inline-source-map';
+
+webpackConfig.devtool = 'inline';
+
+var extraLoader = {
+  test: /\.(js|jsx)$/,
+  exclude: /(test|node_modules|bower_components)\//,
+  loader: 'isparta'
+};
+webpackConfig.module.preLoaders.push(extraLoader)
+
 var path = require('path');
 
 module.exports = function (config) {
@@ -17,12 +26,25 @@ module.exports = function (config) {
     ],
 
     files: [path.resolve(__dirname, 'tests.webpack.js')],
-
     preprocessors: {
-      'tests.webpack.js': ['webpack', 'sourcemap']
+      'tests.webpack.js': ['webpack']
     },
 
-    reporters: ['dots'],
+    reporters: [
+      'progress', 'coverage'
+    ],
+    coverageReporter: {
+      dir: 'coverage/',
+      reporters: [
+        {
+          type: 'html',
+          subdir: 'html'
+        }, {
+          type: 'lcovonly',
+          subdir: 'lcov'
+        }
+      ]
+    },
 
     webpack: webpackConfig,
 
