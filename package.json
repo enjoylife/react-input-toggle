@@ -11,7 +11,7 @@
     "checkbox",
     "react-input"
   ],
-  "main": "./lib/index.js",
+  "main": "./dist/react-input-toggle.js",
   "repository": {
     "type": "git",
     "url": "github.com/enjoylife/react-input-toggle.git"
