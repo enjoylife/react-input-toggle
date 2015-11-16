@@ -2,14 +2,12 @@ import React from 'react';
 import {
   render
 } from 'react-dom';
-import {
-  FancyInput,
-  FancySwitch
-} from '../../lib/index';
+import FancySwitch from 'lib/index';
+import effects from 'lib/components/switchStyles';
 import cs from 'classnames';
 
-var a11y = require('react-a11y');
-a11y(React);
+// var a11y = require('react-a11y');
+// a11y(React);
 
 let App = React.createClass({
 
@@ -73,4 +71,4 @@ let App = React.createClass({
 });
 
 render(
-  <App/>, document.getElementById('container'));
+  <App/>, document.getElementById('anchor'));

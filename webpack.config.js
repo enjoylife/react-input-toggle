@@ -6,7 +6,7 @@ var WebpackErrorNotificationPlugin = require('webpack-error-notification');
 
 module.exports = {
   entry: {
-    basic: 'examples/basic/app.js'
+    ghpages: 'ghpages/index.js'
   },
   resolve: {
     root: path.join(__dirname)
@@ -14,8 +14,8 @@ module.exports = {
   output: {
     filename: '[name].js',
     chunkFilename: '[id].chunk.js',
-    path: 'examples/__build__',
-    publicPath: '/__build__/'
+    path: '/ghpages',
+    publicPath: '/ghpages'
   },
   devtool: 'source-map',
   module: {
@@ -29,6 +29,7 @@ module.exports = {
         test: /\.scss$/,
         loaders: ["style", "css", 'autoprefixer?browsers=last 2 versions', "sass"]
       }, {
+        // TODO: Get ride of svgs in css
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
         loader: "url?mimetype=image/svg+xml"
       }

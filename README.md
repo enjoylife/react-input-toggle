@@ -2,8 +2,34 @@
 
 A collection of aesthetically pleasing, accessible and customizable toggles build with React.
 
-[![Build Status](https://travis-ci.org/enjoylife/react-input-toggle.svg?branch=master)](https://travis-ci.org/enjoylife/react-input-toggle)
-[![codecov.io](https://codecov.io/github/enjoylife/react-input-toggle/coverage.svg?branch=master)](https://codecov.io/github/enjoylife/react-input-toggle?branch=master)
+[![Travis](https://img.shields.io/travis/enjoylife/react-input-toggle.svg?style=flat-square)](https://travis-ci.org/enjoylife/react-input-toggle)
+
+[![Codecov](https://img.shields.io/codecov/c/github/enjoylife/react-input-toggle.svg?style=flat-square)]()
+
+## Installation
+
+`npm install react-input-toggle`
+
+## Usage
+
+```jsx
+
+import  FancySwitch  from 'react-input-toggle';
+import 'react-input-toggle/dist/react-input-toggle.css';
+
+export default class App extends Component {
+  render () {
+    return (
+      <div>
+        <h1>Hello, world.</h1>
+        <FancySwitch label={'Test Label'} effectName={'sierra'} labelPostion={'left'} />
+      </div>
+    );
+  }
+}
+
+```
+
 ### License
 
 MIT
