@@ -1,0 +1,107 @@
+body {
+  color: #333;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+
+  margin: 0;
+
+}
+
+header {
+  margin-top: 14rem;
+  margin-top: 6em;
+  text-align: center;
+}
+
+
+.container {
+  margin: 0 auto;
+  text-align: center;
+  overflow: hidden;
+
+  max-width: 800px;
+}
+
+.docs {
+  text-align: left;
+  border-top: 1px solid #eee;
+      padding: 4rem 0;
+      margin-bottom: 0;
+}
+
+.docs__header{
+  text-transform: uppercase;
+font-size: 1.4rem;
+letter-spacing: .2rem;
+font-weight: 600;
+}
+
+.docs__table {
+  margin:auto;
+}
+
+.badges a {
+  color: rgba(0,0,0,0);
+}
+
+
+.example {
+  padding: 0 25px;
+    margin: 2em 1em 1em;
+  display: inline-block;
+}
+
+
+.example__head {
+  margin-bottom: 0.2em;
+  margin: 0 0 2em;
+  opacity: 0.5;
+}
+
+.content {
+  padding: 1em 0;
+  color:white;
+}
+
+.inline-content {
+  color:rgb(135,135,135);
+  background-color: white;
+  display: inline-block;
+  background-color: inherit;
+  font-size: 3em;
+}
+
+.bg-1 {
+  background-color: #f0efee;
+  color: black;
+}
+
+.bg-2 {
+  background-color: rgb(50,50,50);
+  color:white;
+}
+
+.bg-3 {
+  background-color: rgb(38,38,38);
+  color:white;
+}
+
+
+.example__info {
+  color: grey;
+  opacity: 0.7;
+  font-size: 0.5em;
+  line-height: 1;
+}
+
+
+/* Larger than phone */
+@media (min-width: 550px) {
+  .docs {
+    padding: 6rem;
+
+  }
+}
+
+/* Larger than tablet */
+@media (min-width: 750px) {
+}
