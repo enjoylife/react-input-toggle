@@ -1,6 +1,6 @@
 {
   "name": "react-input-toggle",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A collection of aesthetically pleasing, accessible and customizable toggles build with React.",
   "keywords": [
     "react",
@@ -25,7 +25,7 @@
     "prebuild": "rm -rf dist && mkdir dist",
     "test": "karma start --browsers Firefox --single-run",
     "test:dev": "karma start",
-    "cov" : "codecov < ./coverage/lcov/lcov.info",
+    "cov": "codecov < ./coverage/lcov/lcov.info",
     "dev": "webpack-dev-server --inline --progress --colors --config -./webpack.config.js --host 0.0.0.0 --content-base examples/"
   },
   "authors": [
