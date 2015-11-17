@@ -1,6 +1,6 @@
 {
   "name": "react-input-toggle",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A collection of aesthetically pleasing, accessible and customizable toggles build with React.",
   "keywords": [
     "react",
@@ -11,7 +11,7 @@
     "checkbox",
     "react-input"
   ],
-  "main": "./dist/react-input-toggle.js",
+  "main": "./lib/index.js",
   "repository": {
     "type": "git",
     "url": "github.com/enjoylife/react-input-toggle.git"
@@ -22,7 +22,6 @@
   },
   "scripts": {
     "build": "NODE_ENV=production TARGET=minify webpack --config webpack.prod.config.js",
-    "prebuild": "rm -rf dist && mkdir dist",
     "test": "karma start --browsers Firefox --single-run",
     "test:dev": "karma start",
     "cov": "codecov < ./coverage/lcov/lcov.info",
