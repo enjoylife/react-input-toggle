@@ -33,13 +33,13 @@ let App = React.createClass({
     console.log("fakeOnChange");
   },
 
-  renderSwitch: function (effectName, background) {
+  renderSwitch: function (effect, background) {
     const classes = cs('container', background);
     return (
       <div className={classes}>
         <div className='inline-content'>
-          <FancySwitch label={effectName} effectName={effectName} labelPostion='left'/>
-          <FancySwitch label={effectName} defaultChecked={true} effectName={effectName} onChange={this.fakeOnChange} labelPostion='right'/>
+          <FancySwitch label={effect} effect={effect} labelPosition='left'/>
+          <FancySwitch label={effect} defaultChecked={true} effect={effect} onChange={this.fakeOnChange} labelPosition='right'/>
         </div>
       </div>
     )
@@ -72,3 +72,117 @@ let App = React.createClass({
 
 render(
   <App/>, document.getElementById('anchor'));
+
+class Example extends React.Component {
+
+  constructor (props) {
+    super(props);
+
+    this.state = {
+      effect: 'sierra',
+      labelPosition: 'left',
+      label: 'Unlabeled'
+    };
+  }
+
+  updateEffect = (e) => {
+    console.log(e);
+    this.setState({effect: e.target.value});
+  }
+
+  updateLabel = (e) => {
+    this.setState({label: e.target.value});
+  }
+
+  updatePosition = (pos) => {
+    return () => {
+      this.setState({labelPosition: pos});
+    }
+  }
+
+  renderCodeString = () => {
+    const {
+      effect,
+      labelPosition,
+      label
+    } = this.state;
+
+    const es = 'effect="' + effect + '"';
+    const lps = 'labelPosition="' + labelPosition + '"';
+    const ls = 'label="' + label + '"';
+
+    return '<FancySwitch  ' + es + '  ' + lps + '   ' + ls + '  />';
+
+  }
+
+  render () {
+    const {
+      effect,
+      labelPosition,
+      label
+    } = this.state;
+
+    const options = Object.keys(effects).map((effect, i) => {
+      return <option value={effect} key={i}>{effect}</option>
+    });
+
+    const propString = JSON.stringify(this.state, null, 2);
+
+    const codeString = this.renderCodeString();
+
+    const darkBackground = ['foxtrot', 'b2spirit'];
+    const isDark = (darkBackground.indexOf(effect)) > -1
+      ? true
+      : false;
+
+    const playCSS = cs('playground', [isDark && 'playground--dark']);
+
+    return (
+      <div>
+
+        <div className="playground-wrapper">
+          <div className={playCSS}>
+            <FancySwitch label={label} effect={effect} labelPosition={labelPosition}/>
+          </div>
+        </div>
+
+        <h4>Configure</h4>
+        <div className="row propString">
+          <code className='u-full-width '>{codeString}</code>
+        </div>
+        <div className="row ">
+          <div className="four columns">
+            <label htmlFor="effectchoice">Choose a toggle effect</label>
+            <select className='u-full-width' id='effectchoice' value={effect} onChange={this.updateEffect}>
+              {options}
+            </select>
+          </div>
+
+          <div className="four columns">
+            <label htmlFor="labelstr">
+              Label text
+            </label>
+            <input className="u-full-width" type="text" value={label} onChange={this.updateLabel} id="labelstr"/>
+          </div>
+
+          <div className="four columns button-group ">
+            <label htmlFor="labelstr">
+              Label Position
+            </label>
+            <div className=''>
+              <button onClick={this.updatePosition('left')}>Left</button>
+              <button onClick={this.updatePosition('top')}>Top</button>
+              <button onClick={this.updatePosition('right')}>Right</button>
+              <button onClick={this.updatePosition('bottom')}>Bottom</button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    )
+  }
+}
+
+render(
+  <Example/>, document.getElementById('playground'));

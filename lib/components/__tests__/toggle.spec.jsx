@@ -44,21 +44,21 @@ describe("FancySwitch", () => {
     expect(checked.state.fiChecked).to.be.true;
   });
 
-  it("modifies the css classes per the effectName prop", () => {
+  it("modifies the css classes per the effect prop", () => {
     const effects = Object.keys(switchStyles);
     for (var i = 0; i < effects.length; i++) {
       let effect = effects[i];
       let component = TestUtils.renderIntoDocument(
-        <FancySwitch effectName={effect}/>
+        <FancySwitch effect={effect}/>
       );
       let dom = findDOMNode(component);
       expect(dom.className).to.have.string(effect);
     }
 
   });
-  it("adds a css class corrasponding to the labelPostion prop", () => {
+  it("adds a css class corrasponding to the labelPosition prop", () => {
     let upLabel = TestUtils.renderIntoDocument(
-      <FancySwitch labelPostion={'top'}/>
+      <FancySwitch labelPosition={'top'}/>
     );
     let dom = findDOMNode(upLabel);
     let switchClasses = dom.classList;

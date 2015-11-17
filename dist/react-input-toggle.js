@@ -247,12 +247,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	      // so we can limit what we pass down in ...otherProps
 	      var _props = this.props;
 	      var label = _props.label;
-	      var labelPostion = _props.labelPostion;
+	      var labelPosition = _props.labelPosition;
 	      var propCheck = _props.checked;
-	      var effectName = _props.effectName;
+	      var effect = _props.effect;
 	      var defaultChecked = _props.defaultChecked;
 
-	      var otherProps = _objectWithoutProperties(_props, ['label', 'labelPostion', 'checked', 'effectName', 'defaultChecked']);
+	      var otherProps = _objectWithoutProperties(_props, ['label', 'labelPosition', 'checked', 'effect', 'defaultChecked']);
 
 	      var _state = this.state;
 	      var isFocused = _state.isFocused;
@@ -262,9 +262,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	      var checked = this.props.checked || fiChecked || '';
 
-	      var outerCss = (0, _classnames2.default)('fi-switch', 'fi-switch--' + effectName, 'fi-switch--label-' + labelPostion, isFocused == true && 'fi-switch--focused', checked == true && 'fi-switch--checked');
+	      var outerCss = (0, _classnames2.default)('fi-switch', 'fi-switch--' + effect, 'fi-switch--label-' + labelPosition, isFocused == true && 'fi-switch--focused', checked == true && 'fi-switch--checked');
 
-	      var labelCss = (0, _classnames2.default)(['fi-switch__label', 'fi-switch__label--' + effectName]);
+	      var labelCss = (0, _classnames2.default)(['fi-switch__label', 'fi-switch__label--' + effect]);
 
 	      // minimizing id clashes with other code
 	      var htmlFor = 'fi-switch-id-' + this._id;
@@ -280,7 +280,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        onChange: this.onChange.bind(this)
 	      });
 	      // React Template Component
-	      var switchComponent = _switchStyles2.default[effectName](switchProps);
+	      var switchComponent = _switchStyles2.default[effect](switchProps);
 
 	      return _react2.default.createElement(
 	        'label',
@@ -302,9 +302,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  defaultChecked: _react.PropTypes.bool,
 
 	  label: _react.PropTypes.string,
-	  labelPostion: _react.PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
+	  labelPosition: _react.PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
 
-	  effectName: _react.PropTypes.oneOf(Object.keys(_switchStyles2.default)),
+	  effect: _react.PropTypes.oneOf(Object.keys(_switchStyles2.default)),
 
 	  onChange: _react.PropTypes.func,
 	  onFocus: _react.PropTypes.func,
@@ -314,9 +314,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  defaultChecked: false,
 
 	  label: 'Checkbox label',
-	  labelPostion: 'left',
+	  labelPosition: 'left',
 
-	  effectName: 'echo',
+	  effect: 'echo',
 
 	  // no-ops
 	  onChange: function onChange() {},
@@ -350,7 +350,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 	var Template = function Template(props) {
-	  var effectName = props.effectName;
+	  var effect = props.effect;
 	  var htmlFor = props.htmlFor;
 	  var onBlur = props.onBlur;
 	  var onFocus = props.onFocus;
@@ -359,14 +359,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var setRef = props.setRef;
 	  var children = props.children;
 
-	  var otherProps = _objectWithoutProperties(props, ['effectName', 'htmlFor', 'onBlur', 'onFocus', 'onChange', 'checked', 'setRef', 'children']);
+	  var otherProps = _objectWithoutProperties(props, ['effect', 'htmlFor', 'onBlur', 'onFocus', 'onChange', 'checked', 'setRef', 'children']);
 
-	  var spanCss = (0, _classnames2.default)(['fi-switch__container', 'fi-switch__container--' + effectName]);
+	  var spanCss = (0, _classnames2.default)(['fi-switch__container', 'fi-switch__container--' + effect]);
 
-	  var inputCss = (0, _classnames2.default)(['fi-switch__input', 'fi-switch__input--' + effectName]);
+	  var inputCss = (0, _classnames2.default)(['fi-switch__input', 'fi-switch__input--' + effect]);
 
-	  var styleCss = (0, _classnames2.default)(['fi-switch__style', 'fi-switch__style--' + effectName]);
-	  var styleCssExtra = (0, _classnames2.default)(['fi-switch__extra', 'fi-switch__extra--' + effectName]);
+	  var styleCss = (0, _classnames2.default)(['fi-switch__style', 'fi-switch__style--' + effect]);
+	  var styleCssExtra = (0, _classnames2.default)(['fi-switch__extra', 'fi-switch__extra--' + effect]);
 	  return _react2.default.createElement(
 	    'span',
 	    { className: spanCss },
@@ -377,11 +377,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var b2spirit = function b2spirit(props) {
 
-	  var effectName = 'b2spirit';
+	  var effect = 'b2spirit';
 
 	  return _react2.default.createElement(
 	    Template,
-	    _extends({ effectName: effectName }, props),
+	    _extends({ effect: effect }, props),
 	    _react2.default.createElement('span', { className: 'fi-b2spirit__track' }),
 	    _react2.default.createElement('span', { className: 'fi-b2spirit__handle' })
 	  );
@@ -389,22 +389,22 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var simplygreen = function simplygreen(props) {
 
-	  var effectName = 'simplygreen';
+	  var effect = 'simplygreen';
 
 	  return _react2.default.createElement(
 	    Template,
-	    _extends({ effectName: effectName }, props),
+	    _extends({ effect: effect }, props),
 	    _react2.default.createElement('span', { className: 'fi-simplygreen__track' }),
 	    _react2.default.createElement('span', { className: 'fi-simplygreen__handle' })
 	  );
 	};
 
 	var sierra = function sierra(props) {
-	  var effectName = 'sierra';
+	  var effect = 'sierra';
 
 	  return _react2.default.createElement(
 	    Template,
-	    _extends({ effectName: effectName }, props),
+	    _extends({ effect: effect }, props),
 	    _react2.default.createElement('span', { className: 'fi-sierra__track' }),
 	    _react2.default.createElement('span', { className: 'fi-sierra__handle' }),
 	    _react2.default.createElement(
@@ -416,11 +416,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	var charlie = function charlie(props) {
-	  var effectName = 'charlie';
+	  var effect = 'charlie';
 
 	  return _react2.default.createElement(
 	    Template,
-	    _extends({ effectName: effectName }, props),
+	    _extends({ effect: effect }, props),
 	    _react2.default.createElement('span', { className: 'fi-charlie__track' }),
 	    _react2.default.createElement(
 	      'span',
@@ -442,11 +442,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	var foxtrot = function foxtrot(props) {
-	  var effectName = 'foxtrot';
+	  var effect = 'foxtrot';
 
 	  return _react2.default.createElement(
 	    Template,
-	    _extends({ effectName: effectName }, props),
+	    _extends({ effect: effect }, props),
 	    _react2.default.createElement('span', { className: 'fi-foxtrot__track' }),
 	    _react2.default.createElement(
 	      'span',
@@ -470,11 +470,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	var echo = function echo(props) {
-	  var effectName = 'echo';
+	  var effect = 'echo';
 
 	  return _react2.default.createElement(
 	    Template,
-	    _extends({ effectName: effectName }, props),
+	    _extends({ effect: effect }, props),
 	    _react2.default.createElement('span', { className: 'fi-echo__track' }),
 	    _react2.default.createElement('span', { className: 'fi-echo__handle' }),
 	    _react2.default.createElement(
@@ -491,11 +491,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	var bbounce = function bbounce(props) {
-	  var effectName = 'bbounce';
+	  var effect = 'bbounce';
 
 	  return _react2.default.createElement(
 	    Template,
-	    _extends({ effectName: effectName }, props),
+	    _extends({ effect: effect }, props),
 	    _react2.default.createElement(
 	      'span',
 	      { className: 'bbounce__body' },
@@ -511,20 +511,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	var ios6 = function ios6(props) {
-	  var effectName = 'ios6';
+	  var effect = 'ios6';
 
 	  return _react2.default.createElement(
 	    Template,
-	    _extends({ effectName: effectName }, props),
+	    _extends({ effect: effect }, props),
 	    _react2.default.createElement('div', { className: 'ios6__switch' })
 	  );
 	};
 
 	var neonpush = function neonpush(props) {
-	  var effectName = 'neonpush';
+	  var effect = 'neonpush';
 	  return _react2.default.createElement(
 	    Template,
-	    _extends({ effectName: effectName }, props),
+	    _extends({ effect: effect }, props),
 	    _react2.default.createElement('span', { className: 'neonpush__btn' })
 	  );
 	};

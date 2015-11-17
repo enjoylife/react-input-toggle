@@ -22,7 +22,7 @@ export default class App extends Component {
     return (
       <div>
         <h1>Hello, world.</h1>
-        <FancySwitch label={'Test Label'} effectName={'sierra'} labelPostion={'left'} />
+        <FancySwitch label={'Test Label'} effect={'sierra'} labelPosition={'left'} />
       </div>
     );
   }

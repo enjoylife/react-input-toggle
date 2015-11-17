@@ -12,7 +12,22 @@ header {
   text-align: center;
 }
 
+.playground-wrapper {
+  font-size: 2em;
+  text-align: center;
+}
+.playground {
+  display: inline-block;
+  height: 6em;
+  border-radius: 10px;
+  padding: 0.5em;
+  width: 100%;
+}
 
+.playground--dark {
+  background-color: rgb(50,50,50);
+  color:white;
+}
 .container {
   margin: 0 auto;
   text-align: center;
@@ -85,7 +100,6 @@ font-weight: 600;
   color:white;
 }
 
-
 .example__info {
   color: grey;
   opacity: 0.7;
@@ -93,13 +107,33 @@ font-weight: 600;
   line-height: 1;
 }
 
+.propString {
+  text-align: center;
+  margin-bottom: 15px;
+}
+.button-group {
+  text-align: center;
+}
+.button-group button{
+margin-right: 5px;
+padding: 0 10px;
+}
+
+.row--centered {
+
+}
+
 
 /* Larger than phone */
 @media (min-width: 550px) {
   .docs {
     padding: 6rem;
+  }
+  .playground-wrapper {
+    font-size: 3em;
 
   }
+
 }
 
 /* Larger than tablet */
