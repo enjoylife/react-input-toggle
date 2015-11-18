@@ -60,7 +60,7 @@ let App = React.createClass({
         {this.renderSwitch('echo')}
         {this.renderSwitch('charlie')}
         {this.renderSwitch('sierra')}
-        {this.renderSwitch('b2spirit', 'bg-2')}
+
         {this.renderSwitch('simplygreen')}
         {this.renderSwitch('bbounce')}
         {this.renderSwitch('neonpush')}
@@ -79,7 +79,7 @@ class Example extends React.Component {
     super(props);
 
     this.state = {
-      effect: 'sierra',
+      effect: 'skeleton',
       labelPosition: 'left',
       label: 'Unlabeled'
     };
@@ -130,7 +130,7 @@ class Example extends React.Component {
 
     const codeString = this.renderCodeString();
 
-    const darkBackground = ['foxtrot', 'b2spirit'];
+    const darkBackground = ['foxtrot', 'skeleton'];
     const isDark = (darkBackground.indexOf(effect)) > -1
       ? true
       : false;
