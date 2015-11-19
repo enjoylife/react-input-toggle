@@ -4,25 +4,20 @@
  * URL: https://dribbble.com/shots/2326459-Toggle-Switch
  * Notes:
  *   This style relies on a parent element which either has its background set to a color, or inheirts from its parent.
- *   So if the handle is filled only a solid $skeleton-color-off it means your parent has not set or inheirited the background.
- *
- */
-/**
- *    <span className='fi-skeleton__track'/>
-     <span className='fi-skeleton__handle--border'/>
-     <span className='fi-skeleton__handle'/>
-     <span className='fi-skeleton__handle--inner'/>
+ *   So if the handlePad is whack it means the parent has not set or inheirited the background.
  */
 // Customizable
-$skeleton-width: 5.5em;
-$skeleton-height: 2em;
-$skeleton-trackThickness: .4em;
-$skeleton-handleSize: 2em;
-$skeleton-handleColorOff: rgba(170,170,170,.3);
-$skeleton-handleColorOn: rgb(255,255,255);
-$skeleton-trackColorOff: rgba(170,170,170,.3);
-$skeleton-trackColorOn: rgba(170,170,170,.3);
-$skeleton-transition: all 450ms cubic-bezier(.845, .2, .2, .845);
+$skeleton-width: 5.5em !default;
+$skeleton-height: 2em !default;
+$skeleton-trackThickness: .4em !default;
+$skeleton-handleSize: 2em !default;
+$skeleton-handlePad: .4em !default;
+$skeleton-handleThickness: .4em !default;
+$skeleton-handleColorOff: rgba(170,170,170,.3) !default;
+$skeleton-handleColorOn: rgb(255,255,255) !default;
+$skeleton-trackColorOff: rgba(170,170,170,.3) !default;
+$skeleton-trackColorOn: rgba(170,170,170,.3) !default;
+$skeleton-transition: all 450ms cubic-bezier(.845, .2, .2, .845) !default;
 
 // Computed
 $skeleton-handleStart: 0;
@@ -46,21 +41,28 @@ $skeleton-trackMiddle: $skeleton-height /2 - $skeleton-trackThickness / 2;
   height: $skeleton-height;
   margin: .5em;
   
-  &:hover {
-    .fi-skeleton__handle,
-    .fi-skeleton__handle--border,
-    .fi-skeleton__handle--inner {
+  &:hover,
+  .fi-switch--focused & {
+    .fi-skeleton__handle--container,
+     {
+      animation-name: pulse;
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+      animation-fill-mode: both;
       
-      // animation-name: pulse;
-      // animation-duration: 1s;
-      // animation-iteration-count: infinite;
-      // animation-fill-mode: both;
+      .fi-skeleton__handle {
+        animation-name: color-pluse;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        animation-fill-mode: both;
+      }
     }
   }
 }
 
 .fi-skeleton__track,
 .fi-skeleton__handle,
+.fi-skeleton__handle--container,
 .fi-skeleton__handle--border,
 .fi-skeleton__handle--inner {
   position: absolute;
@@ -81,11 +83,20 @@ $skeleton-trackMiddle: $skeleton-height /2 - $skeleton-trackThickness / 2;
 // Positioning
 // Look
 // set up inital values for transitions
-.fi-skeleton__handle--border,
-.fi-skeleton__handle,
-.fi-skeleton__handle--inner {
+.fi-skeleton__handle--container {
   top: $skeleton-handleMiddle;
   left: $skeleton-handleStart;
+  width: $skeleton-handleSize;
+  height: $skeleton-handleSize;
+  background-color: inherit;
+  transition: $skeleton-transition;
+}
+
+.fi-skeleton__handle,
+.fi-skeleton__handle--inner,
+.fi-skeleton__handle--border {
+  top: 0;
+  left: 0;
   width: $skeleton-handleSize;
   height: $skeleton-handleSize;
   transition: $skeleton-transition;
@@ -102,11 +113,21 @@ $skeleton-trackMiddle: $skeleton-height /2 - $skeleton-trackThickness / 2;
 }
 
 .fi-skeleton__handle--inner {
-  transform: scale(0.8);
+  
+  // transform: scale(0.8);
+  width: $skeleton-handleSize - $skeleton-handleThickness;
+  height: $skeleton-handleSize - $skeleton-handleThickness;
+  margin-top: +$skeleton-handleThickness / 2;
+  margin-left: +$skeleton-handleThickness / 2;
 }
 
 .fi-skeleton__handle--border {
-  transform: scale(1.2);
+  
+  // transform: scale(1.2);
+  width: $skeleton-handleSize + $skeleton-handlePad;
+  height: $skeleton-handleSize + $skeleton-handlePad;
+  margin-top: -$skeleton-handlePad / 2;
+  margin-left: -$skeleton-handlePad / 2;
 }
 
 .fi-switch__input--skeleton:checked {
@@ -115,31 +136,43 @@ $skeleton-trackMiddle: $skeleton-height /2 - $skeleton-trackThickness / 2;
     // stays the same
   }
 
-  & ~ .fi-skeleton__handle--border {
+  & ~ .fi-skeleton__handle--container {
     left: $skeleton-handleEnd;
-  }
+    
+    .fi-skeleton__handle--inner {
+      transform: scale(0);
+    }
 
-  & ~ .fi-skeleton__handle {
-    background-color: $skeleton-handleColorOn;
-    left: $skeleton-handleEnd;
-  }
-
-  & ~ .fi-skeleton__handle--inner {
-    transform: scale(0);
-    left: $skeleton-handleEnd;
+    .fi-skeleton__handle {
+      background-color: $skeleton-handleColorOn;
+    }
   }
 }
 
-// @keyframes pulse {
-//   from {
-//     transform: scale3d(1, 1, 1);
-//   }
-//
-//   50% {
-//     transform: scale3d(1.05, 1.05, 1.05);
-//   }
-//
-//   to {
-//     transform: scale3d(1, 1, 1);
-//   }
-// }
+@keyframes pulse {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes color-pluse {
+  from {
+    background-color: $skeleton-handleColorOff;
+  }
+
+  50% {
+    background-color: $skeleton-handleColorOn;
+  }
+
+  to {
+    background-color: $skeleton-handleColorOff;
+  }
+}
