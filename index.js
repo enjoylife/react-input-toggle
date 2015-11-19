@@ -80,14 +80,14 @@ class Example extends React.Component {
 
     this.state = {
       effect: 'skeleton',
-      labelPosition: 'left',
-      label: 'Unlabeled'
+      labelPosition: 'bottom',
+      label: 'skeleton'
     };
   }
 
   updateEffect = (e) => {
     console.log(e);
-    this.setState({effect: e.target.value});
+    this.setState({effect: e.target.value, label: e.target.value});
   }
 
   updateLabel = (e) => {
