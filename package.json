@@ -25,7 +25,8 @@
     "test": "karma start --browsers Firefox --single-run",
     "test:dev": "karma start",
     "cov": "codecov < ./coverage/lcov/lcov.info",
-    "dev": "webpack-dev-server --inline --progress --colors --config -./webpack.config.js --host 0.0.0.0 --content-base ./"
+    "dev": "webpack-dev-server --inline --progress --colors --config -./webpack.config.js --host 0.0.0.0 --content-base ./",
+    "ghpages": "npm run build; git subtree push --prefix ghpages origin gh-pages"
   },
   "authors": [
     "Matthew Clemens"
@@ -66,6 +67,7 @@
     "karma-webpack": "^1.7.0",
     "mocha": "^2.3.3",
     "node-sass": "^3.4.1",
+    "raw-loader": "^0.5.1",
     "react": "^0.14.2",
     "react-addons-pure-render-mixin": "^0.14.2",
     "react-addons-test-utils": "^0.14.2",
