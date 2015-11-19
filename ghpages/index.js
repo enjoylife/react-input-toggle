@@ -81,7 +81,8 @@ class Example extends React.Component {
     this.state = {
       effect: 'skeleton',
       labelPosition: 'bottom',
-      label: 'skeleton'
+      label: 'skeleton',
+      fontSize: null
     };
   }
 
@@ -99,6 +100,12 @@ class Example extends React.Component {
       this.setState({labelPosition: pos});
     }
   }
+
+  updateFontSize = (e) => {
+    this.setState({fontSize: e.target.value});
+  }
+
+  componentDidMount () {}
 
   renderCodeString = () => {
     const {
@@ -119,7 +126,8 @@ class Example extends React.Component {
     const {
       effect,
       labelPosition,
-      label
+      label,
+      fontSize
     } = this.state;
 
     const options = Object.keys(effects).map((effect, i) => {
@@ -136,11 +144,15 @@ class Example extends React.Component {
       : false;
 
     const playCSS = cs('playground', [isDark && 'playground--dark']);
-
+    const playStyle = {
+      'fontSize': (fontSize == null)
+        ? null
+        : (fontSize + 'em')
+    }
     return (
       <div>
 
-        <div className="playground-wrapper">
+        <div className="playground-wrapper" style={playStyle}>
           <div className={playCSS}>
             <FancySwitch label={label} effect={effect} labelPosition={labelPosition}/>
           </div>
@@ -158,14 +170,22 @@ class Example extends React.Component {
             </select>
           </div>
 
-          <div className="four columns">
+          <div className="five columns">
             <label htmlFor="labelstr">
               Label text
             </label>
             <input className="u-full-width" type="text" value={label} onChange={this.updateLabel} id="labelstr"/>
           </div>
+          <div className="three columns">
+            <label htmlFor="fontsize">
+              Toggle Font Size
+            </label>
+            <input className="u-full-width" type="number" id="fontsize" min={1} defaultValue={2} max={3} step={0.1} onChange={this.updateFontSize}/>
+          </div>
 
-          <div className="four columns button-group ">
+        </div>
+        <div className="row .row--centered">
+          <div className="twelve columns button-group ">
             <label htmlFor="labelstr">
               Label Position
             </label>
@@ -176,7 +196,6 @@ class Example extends React.Component {
               <button onClick={this.updatePosition('bottom')}>Bottom</button>
             </div>
           </div>
-
         </div>
 
       </div>
