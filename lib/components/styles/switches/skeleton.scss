@@ -20,8 +20,8 @@ $skeleton-trackColorOn: rgba(170,170,170,.3) !default;
 $skeleton-transition: all 450ms cubic-bezier(.845, .2, .2, .845) !default;
 
 // Computed
-$skeleton-handleStart: 0;
-$skeleton-handleEnd: $skeleton-width - $skeleton-handleSize;
+$skeleton-handleStart: $skeleton-handlePad;
+$skeleton-handleEnd: $skeleton-width - $skeleton-handleSize - $skeleton-handlePad;
 $skeleton-handleMiddle: $skeleton-height /2 - $skeleton-handleSize / 2;
 $skeleton-trackLeft: $skeleton-handleSize/2;
 $skeleton-trackLength: $skeleton-width - $skeleton-trackLeft*2;
@@ -39,7 +39,6 @@ $skeleton-trackMiddle: $skeleton-height /2 - $skeleton-trackThickness / 2;
 .fi-switch__container--skeleton {
   width: $skeleton-width;
   height: $skeleton-height;
-  margin: .5em;
   
   &:hover,
   .fi-switch--focused & {

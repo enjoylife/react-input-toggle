@@ -18,7 +18,6 @@ header {
 }
 .playground {
   display: inline-block;
-  height: 6em;
   border-radius: 10px;
   padding: 0.5em;
   width: 80%;
