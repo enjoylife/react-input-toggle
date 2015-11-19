@@ -13,20 +13,8 @@
      <span className='fi-skeleton__handle'/>
      <span className='fi-skeleton__handle--inner'/>
  */
-$skeleton-width: 5em;
-$skeleton-height: 3em;
-$skeleton-color-off: rgb(132,132,132);
-$skeleton-color-on: white;
-$skeleton-track-color-off: rgba(170,170,170,.3);
-$skeleton-track-color-on: $skeleton-color-off;
-$skeleton-transition: all 450ms cubic-bezier(.845, .2, .2, .845);
-$skeleton-track-width: 4em;
-$skeleton-track-height: 2em;
-$skeleton-circle-size: 2em;
-$skeleton-track-height: .5em;
-
 // Customizable
-$skeleton-width: 5em;
+$skeleton-width: 5.5em;
 $skeleton-height: 2em;
 $skeleton-trackThickness: .4em;
 $skeleton-handleSize: 2em;
@@ -121,21 +109,6 @@ $skeleton-trackMiddle: $skeleton-height /2 - $skeleton-trackThickness / 2;
   transform: scale(1.2);
 }
 
-.fi-switch__input--skeleton:checked + .fi-skeleton__track:before {
-  background-color: $skeleton-track-color-on;
-}
-
-/* Move the background circle */
-.fi-switch__input--skeleton:checked + .fi-skeleton__track:after {
-  left: ($skeleton-track-width / 2) - ($skeleton-circle-size / 2);
-}
-
-/* Move and change the background for the main handle circle */
-.fi-switch__input--skeleton:checked + .fi-skeleton__track + .fi-skeleton__handle:before {
-  left: ($skeleton-track-width / 2) - ($skeleton-circle-size / 2);
-  background: $skeleton-color-on;
-}
-
 .fi-switch__input--skeleton:checked {
   & ~ .fi-skeleton__track {
     
@@ -155,13 +128,6 @@ $skeleton-trackMiddle: $skeleton-height /2 - $skeleton-trackThickness / 2;
     transform: scale(0);
     left: $skeleton-handleEnd;
   }
-}
-
-/* shrink the hollow middle*/
-.fi-switch__input--skeleton:checked + .fi-skeleton__track + .fi-skeleton__handle:after {
-  left: ($skeleton-track-width / 2) - ($skeleton-circle-size / 2);
-  /* shrink to nothing!*/
-  transform: scale(0);
 }
 
 // @keyframes pulse {
