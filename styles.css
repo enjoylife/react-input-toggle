@@ -3,6 +3,7 @@ body {
   font-family: "Helvetica Neue", Arial, sans-serif;
 
   margin: 0;
+  background: white;
 
 }
 
@@ -20,13 +21,14 @@ header {
   display: inline-block;
   border-radius: 10px;
   padding: 0.5em;
-
+  background: white;
 }
 
 .playground--dark {
   background-color: rgb(50,50,50);
   color:white;
 }
+
 .container {
   margin: 0 auto;
   text-align: center;
