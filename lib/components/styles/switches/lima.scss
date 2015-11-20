@@ -1,0 +1,203 @@
+// Customizable
+$lima-width: 3.2em !default;
+$lima-height: 2em !default;
+
+// final enabled height
+$lima-trackThickness: 1.3em !default;
+$lima-handleWidth: 1.3em !default;
+
+// how far down the track does the handle begin at
+// and how much space between the handle and the track when on
+$lima-handlePad: .3em !default;
+$lima-checkSize: .8em !default;
+$lima-handleColorOff: rgb(210,210,210) !default;
+$lima-handleColorOn: rgb(255,255,255) !default;
+$lima-trackColorOff: rgb(196,196,196) !default;
+$lima-trackColorOn: rgb(40,166,38) !default;
+$lima-transitionTrack: all 400ms cubic-bezier(.215, .610, .355, 1.000) !default;
+$lima-transitionHandle: left 500ms cubic-bezier(.165, .840, .440, 1.000), opacity 100ms ease !default;
+
+// Computed
+$lima-handleHeight: $lima-trackThickness - $lima-handlePad;
+$lima-handleStart: $lima-handlePad * 1.5;
+$lima-handleEnd: $lima-width - $lima-handleWidth - $lima-handlePad;
+$lima-handleMiddle: $lima-height /2 - $lima-handleHeight / 2;
+$lima-trackLeft: 0;
+$lima-trackLength: $lima-width;
+$lima-trackMiddle: $lima-height /2 - $lima-trackThickness / 2;
+
+/* the subtle clear border around the handle */
+// Enlage the track when checked
+.fi-switch__input--lima:checked + .fi-lima__track:before {
+  transform: scaleY(1);
+  border-radius: $lima-trackThickness;
+  background-color: $lima-trackColorOn;
+}
+
+// Hide the subtle clear border
+/*Create the handle which moves across the track */
+/* movve our handle across and change the color to signify its enabled */
+/* our check mark */
+/* Now show the check mark */
+.fi-switch--lima {
+  
+  // making sure our toggle doesnt compress in
+  min-width: $lima-width;
+  
+  // Bring in our background so we can match it later
+  background-color: inherit;
+}
+
+.fi-switch--lima:not(.fi-switch--checked) {
+  &.fi-switch--focused,
+  .fi-switch__container--lima:hover {
+    .fi-lima__track {
+      animation-name: color-pluse;
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+      animation-fill-mode: both;
+    }
+  }
+}
+
+.fi-switch--lima.fi-switch--checked {
+  &.fi-switch--focused,
+  .fi-switch__container--lima:hover {
+    .fi-lima__track {
+      border-width: .1em;
+      border-style: solid;
+      animation-name: border-pluse;
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+      animation-fill-mode: both;
+    }
+  }
+}
+
+.fi-switch__container--lima {
+  width: $lima-width;
+  height: $lima-height;
+}
+
+.fi-lima__track,
+.fi-lima__check,
+.fi-lima__handle,
+.fi-lima__handle--container,
+.fi-lima__handle--border {
+  position: absolute;
+}
+
+.fi-lima__track {
+  top: $lima-trackMiddle;
+  left: $lima-trackLeft;
+  width: $lima-trackLength;
+  height: $lima-trackThickness;
+  background-color: $lima-trackColorOff;
+  transition: $lima-transitionTrack;
+  transform: scaleY(.09);
+  transform-origin: 50% 50%;
+  border-radius: 2px;
+}
+
+// Positioning
+// Look
+// set up inital values for transitions
+.fi-lima__handle--container {
+  top: $lima-handleMiddle;
+  left: $lima-handleStart;
+  width: $lima-handleWidth;
+  height: $lima-handleHeight;
+  background-color: inherit;
+  transition: $lima-transitionHandle;
+  border-radius: $lima-trackThickness;
+}
+
+.fi-lima__handle,
+.fi-lima__handle--border {
+  top: 0;
+  left: 0;
+  width: $lima-handleWidth;
+  height: $lima-handleHeight;
+  transition: $lima-transitionHandle;
+  border-radius: $lima-trackThickness;
+}
+
+.fi-lima__handle--border {
+  background-color: inherit;
+}
+
+.fi-lima__handle {
+  background-color: $lima-handleColorOff;
+}
+
+.fi-lima__handle--border {
+  width: $lima-handleWidth + $lima-handlePad;
+  height: $lima-handleHeight + $lima-handlePad;
+  margin-top: -$lima-handlePad / 2;
+  margin-left: -$lima-handlePad / 2;
+}
+
+.fi-lima__check {
+  position: absolute;
+  top: $lima-handlePad * 2;
+  left: $lima-handlePad * 2;
+  width: $lima-checkSize;
+  transition: $lima-transitionTrack;
+  transform: scale(0.2);
+  
+  path {
+    fill: $lima-handleColorOn;
+  }
+}
+
+.fi-switch__input--lima:checked {
+  & ~ .fi-lima__track {
+    transform: scaleY(1);
+    border-radius: $lima-trackThickness;
+    background-color: $lima-trackColorOn;
+  }
+
+  & ~ .fi-lima__check {
+    transform: scale(1);
+  }
+
+  & ~ .fi-lima__handle--container {
+    left: $lima-handleEnd;
+    
+    .fi-lima__handle--border {
+      opacity: 0;
+    }
+
+    .fi-lima__handle {
+      background-color: $lima-handleColorOn;
+    }
+  }
+}
+
+@keyframes color-pluse {
+  from {
+    background-color: $lima-trackColorOff;
+  }
+
+  50% {
+    background-color: $lima-trackColorOn;
+  }
+
+  to {
+    background-color: $lima-trackColorOff;
+  }
+}
+
+@keyframes border-pluse {
+  from {
+    border-color: $lima-trackColorOn;
+  }
+
+  50% {
+    border-color: $lima-handleColorOn;
+  }
+
+  to {
+    border-color: $lima-trackColorOn;
+  }
+}

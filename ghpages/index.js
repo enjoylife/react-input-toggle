@@ -61,7 +61,7 @@ let App = React.createClass({
         {this.renderSwitch('charlie')}
         {this.renderSwitch('sierra')}
 
-        {this.renderSwitch('simplygreen')}
+        {this.renderSwitch('lima')}
         {this.renderSwitch('bbounce')}
         {this.renderSwitch('neonpush')}
         {this.renderSwitch('ios6')}
@@ -79,9 +79,9 @@ class Example extends React.Component {
     super(props);
 
     this.state = {
-      effect: 'skeleton',
+      effect: 'lima',
       labelPosition: 'bottom',
-      label: 'skeleton',
+      label: 'lima',
       fontSize: null
     };
   }
