@@ -44,13 +44,13 @@ $skeleton-trackMiddle: $skeleton-height /2 - $skeleton-trackThickness / 2;
   .fi-switch--focused & {
     .fi-skeleton__handle--container,
      {
-      animation-name: pulse;
+      animation-name: pulse-handle;
       animation-duration: 2s;
       animation-iteration-count: infinite;
       animation-fill-mode: both;
       
       .fi-skeleton__handle {
-        animation-name: color-pluse;
+        animation-name: skeleton-pulse;
         animation-duration: 2s;
         animation-iteration-count: infinite;
         animation-fill-mode: both;
@@ -148,7 +148,7 @@ $skeleton-trackMiddle: $skeleton-height /2 - $skeleton-trackThickness / 2;
   }
 }
 
-@keyframes pulse {
+@keyframes pulse-handle {
   from {
     transform: scale3d(1, 1, 1);
   }
@@ -162,7 +162,7 @@ $skeleton-trackMiddle: $skeleton-height /2 - $skeleton-trackThickness / 2;
   }
 }
 
-@keyframes color-pluse {
+@keyframes skeleton-pulse {
   from {
     background-color: $skeleton-handleColorOff;
   }

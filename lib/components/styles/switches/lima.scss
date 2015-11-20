@@ -1,3 +1,7 @@
+/**
+ * Inspiration from Tony Wallström Switch Animation
+ * https://dribbble.com/shots/2327955-Switch-Animation-in-Principle
+ */
 // Customizable
 $lima-width: 3.2em !default;
 $lima-height: 2em !default;
@@ -52,7 +56,7 @@ $lima-trackMiddle: $lima-height /2 - $lima-trackThickness / 2;
   &.fi-switch--focused,
   .fi-switch__container--lima:hover {
     .fi-lima__track {
-      animation-name: color-pluse;
+      animation-name: lima-color-pluse;
       animation-duration: 2s;
       animation-iteration-count: infinite;
       animation-fill-mode: both;
@@ -66,7 +70,7 @@ $lima-trackMiddle: $lima-height /2 - $lima-trackThickness / 2;
     .fi-lima__track {
       border-width: .1em;
       border-style: solid;
-      animation-name: border-pluse;
+      animation-name: lima-border-pluse;
       animation-duration: 2s;
       animation-iteration-count: infinite;
       animation-fill-mode: both;
@@ -174,7 +178,7 @@ $lima-trackMiddle: $lima-height /2 - $lima-trackThickness / 2;
   }
 }
 
-@keyframes color-pluse {
+@keyframes lima-color-pluse {
   from {
     background-color: $lima-trackColorOff;
   }
@@ -188,7 +192,7 @@ $lima-trackMiddle: $lima-height /2 - $lima-trackThickness / 2;
   }
 }
 
-@keyframes border-pluse {
+@keyframes lima-border-pluse {
   from {
     border-color: $lima-trackColorOn;
   }
