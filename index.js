@@ -158,7 +158,6 @@ class Example extends React.Component {
           </div>
         </div>
 
-        <h4>Configure</h4>
         <div className="row propString">
           <code className='u-full-width '>{codeString}</code>
         </div>
