@@ -9,7 +9,7 @@ body {
 
 header {
   margin-top: 14rem;
-  margin-top: 6em;
+  margin-top: 1em;
   text-align: center;
 }
 
@@ -41,6 +41,8 @@ header {
   text-align: left;
   border-top: 1px solid #eee;
       padding: 4rem 0;
+      padding-top: 0;
+
       margin-bottom: 0;
 }
 
@@ -129,6 +131,7 @@ padding: 0 10px;
 @media (min-width: 550px) {
   .docs {
     padding: 6rem;
+    padding-top: 0;
   }
   .playground-wrapper {
     font-size: 3em;
@@ -140,3 +143,10 @@ padding: 0 10px;
 /* Larger than tablet */
 @media (min-width: 750px) {
 }
+
+
+/*
+Github Corner
+ */
+
+github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}
