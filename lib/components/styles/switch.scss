@@ -91,6 +91,10 @@
     order: 2;
   }
 }
+
+[aria-hidden="true"] {
+  speak: none;
+}
 @import 'switches/skeleton';
 @import 'switches/lima';
 @import 'switches/bbounce';
