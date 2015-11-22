@@ -8,6 +8,7 @@ $lima-height: 2em !default;
 
 // final enabled height
 $lima-trackThickness: 1.3em !default;
+$lima-trackOffTransform: scaleY(.09);
 $lima-handleWidth: 1.3em !default;
 
 // how far down the track does the handle begin at
@@ -16,10 +17,11 @@ $lima-handlePad: .3em !default;
 $lima-checkSize: .8em !default;
 $lima-handleColorOff: rgb(210,210,210) !default;
 $lima-handleColorOn: rgb(255,255,255) !default;
-$lima-trackColorOff: rgb(196,196,196) !default;
+$lima-trackColorDisabled: rgb(196,196,196) !default;
 $lima-trackColorOn: rgb(40,166,38) !default;
+$lima-trackColorOff: $lima-trackColorOn !default;
 $lima-transitionTrack: all 400ms cubic-bezier(.215, .610, .355, 1.000) !default;
-$lima-transitionHandle: left 500ms cubic-bezier(.165, .840, .440, 1.000), opacity 100ms ease !default;
+$lima-transitionHandle: all 500ms cubic-bezier(.165, .840, .440, 1.000), opacity 100ms ease !default;
 
 // Computed
 $lima-handleHeight: $lima-trackThickness - $lima-handlePad;
@@ -30,19 +32,6 @@ $lima-trackLeft: 0;
 $lima-trackLength: $lima-width;
 $lima-trackMiddle: $lima-height /2 - $lima-trackThickness / 2;
 
-/* the subtle clear border around the handle */
-// Enlage the track when checked
-.fi-switch__input--lima:checked + .fi-lima__track:before {
-  transform: scaleY(1);
-  border-radius: $lima-trackThickness;
-  background-color: $lima-trackColorOn;
-}
-
-// Hide the subtle clear border
-/*Create the handle which moves across the track */
-/* movve our handle across and change the color to signify its enabled */
-/* our check mark */
-/* Now show the check mark */
 .fi-switch--lima {
   
   // making sure our toggle doesnt compress in
@@ -52,19 +41,26 @@ $lima-trackMiddle: $lima-height /2 - $lima-trackThickness / 2;
   background-color: inherit;
 }
 
-.fi-switch--lima:not(.fi-switch--checked) {
+// Look and feel for on focus or hover, but only for when not checked
+.fi-switch--lima:not(.fi-switch--disabled):not(.fi-switch--checked) {
   &.fi-switch--focused,
   .fi-switch__container--lima:hover {
     .fi-lima__track {
-      animation-name: lima-color-pluse;
-      animation-duration: 2s;
-      animation-iteration-count: infinite;
-      animation-fill-mode: both;
+      
+      // animation-name: lima-color-pluse;
+      // animation-duration: 2s;
+      // animation-iteration-count: infinite;
+      // animation-fill-mode: both;
+    }
+
+    .fi-lima__handle {
+      box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
     }
   }
 }
 
-.fi-switch--lima.fi-switch--checked {
+// Look and feel for on foucs or hover when checked
+.fi-switch--lima:not(.fi-switch--disabled).fi-switch--checked {
   &.fi-switch--focused,
   .fi-switch__container--lima:hover {
     .fi-lima__track {
@@ -75,12 +71,24 @@ $lima-trackMiddle: $lima-height /2 - $lima-trackThickness / 2;
       animation-iteration-count: infinite;
       animation-fill-mode: both;
     }
+
+    .fi-lima__handle {
+      box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    }
+  }
+}
+
+.fi-switch--lima.fi-switch--disabled {
+  .fi-lima__track {
+    background-color: $lima-trackColorDisabled;
   }
 }
 
 .fi-switch__container--lima {
   width: $lima-width;
   height: $lima-height;
+  margin-left: .5em;
+  margin-right: .5em;
 }
 
 .fi-lima__track,
@@ -98,7 +106,7 @@ $lima-trackMiddle: $lima-height /2 - $lima-trackThickness / 2;
   height: $lima-trackThickness;
   background-color: $lima-trackColorOff;
   transition: $lima-transitionTrack;
-  transform: scaleY(.09);
+  transform: $lima-trackOffTransform;
   transform-origin: 50% 50%;
   border-radius: 2px;
 }
@@ -132,6 +140,7 @@ $lima-trackMiddle: $lima-height /2 - $lima-trackThickness / 2;
 
 .fi-lima__handle {
   background-color: $lima-handleColorOff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
 .fi-lima__handle--border {
@@ -180,15 +189,15 @@ $lima-trackMiddle: $lima-height /2 - $lima-trackThickness / 2;
 
 @keyframes lima-color-pluse {
   from {
-    background-color: $lima-trackColorOff;
-  }
-
-  50% {
     background-color: $lima-trackColorOn;
   }
 
+  50% {
+    background-color: $lima-trackColorDisabled;
+  }
+
   to {
-    background-color: $lima-trackColorOff;
+    background-color: $lima-trackColorOn;
   }
 }
 

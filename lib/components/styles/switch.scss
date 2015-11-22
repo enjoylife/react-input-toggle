@@ -28,6 +28,23 @@
   }
 }
 
+.fi-switch--disabled {
+  cursor: not-allowed;
+  
+  .fi-switch__label {
+    color: rgba(155,155,155,.5);
+    cursor: not-allowed;
+  }
+
+  .fi-switch__container {
+    cursor: not-allowed;
+    
+    & > * {
+      animation: none !important;
+    }
+  }
+}
+
 .fi-switch__input {
   
   // Hide the input, but keep it in the dom for tabbing and accessbility
@@ -48,6 +65,7 @@
 }
 
 .fi-switch__container {
+  cursor: pointer;
   position: relative;
   user-select: none;
   color: inherit;
