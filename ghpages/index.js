@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-  render
-} from 'react-dom';
+import {render} from 'react-dom';
 import FancySwitch from 'lib/index';
 import effects from 'lib/components/switchStyles';
 import cs from 'classnames';
@@ -45,14 +43,12 @@ let App = React.createClass({
     )
 
   },
-  render () {
+  render() {
 
     const l = 'Test-Label';
     const dv = 'lorem ipsum';
 
-    const {
-      value
-    } = this.state;
+    const {value} = this.state;
 
     return (
       <div className="container">
@@ -75,7 +71,7 @@ render(
 
 class Example extends React.Component {
 
-  constructor (props) {
+  constructor(props) {
     super(props);
 
     this.state = {
@@ -96,7 +92,7 @@ class Example extends React.Component {
   }
 
   updatePosition = (pos) => {
-    return () => {
+    return() => {
       this.setState({labelPosition: pos});
     }
   }
@@ -154,7 +150,10 @@ class Example extends React.Component {
 
         <div className="playground-wrapper" style={playStyle}>
           <div className={playCSS}>
-            <FancySwitch label={label} effect={effect} labelPosition={labelPosition}/>
+            <FancySwitch effect={effect} labelPosition={labelPosition}/>
+            <FancySwitch label={label} effect={effect} labelPosition={labelPosition} defaultChecked={true}/>
+            <FancySwitch effect={effect} labelPosition={labelPosition} disabled/>
+
           </div>
         </div>
 
