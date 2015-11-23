@@ -65,7 +65,28 @@
 
     <div class="docs" id="usage">
       <h4>Usage</h4>
-      <p>TODO</p>
+
+      <pre>
+<code class="language-jsx">
+import  Toggle  from 'react-input-toggle';
+import 'react-input-toggle/dist/react-input-toggle.css';
+
+export default class App extends Component {
+
+  onChange = (e)  => {
+    console.log("isChecked",  e.target.checked);
+  }
+  render () {
+    return (
+      &lt;div&gt;
+        &lt;h1&gt;Hello, world.&lt;/h1&gt;
+        &lt;Toggle label={'Test Label'} onChange={this.onChange} effect={'sierra'} labelPosition={'left'} /&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+    </code>
+            </pre>
     </div>
 
     <div class="docs" id="custom">
