@@ -1,43 +1,35 @@
 var path = require('path');
 var webpack = require('webpack');
-var EXAMPLES_DIR = path.resolve(process.cwd(), 'examples');
-
-var WebpackErrorNotificationPlugin = require('webpack-error-notification');
 
 module.exports = {
-  entry: path.join(__dirname, 'ghpages', 'index.js'),
+  devtool: 'sourcemap',
+  entry: path.join(__dirname, 'lib', 'index.js'),
   resolve: {
     root: path.join(__dirname)
   },
   output: {
-    path: path.join(__dirname, 'ghpages'),
-    filename: 'ghpages.js',
-    library: 'InputToggle',
+    path: path.join(__dirname, 'dist'),
+    filename: 'react-input-toggle.js',
+    sourceMapFilename: 'react-input-toggle.map',
+    library: 'ReactInputToggle',
     libraryTarget: 'umd'
+  },
+  externals: {
+    'react': {
+      root: 'React',
+      commonjs2: 'react',
+      commonjs: 'react',
+      amd: 'react'
+    }
   },
   module: {
     loaders: [
       {
         test: /\.jsx?$/,
-        exclude: /(node_modules|bower_components|react-a11y)/,
+        exclude: /node_modules/,
         loaders: ['babel']
-      }, {
-        test: /\.scss$/,
-        loaders: ["style", "css", 'autoprefixer?browsers=last 2 versions', "sass"]
-      }, {
-        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-        loader: "url?mimetype=image/svg+xml"
       }
 
     ]
-  },
-  plugins: [new webpack.optimize.OccurenceOrderPlugin(), new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify('production')
-      }
-    }), new webpack.optimize.UglifyJsPlugin({
-      compressor: {
-        warnings: false
-      }
-    })]
+  }
 }

@@ -14,7 +14,7 @@
 }
 
 .neonpush__btn,
-.fi-switch__input--neonpush,
+.rt-toggle__input--neonpush,
 .toggle--feature
 {
     &,
@@ -40,8 +40,8 @@ $toggleShadowColor: #333;
 $toggleActiveColor: #f90;
 $toggleInactiveColor: #ccc;
 
-.fi-switch__container--neonpush,
-.fi-switch__container--neonpull
+.rt-toggle__container--neonpush,
+.rt-toggle__container--neonpull
 {
     display: block;
 
@@ -112,8 +112,8 @@ $toggleInactiveColor: #ccc;
         }
     }
 
-    & .fi-switch__input--neonpush,
-    & .fi-switch__input--neonull
+    & .rt-toggle__input--neonpush,
+    & .rt-toggle__input--neonull
     {
         &:checked
         {

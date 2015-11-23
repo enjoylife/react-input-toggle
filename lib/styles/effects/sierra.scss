@@ -25,18 +25,18 @@ $checkTransition: all 400ms cubic-bezier(.215, .610, .355, 1.000) 100ms;
 $trackShadowOff: inset -.1em 0 .15em .12em $shadowColor;
 $trackShadowOn: inset 0 -.1em .15em .12em darken($trackColorOn, 10%);
 
-.fi-switch--sierra {
+.rt-toggle--sierra {
   min-width: $width;
   background-color: inherit;
 }
 
-.fi-switch__container--sierra {
+.rt-toggle__container--sierra {
   width: $width;
   height: $height;
   margin: .5em;
   
   &:hover {
-    .fi-sierra__handle {
+    .rt-sierra__handle {
       animation-name: pulse;
       animation-duration: 1s;
       animation-iteration-count: infinite;
@@ -45,7 +45,7 @@ $trackShadowOn: inset 0 -.1em .15em .12em darken($trackColorOn, 10%);
   }
 }
 
-.fi-sierra__check {
+.rt-sierra__check {
   position: absolute;
   top: $handleMiddle;
   left: $handleStart;
@@ -53,7 +53,7 @@ $trackShadowOn: inset 0 -.1em .15em .12em darken($trackColorOn, 10%);
   height: $handleSize;
   transition: $handleTransition;
   
-  .fi-sierra__path {
+  .rt-sierra__path {
     transition: $checkTransition;
     stroke: $iconStroke;
     stroke-width: 5px;
@@ -64,16 +64,16 @@ $trackShadowOn: inset 0 -.1em .15em .12em darken($trackColorOn, 10%);
 }
 
 // general setup
-.fi-sierra__handle,
-.fi-sierra__track,
-.fi-sierra__icon {
+.rt-sierra__handle,
+.rt-sierra__track,
+.rt-sierra__icon {
   position: absolute;
 }
 
 // Positioning
 // Look
 // set up inital values for transitions
-.fi-sierra__handle {
+.rt-sierra__handle {
   top: $handleMiddle;
   left: $handleStart;
   width: $handleSize;
@@ -85,7 +85,7 @@ $trackShadowOn: inset 0 -.1em .15em .12em darken($trackColorOn, 10%);
   box-shadow: $handleShadow;
 }
 
-.fi-sierra__track {
+.rt-sierra__track {
   
   // Positioning
   top: $trackMiddle;
@@ -98,19 +98,19 @@ $trackShadowOn: inset 0 -.1em .15em .12em darken($trackColorOn, 10%);
   box-shadow: $trackShadowOff;
 }
 
-.fi-switch__input--sierra:checked + .fi-sierra__track {
+.rt-toggle__input--sierra:checked + .rt-sierra__track {
   background-color: $trackColorOn;
   box-shadow: $trackShadowOn;
 }
 
-.fi-switch__input--sierra:checked ~ .fi-sierra__handle {
+.rt-toggle__input--sierra:checked ~ .rt-sierra__handle {
   left: $handleEnd;
 }
 
-.fi-switch__input--sierra:checked ~ .fi-sierra__check {
+.rt-toggle__input--sierra:checked ~ .rt-sierra__check {
   left: $handleEnd;
   
-  .fi-sierra__path {
+  .rt-sierra__path {
     stroke-dashoffset: 0;
   }
 }

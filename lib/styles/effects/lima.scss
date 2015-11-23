@@ -32,7 +32,7 @@ $lima-trackLeft: 0;
 $lima-trackLength: $lima-width;
 $lima-trackMiddle: $lima-height /2 - $lima-trackThickness / 2;
 
-.fi-switch--lima {
+.rt-toggle--lima {
   
   // making sure our toggle doesnt compress in
   min-width: $lima-width;
@@ -42,10 +42,10 @@ $lima-trackMiddle: $lima-height /2 - $lima-trackThickness / 2;
 }
 
 // Look and feel for on focus or hover, but only for when not checked
-.fi-switch--lima:not(.fi-switch--disabled):not(.fi-switch--checked) {
-  &.fi-switch--focused,
-  .fi-switch__container--lima:hover {
-    .fi-lima__track {
+.rt-toggle--lima:not(.rt-toggle--disabled):not(.rt-toggle--checked) {
+  &.rt-toggle--focused,
+  .rt-toggle__container--lima:hover {
+    .rt-lima__track {
       
       // animation-name: lima-color-pluse;
       // animation-duration: 2s;
@@ -53,17 +53,17 @@ $lima-trackMiddle: $lima-height /2 - $lima-trackThickness / 2;
       // animation-fill-mode: both;
     }
 
-    .fi-lima__handle {
+    .rt-lima__handle {
       box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
     }
   }
 }
 
 // Look and feel for on foucs or hover when checked
-.fi-switch--lima:not(.fi-switch--disabled).fi-switch--checked {
-  &.fi-switch--focused,
-  .fi-switch__container--lima:hover {
-    .fi-lima__track {
+.rt-toggle--lima:not(.rt-toggle--disabled).rt-toggle--checked {
+  &.rt-toggle--focused,
+  .rt-toggle__container--lima:hover {
+    .rt-lima__track {
       border-width: .1em;
       border-style: solid;
       animation-name: lima-border-pluse;
@@ -72,34 +72,34 @@ $lima-trackMiddle: $lima-height /2 - $lima-trackThickness / 2;
       animation-fill-mode: both;
     }
 
-    .fi-lima__handle {
+    .rt-lima__handle {
       box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
     }
   }
 }
 
-.fi-switch--lima.fi-switch--disabled {
-  .fi-lima__track {
+.rt-toggle--lima.rt-toggle--disabled {
+  .rt-lima__track {
     background-color: $lima-trackColorDisabled;
   }
 }
 
-.fi-switch__container--lima {
+.rt-toggle__container--lima {
   width: $lima-width;
   height: $lima-height;
   margin-left: .5em;
   margin-right: .5em;
 }
 
-.fi-lima__track,
-.fi-lima__check,
-.fi-lima__handle,
-.fi-lima__handle--container,
-.fi-lima__handle--border {
+.rt-lima__track,
+.rt-lima__check,
+.rt-lima__handle,
+.rt-lima__handle--container,
+.rt-lima__handle--border {
   position: absolute;
 }
 
-.fi-lima__track {
+.rt-lima__track {
   top: $lima-trackMiddle;
   left: $lima-trackLeft;
   width: $lima-trackLength;
@@ -114,7 +114,7 @@ $lima-trackMiddle: $lima-height /2 - $lima-trackThickness / 2;
 // Positioning
 // Look
 // set up inital values for transitions
-.fi-lima__handle--container {
+.rt-lima__handle--container {
   top: $lima-handleMiddle;
   left: $lima-handleStart;
   width: $lima-handleWidth;
@@ -124,8 +124,8 @@ $lima-trackMiddle: $lima-height /2 - $lima-trackThickness / 2;
   border-radius: $lima-trackThickness;
 }
 
-.fi-lima__handle,
-.fi-lima__handle--border {
+.rt-lima__handle,
+.rt-lima__handle--border {
   top: 0;
   left: 0;
   width: $lima-handleWidth;
@@ -134,23 +134,23 @@ $lima-trackMiddle: $lima-height /2 - $lima-trackThickness / 2;
   border-radius: $lima-trackThickness;
 }
 
-.fi-lima__handle--border {
+.rt-lima__handle--border {
   background-color: inherit;
 }
 
-.fi-lima__handle {
+.rt-lima__handle {
   background-color: $lima-handleColorOff;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
-.fi-lima__handle--border {
+.rt-lima__handle--border {
   width: $lima-handleWidth + $lima-handlePad;
   height: $lima-handleHeight + $lima-handlePad;
   margin-top: -$lima-handlePad / 2;
   margin-left: -$lima-handlePad / 2;
 }
 
-.fi-lima__check {
+.rt-lima__check {
   position: absolute;
   top: $lima-handlePad * 2;
   left: $lima-handlePad * 2;
@@ -163,25 +163,25 @@ $lima-trackMiddle: $lima-height /2 - $lima-trackThickness / 2;
   }
 }
 
-.fi-switch__input--lima:checked {
-  & ~ .fi-lima__track {
+.rt-toggle__input--lima:checked {
+  & ~ .rt-lima__track {
     transform: scaleY(1);
     border-radius: $lima-trackThickness;
     background-color: $lima-trackColorOn;
   }
 
-  & ~ .fi-lima__check {
+  & ~ .rt-lima__check {
     transform: scale(1);
   }
 
-  & ~ .fi-lima__handle--container {
+  & ~ .rt-lima__handle--container {
     left: $lima-handleEnd;
     
-    .fi-lima__handle--border {
+    .rt-lima__handle--border {
       opacity: 0;
     }
 
-    .fi-lima__handle {
+    .rt-lima__handle {
       background-color: $lima-handleColorOn;
     }
   }

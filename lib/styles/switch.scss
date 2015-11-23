@@ -1,15 +1,15 @@
 /**
- * Common and top level styles needed for the fi-switch
+ * Common and top level styles needed for the rt-toggle
  */
-.fi-switch *,
-.fi-switch *:after,
-.fi-switch *:before {
+.rt-toggle *,
+.rt-toggle *:after,
+.rt-toggle *:before {
   box-sizing: border-box;
 }
 
-.fi-switch {
+.rt-toggle {
   position: relative;
-  display: flex;
+  display: inline-flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
@@ -20,23 +20,23 @@
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-.fi-switch--focused {
-  .fi-switch__label {
+.rt-toggle--focused {
+  .rt-toggle__label {
     text-decoration: underline;
     text-decoration-color: rgba(155,155,155,.5);
     text-decoration-style: solid;
   }
 }
 
-.fi-switch--disabled {
+.rt-toggle--disabled {
   cursor: not-allowed;
   
-  .fi-switch__label {
+  .rt-toggle__label {
     color: rgba(155,155,155,.5);
     cursor: not-allowed;
   }
 
-  .fi-switch__container {
+  .rt-toggle__container {
     cursor: not-allowed;
     
     & > * {
@@ -45,7 +45,7 @@
   }
 }
 
-.fi-switch__input {
+.rt-toggle__input {
   
   // Hide the input, but keep it in the dom for tabbing and accessbility
   position: absolute;
@@ -57,14 +57,14 @@
   bottom: 0;
 }
 
-.fi-switch__label {
+.rt-toggle__label {
   position: relative;
   cursor: pointer;
   text-align: inherit;
   color: inherit;
 }
 
-.fi-switch__container {
+.rt-toggle__container {
   cursor: pointer;
   position: relative;
   user-select: none;
@@ -73,39 +73,39 @@
 }
 
 // force the label to be above
-.fi-switch--label-top {
+.rt-toggle--label-top {
   flex-direction: column;
 }
 
-.fi-switch--label-left {
+.rt-toggle--label-left {
   
-  // .fi-switch--label-left is the assumed default
+  // .rt-toggle--label-left is the assumed default
 }
 
 // Reorder to have the label be underneath
 // and set to column flex mode
-.fi-switch--label-bottom {
+.rt-toggle--label-bottom {
   flex-direction: column;
   
-  .fi-switch__container {
+  .rt-toggle__container {
     order: 1;
   }
 
-  .fi-switch__label {
+  .rt-toggle__label {
     order: 2;
   }
 }
 
 // Reorder to have the label be underneath
 // set row flex mode
-.fi-switch--label-right {
+.rt-toggle--label-right {
   flex-direction: row;
   
-  .fi-switch__container {
+  .rt-toggle__container {
     order: 1;
   }
 
-  .fi-switch__label {
+  .rt-toggle__label {
     order: 2;
   }
 }
@@ -113,12 +113,12 @@
 [aria-hidden="true"] {
   speak: none;
 }
-@import 'switches/skeleton';
-@import 'switches/lima';
-@import 'switches/bbounce';
-@import 'switches/neonpush';
-@import 'switches/ios6';
-@import 'switches/sierra';
-@import 'switches/charlie';
-@import 'switches/echo';
-@import 'switches/foxtrot';
+@import 'effects/skeleton';
+@import 'effects/lima';
+@import 'effects/bbounce';
+@import 'effects/neonpush';
+@import 'effects/ios6';
+@import 'effects/sierra';
+@import 'effects/charlie';
+@import 'effects/echo';
+@import 'effects/foxtrot';

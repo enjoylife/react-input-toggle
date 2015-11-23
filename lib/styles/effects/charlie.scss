@@ -1,0 +1,188 @@
+$width: 4.5em;
+$height: 2em;
+$trackLength: $width;
+$trackHeight: $height;
+$handleSize: $trackHeight;
+$handleStart: 0;
+$handleTop: 0;
+$handleEnd: $width - $handleSize;
+$borderOffColor: rgb(210,210,210);
+$onColor: rgb(91,236,255);
+$handleColor: rgb(255,255,255);
+$handleBorderColorOn: darken($onColor, 30%);
+$handleBorderColorOff: $borderOffColor;
+$borderSize: .08em;
+$trackColorOff: lighten($borderOffColor, 15%);
+$trackColorOn: $onColor;
+$trackBorderColorOff: lighten($borderOffColor, 5%);
+$trackBorderColorOn: $handleBorderColorOn;
+$totalAnimationTime: .5s;
+$backgroundAnimationTime: $totalAnimationTime / 10;
+$animationTiming: ease-in-out;
+
+.rt-toggle--charlie {
+  min-width: $width;
+  background-color: inherit;
+}
+
+.rt-toggle__container--charlie {
+  width: $width;
+  height: $height;
+  margin: .5em;
+}
+
+.rt-charlie__track {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: $trackLength;
+  height: $trackHeight;
+  transition: all 0 $animationTiming;
+  
+  // delay so the handle transition border appears first
+  transition-delay: $backgroundAnimationTime;
+  border: $borderSize solid $trackBorderColorOff;
+  border-radius: $handleSize;
+  background-color: $trackColorOff;
+}
+
+.rt-charlie__track--faux {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: $trackLength;
+  height: $trackHeight;
+  border-radius: $handleSize;
+  background: none;
+}
+
+.rt-charlie__handle {
+  position: absolute;
+  top: $handleTop;
+  left: $handleStart;
+  width: $handleSize;
+  height: $handleSize;
+  animation-name: morphoff;
+  animation-duration: $totalAnimationTime;
+  animation-direction: normal;
+  border: $borderSize solid $handleBorderColorOff;
+  border-radius: $handleSize;
+  background-color: $handleColor;
+  animation-fill-mode: forwards;
+}
+
+.rt-toggle__input--charlie:checked {
+  & ~ .rt-charlie__track {
+    border-color: $trackBorderColorOn;
+    background-color: $trackColorOn;
+  }
+
+  & ~ .rt-charlie__track--faux {
+    .rt-charlie__handle {
+      animation-name: morphon;
+      animation-duration: $totalAnimationTime;
+      animation-direction: normal;
+      animation-fill-mode: forwards;
+    }
+  }
+
+  & ~ .rt-charlie__text--on {
+    animation-name: textshow;
+    animation-duration: $totalAnimationTime;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+  }
+}
+
+.rt-charlie__text--off,
+.rt-charlie__text--on {
+  font-weight: bolder;
+  line-height: 2em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: $width;
+  height: $height;
+  margin: auto 0;
+  text-align: center;
+  opacity: 0;
+}
+
+.rt-charlie__text--on {
+  color: $handleBorderColorOn;
+}
+
+.rt-toggle--charlie:not(.rt-toggle--checked) {
+  .rt-charlie__text--off {
+    animation-name: textshow;
+    animation-duration: $totalAnimationTime;
+    animation-direction: normal;
+    opacity: 1;
+    color: $handleBorderColorOff;
+    animation-fill-mode: forwards;
+  }
+}
+
+@keyframes textshow {
+  0% {
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes morphoff {
+  0% {
+    left: $handleEnd;
+    width: $handleSize;
+    border-color: $handleBorderColorOn;
+  }
+
+  20% {
+    left: $handleStart;
+    width: $width;
+    border-color: $handleBorderColorOff;
+  }
+
+  80% {
+    width: $width;
+  }
+
+  100% {
+    border-color: $handleBorderColorOff;
+  }
+}
+
+@keyframes morphon {
+  0% {
+    border-color: $handleBorderColorOff;
+  }
+
+  20% {
+    width: $width;
+    border-color: $handleBorderColorOn;
+  }
+
+  80% {
+    left: $handleStart;
+    width: $width;
+    border-color: $handleBorderColorOn;
+  }
+
+  100% {
+    left: $handleEnd;
+    width: $handleSize;
+    border-color: $handleBorderColorOn;
+  }
+}

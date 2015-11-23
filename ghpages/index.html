@@ -16,8 +16,6 @@
 
   <div class="container">
 
-
-
     <header>
       <h1>React Input Toggle</h1>
       <h6>A collection of
@@ -85,12 +83,12 @@
         <code>effect</code>, <code>labelPosition</code>, and <code>label</code>.
          All other props such as <code>checked</code> or <code>onChange</code>
           follow the same conventions and logic as any standard react form component. I.e. if you create a
-        <code>FancySwitch</code> with a <code>checked</code>prop of
+        <code>Toggle</code> with a <code>checked</code>prop of
         <code>true</code> then it's checked state will always be
         <code>true</code>. This is known as a <i>controlled</i> component. See the react
         <a href="https://facebook.github.io/react/docs/forms.html">docs</a> for further details.</p>
       <p>Since a
-        <code>FancySwitch</code> follows the same interface as a standard react
+        <code>Toggle</code> follows the same interface as a standard react
         <code>
           &lt;input type="checkbox"&gt;
         </code> any event handlers such as
@@ -103,12 +101,12 @@
 
       <h5>Ex:</h5>
       <pre>
-        <code class="language-jsx">
+<code class="language-jsx">
   /* making a controlled component, passing down custom attributes,
   setting default check state, event handlers, etc */
-  &lt;FancySwitch checked={false} data-myattr={'attr'}
+  &lt;Toggle checked={false} data-myattr={'attr'}
     defaultChecked={false} onFocusCapture={this.func}  &gt;
-        </code>
+</code>
         </pre>
 
     </div>

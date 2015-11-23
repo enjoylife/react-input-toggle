@@ -27,7 +27,7 @@ $skeleton-trackLeft: $skeleton-handleSize/2;
 $skeleton-trackLength: $skeleton-width - $skeleton-trackLeft*2;
 $skeleton-trackMiddle: $skeleton-height /2 - $skeleton-trackThickness / 2;
 
-.fi-switch--skeleton {
+.rt-toggle--skeleton {
   
   // making sure our toggle doesnt compress in
   min-width: $skeleton-width;
@@ -36,20 +36,20 @@ $skeleton-trackMiddle: $skeleton-height /2 - $skeleton-trackThickness / 2;
   background-color: inherit;
 }
 
-.fi-switch__container--skeleton {
+.rt-toggle__container--skeleton {
   width: $skeleton-width;
   height: $skeleton-height;
   
   &:hover,
-  .fi-switch--focused & {
-    .fi-skeleton__handle--container,
+  .rt-toggle--focused & {
+    .rt-skeleton__handle--container,
      {
       animation-name: pulse-handle;
       animation-duration: 2s;
       animation-iteration-count: infinite;
       animation-fill-mode: both;
       
-      .fi-skeleton__handle {
+      .rt-skeleton__handle {
         animation-name: skeleton-pulse;
         animation-duration: 2s;
         animation-iteration-count: infinite;
@@ -59,15 +59,15 @@ $skeleton-trackMiddle: $skeleton-height /2 - $skeleton-trackThickness / 2;
   }
 }
 
-.fi-skeleton__track,
-.fi-skeleton__handle,
-.fi-skeleton__handle--container,
-.fi-skeleton__handle--border,
-.fi-skeleton__handle--inner {
+.rt-skeleton__track,
+.rt-skeleton__handle,
+.rt-skeleton__handle--container,
+.rt-skeleton__handle--border,
+.rt-skeleton__handle--inner {
   position: absolute;
 }
 
-.fi-skeleton__track {
+.rt-skeleton__track {
   
   // Positioning
   top: $skeleton-trackMiddle;
@@ -82,7 +82,7 @@ $skeleton-trackMiddle: $skeleton-height /2 - $skeleton-trackThickness / 2;
 // Positioning
 // Look
 // set up inital values for transitions
-.fi-skeleton__handle--container {
+.rt-skeleton__handle--container {
   top: $skeleton-handleMiddle;
   left: $skeleton-handleStart;
   width: $skeleton-handleSize;
@@ -91,9 +91,9 @@ $skeleton-trackMiddle: $skeleton-height /2 - $skeleton-trackThickness / 2;
   transition: $skeleton-transition;
 }
 
-.fi-skeleton__handle,
-.fi-skeleton__handle--inner,
-.fi-skeleton__handle--border {
+.rt-skeleton__handle,
+.rt-skeleton__handle--inner,
+.rt-skeleton__handle--border {
   top: 0;
   left: 0;
   width: $skeleton-handleSize;
@@ -102,16 +102,16 @@ $skeleton-trackMiddle: $skeleton-height /2 - $skeleton-trackThickness / 2;
   border-radius: 50%;
 }
 
-.fi-skeleton__handle--border,
-.fi-skeleton__handle--inner {
+.rt-skeleton__handle--border,
+.rt-skeleton__handle--inner {
   background-color: inherit;
 }
 
-.fi-skeleton__handle {
+.rt-skeleton__handle {
   background-color: $skeleton-handleColorOff;
 }
 
-.fi-skeleton__handle--inner {
+.rt-skeleton__handle--inner {
   
   // transform: scale(0.8);
   width: $skeleton-handleSize - $skeleton-handleThickness;
@@ -120,7 +120,7 @@ $skeleton-trackMiddle: $skeleton-height /2 - $skeleton-trackThickness / 2;
   margin-left: +$skeleton-handleThickness / 2;
 }
 
-.fi-skeleton__handle--border {
+.rt-skeleton__handle--border {
   
   // transform: scale(1.2);
   width: $skeleton-handleSize + $skeleton-handlePad;
@@ -129,20 +129,20 @@ $skeleton-trackMiddle: $skeleton-height /2 - $skeleton-trackThickness / 2;
   margin-left: -$skeleton-handlePad / 2;
 }
 
-.fi-switch__input--skeleton:checked {
-  & ~ .fi-skeleton__track {
+.rt-toggle__input--skeleton:checked {
+  & ~ .rt-skeleton__track {
     
     // stays the same
   }
 
-  & ~ .fi-skeleton__handle--container {
+  & ~ .rt-skeleton__handle--container {
     left: $skeleton-handleEnd;
     
-    .fi-skeleton__handle--inner {
+    .rt-skeleton__handle--inner {
       transform: scale(0);
     }
 
-    .fi-skeleton__handle {
+    .rt-skeleton__handle {
       background-color: $skeleton-handleColorOn;
     }
   }

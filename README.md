@@ -14,7 +14,7 @@ A collection of aesthetically pleasing, accessible and customizable toggles buil
 
 ```jsx
 
-import  FancySwitch  from 'react-input-toggle';
+import  Toggle  from 'react-input-toggle';
 import 'react-input-toggle/dist/react-input-toggle.css';
 
 export default class App extends Component {
@@ -22,7 +22,7 @@ export default class App extends Component {
     return (
       <div>
         <h1>Hello, world.</h1>
-        <FancySwitch label={'Test Label'} effect={'sierra'} labelPosition={'left'} />
+        <Toggle label={'Test Label'} effect={'sierra'} labelPosition={'left'} />
       </div>
     );
   }

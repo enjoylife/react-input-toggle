@@ -1,6 +1,6 @@
 {
   "name": "react-input-toggle",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "A collection of aesthetically pleasing, accessible and customizable toggles build with React.",
   "keywords": [
     "react",
@@ -21,12 +21,12 @@
     "example": "examples"
   },
   "scripts": {
-    "build": "NODE_ENV=production TARGET=minify webpack --config webpack.prod.config.js",
+    "dist": "NODE_ENV=production webpack --config webpack.prod.config.js; node-sass lib/styles/switch.scss  dist/react-input-toggle.css",
     "test": "karma start --browsers Firefox --single-run",
     "test:dev": "karma start",
     "cov": "codecov < ./coverage/lcov/lcov.info",
     "dev": "webpack-dev-server --inline --progress --colors --config -./webpack.config.js --host 0.0.0.0 --content-base ./",
-    "ghpages": "npm run build; git subtree push --prefix ghpages origin gh-pages"
+    "ghpages": "NODE_ENV=production TARGET=minify webpack --config webpack.gh.config.js; git subtree push --prefix ghpages origin gh-pages"
   },
   "authors": [
     "Matthew Clemens"

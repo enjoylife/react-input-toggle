@@ -26,28 +26,28 @@ $iconTop: $height / 2 - $iconSize / 2.1;
 $transition: left 400ms cubic-bezier(.645, .045, .355, 1.000), transform 650ms ease, background-color 400ms cubic-bezier(.645, .045, .355, 1.000);
 $squishy: scale(1.1, .9);
 
-.fi-switch--echo
+.rt-toggle--echo
 {
     min-width: $width;
 
     &:active,
     &:focus
     {
-        .fi-echo__handle
+        .rt-echo__handle
         {
             transform: $squishy;
         }
     }
 }
 
-.fi-switch__container--echo
+.rt-toggle__container--echo
 {
     width: $width;
     height: $height;
     margin: .5em;
 }
 
-.fi-echo__track
+.rt-echo__track
 {
     position: absolute;
     top: 0;
@@ -61,7 +61,7 @@ $squishy: scale(1.1, .9);
     border-radius: $handleSize;
     background-color: $trackColorOff;
 }
-.fi-echo__handle
+.rt-echo__handle
 {
     position: absolute;
     top: $handleTop;
@@ -77,8 +77,8 @@ $squishy: scale(1.1, .9);
 }
 
 
-.fi-echo__icon,
-.fi-echo__icon
+.rt-echo__icon,
+.rt-echo__icon
 {
     position: absolute;
     top: $iconTop;
@@ -90,38 +90,38 @@ $squishy: scale(1.1, .9);
     fill: $iconColor;
 }
 
-.fi-echo__icon--off
+.rt-echo__icon--off
 {
     left: $iconOffLeft;
 
     opacity: 1;
 }
 
-.fi-echo__icon--on
+.rt-echo__icon--on
 {
     left: $iconOnLeft;
 
     opacity: 0;
 }
 
-.fi-switch__input--echo:checked
+.rt-toggle__input--echo:checked
 {
-    & ~ .fi-echo__track
+    & ~ .rt-echo__track
     {
         background-color: $trackColorOn;
     }
 
-    & ~ .fi-echo__handle
+    & ~ .rt-echo__handle
     {
         left: $handleEnd;
     }
 
-    & ~ .fi-echo__icon--on
+    & ~ .rt-echo__icon--on
     {
         opacity: 1;
     }
 
-    & ~ .fi-echo__icon--off
+    & ~ .rt-echo__icon--off
     {
         opacity: 0;
     }

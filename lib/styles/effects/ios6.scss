@@ -4,7 +4,7 @@
  */
 
 
-:root input[type='checkbox'].fi-switch__input--ios6 + div
+:root input[type='checkbox'].rt-toggle__input--ios6 + div
 {
     font-size: 150%;
 
@@ -31,7 +31,7 @@
     0 .45em 0 .1em rgba(0,0,0,.05) inset;
 }
 
-:root input[type='checkbox'].fi-switch__input--ios6:checked + div
+:root input[type='checkbox'].rt-toggle__input--ios6:checked + div
 {
     width: 3em;
     padding-left: 2em;
@@ -39,7 +39,7 @@
     background-position: 0 0;
 }
 
-:root input[type='checkbox'].fi-switch__input--ios6 + div:before
+:root input[type='checkbox'].rt-toggle__input--ios6 + div:before
 {
     float: left;
 
@@ -59,27 +59,27 @@
     text-shadow: 0 -1px 1px rgba(0,0,0,.3);
 }
 
-:root input[type='checkbox'].fi-switch__input--ios6:active + div:before
+:root input[type='checkbox'].rt-toggle__input--ios6:active + div:before
 {
     background-color: #eee;
 }
 
-// :root input[type='checkbox'].fi-switch__input--ios6:focus + div
+// :root input[type='checkbox'].rt-toggle__input--ios6:focus + div
 // {
 //     box-shadow: 0 .1em .1em rgba(0,0,0,.2) inset,
 //     0 .45em 0 .1em rgba(0,0,0,.05) inset,
 //     0 0 .4em 1px rgba(255,0,0,.5);
 // }
 
-:root input[type='checkbox'].fi-switch__input--ios6 + div:before,
-:root input[type='checkbox'].fi-switch__input--ios6 + div:after
+:root input[type='checkbox'].rt-toggle__input--ios6 + div:before,
+:root input[type='checkbox'].rt-toggle__input--ios6 + div:after
 {
     font: bold 60%/1.9 sans-serif;
 
     text-transform: uppercase;
 }
 
-:root input[type='checkbox'].fi-switch__input--ios6 + div:after
+:root input[type='checkbox'].rt-toggle__input--ios6 + div:after
 {
     float: left;
 
