@@ -1,73 +1,15 @@
 import React from 'react';
 import {render} from 'react-dom';
-import FancySwitch from 'lib/index';
-import effects from 'lib/components/switchStyles';
+
+import Toggle from 'lib/index';
+import 'lib/styles/switch.scss';
+
+import effects from 'lib/components/effects';
 import cs from 'classnames';
 
+const darkBackgroundEffects = ['foxtrot', 'skeleton'];
 // var a11y = require('react-a11y');
 // a11y(React);
-
-let App = React.createClass({
-
-  getInitialState: function () {
-    return {value: ''}
-  },
-  componentDidMount: function () {
-
-    let cb = () => {
-      const value = this.state.value;
-      // console.log(value);
-      let v = (value == '')
-        ? 'text'
-        : value.substr(0, value.length - 1);
-      // this.setState({
-      //   value: v
-      // })
-    }
-    setInterval(cb, 1000, 2000);
-  },
-
-  fakeOnChange: function () {
-    console.log("fakeOnChange");
-  },
-
-  renderSwitch: function (effect, background) {
-    const classes = cs('container', background);
-    return (
-      <div className={classes}>
-        <div className='inline-content'>
-          <FancySwitch label={effect} effect={effect} labelPosition='left'/>
-          <FancySwitch label={effect} defaultChecked={true} effect={effect} onChange={this.fakeOnChange} labelPosition='right'/>
-        </div>
-      </div>
-    )
-
-  },
-  render() {
-
-    const l = 'Test-Label';
-    const dv = 'lorem ipsum';
-
-    const {value} = this.state;
-
-    return (
-      <div className="container">
-        {this.renderSwitch('foxtrot', 'bg-3')}
-        {this.renderSwitch('echo')}
-        {this.renderSwitch('charlie')}
-        {this.renderSwitch('sierra')}
-
-        {this.renderSwitch('lima')}
-        {this.renderSwitch('bbounce')}
-        {this.renderSwitch('neonpush')}
-        {this.renderSwitch('ios6')}
-      </div>
-    );
-  }
-});
-
-render(
-  <App/>, document.getElementById('anchor'));
 
 class Example extends React.Component {
 
@@ -114,7 +56,7 @@ class Example extends React.Component {
     const lps = 'labelPosition="' + labelPosition + '"';
     const ls = 'label="' + label + '"';
 
-    return '<FancySwitch  ' + es + '  ' + lps + '   ' + ls + '  />';
+    return '<Toggle  ' + es + '  ' + lps + '   ' + ls + '  />';
 
   }
 
@@ -134,8 +76,7 @@ class Example extends React.Component {
 
     const codeString = this.renderCodeString();
 
-    const darkBackground = ['foxtrot', 'skeleton'];
-    const isDark = (darkBackground.indexOf(effect)) > -1
+    const isDark = (darkBackgroundEffects.indexOf(effect)) > -1
       ? true
       : false;
 
@@ -150,9 +91,9 @@ class Example extends React.Component {
 
         <div className="playground-wrapper" style={playStyle}>
           <div className={playCSS}>
-            <FancySwitch effect={effect} labelPosition={labelPosition}/>
-            <FancySwitch label={label} effect={effect} labelPosition={labelPosition} defaultChecked={true}/>
-            <FancySwitch effect={effect} labelPosition={labelPosition} disabled/>
+            <Toggle effect={effect} labelPosition={labelPosition}/>
+            <Toggle label={label} effect={effect} labelPosition={labelPosition} defaultChecked={true}/>
+            <Toggle effect={effect} labelPosition={labelPosition} disabled/>
 
           </div>
         </div>
@@ -195,11 +136,41 @@ class Example extends React.Component {
             </div>
           </div>
         </div>
-
       </div>
     )
   }
 }
+
+let ShowCase = React.createClass({
+
+  renderToggle: function (effect) {
+    const isDark = (darkBackgroundEffects.indexOf(effect)) > -1
+      ? true
+      : false;
+    const classes = cs('row', [isDark && 'playground--dark']);
+    return (
+      <div className={classes}>
+        <h4>{effect}</h4>
+
+        <Toggle effect={effect}/>
+        <Toggle defaultChecked={true} effect={effect}/>
+        <Toggle effect={effect} disabled/>
+
+      </div>
+    )
+  },
+  render() {
+    const toggles = Object.keys(effects).map(this.renderToggle);
+    return (
+      <div className="showcase">
+        {toggles}
+      </div>
+    );
+  }
+});
+
+render(
+  <ShowCase/>, document.getElementById('anchor'));
 
 render(
   <Example/>, document.getElementById('playground'));

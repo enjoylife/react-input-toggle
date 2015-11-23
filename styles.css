@@ -1,10 +1,8 @@
 body {
   color: #333;
   font-family: "Helvetica Neue", Arial, sans-serif;
-
   margin: 0;
   background: white;
-
 }
 
 header {
@@ -17,80 +15,95 @@ header {
   font-size: 1em;
   text-align: center;
 }
+
 .playground {
   display: inline-block;
   border-radius: 10px;
-  padding: 0.5em;
+  padding: .5em;
   background: white;
 }
 
-.playground .fi-switch {
-  float:left;
-  margin:10px;
+.playground .rt-toggle {
+  float: left;
+  margin: 10px;
 }
 
 .playground--dark {
   background-color: rgb(50,50,50);
-  color:white;
+  color: white;
 }
 
 .container {
   margin: 0 auto;
   text-align: center;
   overflow: hidden;
-
   max-width: 800px;
 }
 
 .docs {
   text-align: left;
-  border-top: 1px solid #eee;
-      padding: 4rem 0;
-      padding-top: 0;
-
-      margin-bottom: 0;
+  border-top: 2px solid #eee;
+  margin-bottom: 30px;
 }
 
-.docs__header{
+.docs__header {
   text-transform: uppercase;
-font-size: 1.4rem;
-letter-spacing: .2rem;
-font-weight: 600;
+  font-size: 1.4rem;
+  letter-spacing: .2rem;
+  font-weight: 600;
 }
 
 .docs__table {
-  margin:auto;
+  margin: auto;
 }
 
 .badges a {
   color: rgba(0,0,0,0);
 }
 
-
 .example {
   padding: 0 25px;
-    margin: 2em 1em 1em;
+  margin: 2em 1em 1em;
   display: inline-block;
 }
 
-
 .example__head {
-  margin-bottom: 0.2em;
+  margin-bottom: .2em;
   margin: 0 0 2em;
-  opacity: 0.5;
+  opacity: .5;
 }
 
 .content {
   padding: 1em 0;
-  color:white;
+  color: white;
 }
 
-.inline-content {
-  color:rgb(135,135,135);
-  background-color: white;
+.showcase {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.showcase .row {
+  color: #878787;
   display: inline-block;
-  background-color: inherit;
-  font-size: 3em;
+  font-size: 2em;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-radius: 10px;
+  max-width: 80%;
+  border-bottom: 2px solid #eee;
+}
+
+.showcase h4 {
+  margin-bottom: 0;
+}
+
+.showcase .rt-toggle {
+  border: none;
+  margin: 5px;
 }
 
 .bg-1 {
@@ -100,18 +113,18 @@ font-weight: 600;
 
 .bg-2 {
   background-color: rgb(50,50,50);
-  color:white;
+  color: white;
 }
 
 .bg-3 {
   background-color: rgb(38,38,38);
-  color:white;
+  color: white;
 }
 
 .example__info {
   color: grey;
-  opacity: 0.7;
-  font-size: 0.5em;
+  opacity: .7;
+  font-size: .5em;
   line-height: 1;
 }
 
@@ -119,60 +132,84 @@ font-weight: 600;
   text-align: center;
   margin-bottom: 15px;
 }
+
 .button-group {
   text-align: center;
 }
-.button-group button{
-margin-right: 5px;
-padding: 0 10px;
+
+.button-group button {
+  margin-right: 5px;
+  padding: 0 10px;
 }
 
 .row--centered {
- text-align: center;
+  text-align: center;
 }
-code[class*="language-jsx"], pre[class*="language-jsx"] {
+
+code[class*="language-jsx"],
+pre[class*="language-jsx"] {
   border: none;
   font-size: 1.1em;
   margin: 0;
   padding: 0;
 }
 
-
 /* Larger than phone */
 @media (min-width: 550px) {
-  .docs {
-    padding: 6rem;
-    padding-top: 0;
-  }
   .playground-wrapper {
     font-size: 1.5em;
-
   }
-
 }
 
 /* Larger than tablet */
 @media (min-width: 750px) {
-}
 
+}
 
 /*
 Github Corner
  */
+github-corner:hover .octo-arm {
+  animation: octocat-wave 560ms ease-in-out;
+}
 
-github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}
+@keyframes octocat-wave {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+
+  20%,
+  60% {
+    transform: rotate(-25deg);
+  }
+
+  40%,
+  80% {
+    transform: rotate(10deg);
+  }
+}
+
+@media (max-width:500px) {
+  .github-corner:hover .octo-arm {
+    animation: none;
+  }
+
+  .github-corner .octo-arm {
+    animation: octocat-wave 560ms ease-in-out;
+  }
+}
 
 /**
  * Screen Readers
  */
-
- .sr-only {
-     position: absolute;
-     width: 1px;
-     height: 1px;
-     padding: 0;
-     margin: -1px;
-     overflow: hidden;
-     clip: rect(0,0,0,0);
-     border: 0;
- }
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
