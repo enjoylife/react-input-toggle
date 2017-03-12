@@ -15,5 +15,11 @@
     "transform-function-bind",
     "react-hot-loader/babel"
     // Enables React code to work with HMR.
-  ]
+  ],
+
+  "env": {
+    "test": {
+      "plugins": ["transform-es2015-modules-commonjs"]
+    }
+  }
 }
