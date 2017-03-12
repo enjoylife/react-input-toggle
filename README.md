@@ -6,6 +6,12 @@ A collection of aesthetically pleasing, accessible and customizable toggles buil
 
 [![Codecov](https://img.shields.io/codecov/c/github/enjoylife/react-input-toggle.svg?style=flat-square)]()
 
+
+
+# What problem does it solve you?
+
+You get an interesting selection of keyboard and screen reader accessible,  buttons. More show than business really. I would say this little set of toggles is more creative than practical. But in2 any case, enjoy.
+
 ## Installation
 
 `npm install react-input-toggle`
