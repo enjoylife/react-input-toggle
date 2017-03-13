@@ -30,13 +30,11 @@ describe("Toggle", () => {
     let unChecked = TestUtils.renderIntoDocument(
       <Toggle defaultChecked={false}/>
     );
-    expect(unChecked.state.fiChecked).to.be.false;
     expect(unChecked._input.checked).to.be.false;
     let checked = TestUtils.renderIntoDocument(
       <Toggle defaultChecked={true}/>
     );
 
-    expect(checked.state.fiChecked).to.be.true;
     expect(checked._input.checked).to.be.true;
   });
 
