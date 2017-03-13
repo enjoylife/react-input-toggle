@@ -20,13 +20,12 @@ class Example extends React.Component {
       effect: 'sierra',
       labelPosition: 'bottom',
       label: 'sierra',
-      fontSize: null,
+      fontSize: 1,
       mainChecked: true
     };
   }
 
   updateEffect = (e) => {
-    console.log(e);
     this.setState({ effect: e.target.value, label: e.target.value });
   };
 
@@ -154,7 +153,7 @@ function example () {
             <label htmlFor="fontsize">
               Toggle Font Size
             </label>
-            <input className="u-full-width" type="number" id="fontsize" min={1} defaultValue={2} max={3} step={0.1}
+            <input className="u-full-width" type="number" id="fontsize" min={1} defaultValue={1} max={3} step={0.1}
                    onChange={this.updateFontSize}/>
           </div>
 
