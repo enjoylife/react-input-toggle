@@ -6,7 +6,6 @@ import '../lib/styles/switch.scss';
 import effects from '../lib/components/effects';
 import cs from 'classnames';
 
-var Highlight = require('react-highlight');
 
 const darkBackgroundEffects = ['foxtrot', 'skeleton'];
 // var a11y = require('react-a11y');
@@ -46,7 +45,13 @@ class Example extends React.Component {
   };
 
   componentDidMount() {
+    Prism.highlightAll();
   }
+
+  componentDidUpdate(prevProps, prevState, prevContext) {
+    Prism.highlightAll();
+  }
+
 
   renderCode = () => {
     const {
@@ -57,39 +62,22 @@ class Example extends React.Component {
     } = this.state;
 
 
-    const es = `effect="${effect}"`;
-    const lps = `labelPosition="${labelPosition}"`;
-    const ls = `label="${label }"`;
-    const name = `name="${ label }" /*Form name*/`;
-
-
     const check = mainChecked ? 'checked' : '';
-    const codeString = `import  Toggle  from 'react-input-toggle';
+
+    const codeString =
+      `import React from 'react';
+import Toggle  from 'react-input-toggle';
 import 'react-input-toggle/dist/react-input-toggle.css';
 
-export default class App extends Component {
-  // could also be onFocus, onBlur, etc
-  onChange = (e)  => {
-    console.log("isChecked",  e.target.checked);
-  }
-  render () {
-    return (
-      <div>
-        <Toggle 
-           ${check} effect={'${effect}'} label={'${label}'} labelPosition={'${labelPosition}'}
-            onChange={this.onChange} />
-      </div>
-    );
-  }
-}`
+function example () {
+    return ( 
+        <Toggle effect={'${effect}'} ${check} 
+            label={'${label}'} name={'${label}'} /* form name */ 
+            labelPosition={'${labelPosition}'} onChange={console.log} />
+      );
+  }`;
 
-    return <Highlight className='language-jsx'>
-      {codeString}
-    </Highlight>;
-
-    return `<Toggle ${es} ${check} ${name}  \n
-    ${ls} ${lps} \n/>`;
-
+    return codeString;
   }
 
   updateMain = (ev) => {
@@ -184,7 +172,16 @@ export default class App extends Component {
             </div>
           </div>
         </div>
-        {this.renderCode()}
+
+        <pre ref={(code) => {
+          this.code = code;
+        }}>
+          <code className="language-jsx">
+               {this.renderCode()}
+          </code>
+
+        </pre>
+
       </div>
     )
   }
