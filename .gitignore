@@ -4,3 +4,5 @@ coverage/
 
 ghpages/ghpages.js
 dist/
+
+ghpages/vendor\.js
