@@ -18,26 +18,30 @@ class Example extends React.Component {
 
     this.state = {
       effect: 'sierra',
-      labelPosition: 'bottom',
+      labelPosition: 'right',
       label: 'sierra',
-      fontSize: 1,
+      fontSize: null,
       mainChecked: true
     };
   }
 
-  updateEffect = (e) => {
-    this.setState({ effect: e.target.value, label: e.target.value });
+  updatePosition = (e) => {
+    this.setState({labelPosition: e.target.value });
+  };
+
+  updateEffectBtn = (effect) => {
+    return () => {
+      const keepLabel =  this.state.label == this.state.effect ? effect : this.state.label;
+      this.setState({effect: effect, label : keepLabel});
+    }
+
   };
 
   updateLabel = (e) => {
     this.setState({ label: e.target.value });
   };
 
-  updatePosition = (pos) => {
-    return () => {
-      this.setState({ labelPosition: pos });
-    }
-  };
+
 
   updateFontSize = (e) => {
     this.setState({ fontSize: e.target.value });
@@ -49,6 +53,7 @@ class Example extends React.Component {
 
   componentDidUpdate(prevProps, prevState, prevContext) {
     Prism.highlightAll();
+
   }
 
 
@@ -60,9 +65,6 @@ class Example extends React.Component {
       mainChecked,
     } = this.state;
 
-
-    const check = mainChecked ? 'checked' : '';
-
     const codeString =
       `import React from 'react';
 import Toggle  from 'react-input-toggle';
@@ -70,7 +72,7 @@ import 'react-input-toggle/dist/react-input-toggle.css';
 
 function example () {
     return ( 
-        <Toggle effect={'${effect}'} ${check} 
+        <Toggle effect={'${effect}'} 
             label={'${label}'} name={'${label}'} /* form name */ 
             labelPosition={'${labelPosition}'} onChange={console.log} />
       );
@@ -95,16 +97,17 @@ function example () {
       mainChecked
     } = this.state;
 
-    const options = Object.keys(effects).map((effect, i) => {
+
+    const buttons = Object.keys(effects).map((effect, i) => {
+      return <button onClick={this.updateEffectBtn(effect)}  key={i}>{effect}</button>
+    }) ;
+
+    const labelPositions = ['top','left','right','bottom'].map((effect, i) => {
       return <option value={effect} key={i}>{effect}</option>
     });
 
-    const propString = JSON.stringify(this.state, null, 2);
 
-
-    const isDark = (darkBackgroundEffects.indexOf(effect)) > -1
-      ? true
-      : false;
+    const isDark = (darkBackgroundEffects.indexOf(effect)) > -1;
 
     const playCSS = cs('playground', [isDark && 'playground--dark']);
     const playStyle = {
@@ -114,34 +117,30 @@ function example () {
     }
     return (
       <div>
-        <small className="hint-text">(Hint: Hit the space bar. Or tap the middle switch)</small>
-
-        <div className="playground-wrapper" style={playStyle}>
-          <div className={playCSS}>
-            <div className="playground-example">
-              <Toggle effect={effect} labelPosition={labelPosition}/>
-
-            </div>
+        <div className="row row--centered">
+          <div className="twelve columns button-group ">
+            <label>Choose a toggle effect</label>
             <div>
-              <Toggle onChange={this.updateMain} label={label} effect={effect} labelPosition={labelPosition} autoFocus
-                      defaultChecked={mainChecked} name={label}/>
+              {buttons}
             </div>
-
-            <div>
-              <Toggle effect={effect} labelPosition={labelPosition} disabled/>
-            </div>
-
           </div>
         </div>
+        <div className="playground-wrapper" style={playStyle}>
+          <div className={playCSS}>
 
+            <div className="playground-example">
+
+              <Toggle onChange={this.updateMain} label={label} effect={effect} labelPosition={labelPosition} autoFocus
+                      defaultChecked={mainChecked} name={label}  />
+              <small className="row hint-text">Hint: (space bar.)</small>
+
+            </div>
+
+          </div>
+
+        </div>
 
         <div className="row ">
-          <div className="four columns">
-            <label htmlFor="effectchoice">Choose a toggle effect</label>
-            <select className='u-full-width' id='effectchoice' value={effect} onChange={this.updateEffect}>
-              {options}
-            </select>
-          </div>
 
           <div className="five columns">
             <label htmlFor="labelstr">
@@ -153,24 +152,19 @@ function example () {
             <label htmlFor="fontsize">
               Toggle Font Size
             </label>
-            <input className="u-full-width" type="number" id="fontsize" min={1} defaultValue={1} max={3} step={0.1}
+            <input className="u-full-width" type="number" id="fontsize" min={1} defaultValue={2} max={3} step={0.1}
                    onChange={this.updateFontSize}/>
           </div>
-
-        </div>
-        <div className="row .row--centered">
-          <div className="twelve columns button-group ">
+          <div className="four columns button-group ">
             <label htmlFor="labelstr">
               Label Position
             </label>
-            <div className=''>
-              <button onClick={this.updatePosition('left')}>Left</button>
-              <button onClick={this.updatePosition('top')}>Top</button>
-              <button onClick={this.updatePosition('right')}>Right</button>
-              <button onClick={this.updatePosition('bottom')}>Bottom</button>
-            </div>
+            <select className='u-full-width' id='labelstr' value={effect} onChange={this.updatePosition}>
+              {labelPositions}
+            </select>
           </div>
         </div>
+
 
         <pre ref={(code) => {
           this.code = code;
