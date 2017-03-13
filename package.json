@@ -11,7 +11,8 @@
     "checkbox",
     "react-input"
   ],
-  "main": "./lib/index.js",
+  "main": "./dist/react-input-toggle.js",
+  "module" : "lib/index.js",
   "repository": {
     "type": "git",
     "url": "github.com/enjoylife/react-input-toggle.git"
@@ -22,12 +23,11 @@
   },
   "scripts": {
     "start": "webpack-dev-server",
-    "dist": "NODE_ENV=production webpack --config webpack.prod.config.js; node-sass lib/styles/switch.scss  dist/react-input-toggle.css",
+    "dist": "webpack -p --config webpack.dist.config.js; node-sass lib/styles/switch.scss  dist/react-input-toggle.css",
     "test": "jest",
     "test:dev": "jest --watch",
     "cov": "codecov < ./coverage/lcov/lcov.info",
-    "dev": "webpack-dev-server --inline --progress --colors --config -./webpack.config.js --host 0.0.0.0 --content-base ./",
-    "ghpages": "NODE_ENV=production TARGET=minify webpack --config webpack.gh.config.js; git subtree push --prefix ghpages origin gh-pages"
+    "ghpages": "webpack --colors --progress -p --config webpack.ghpages.config.js;"
   },
   "authors": [
     "Matthew Clemens"

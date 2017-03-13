@@ -2,8 +2,10 @@ import React from 'react';
 import Toggle from '../lib/index';
 import '../lib/styles/switch.scss';
 
+
 import effects from '../lib/components/effects';
 import cs from 'classnames';
+
 
 const darkBackgroundEffects = ['foxtrot', 'skeleton'];
 // var a11y = require('react-a11y');
@@ -15,55 +17,83 @@ class Example extends React.Component {
     super(props);
 
     this.state = {
-      effect: 'lima',
+      effect: 'sierra',
       labelPosition: 'bottom',
-      label: 'lima',
-      fontSize: null
+      label: 'sierra',
+      fontSize: null,
+      mainChecked: true
     };
   }
 
   updateEffect = (e) => {
     console.log(e);
-    this.setState({effect: e.target.value, label: e.target.value});
-  }
+    this.setState({ effect: e.target.value, label: e.target.value });
+  };
 
   updateLabel = (e) => {
-    this.setState({label: e.target.value});
-  }
+    this.setState({ label: e.target.value });
+  };
 
   updatePosition = (pos) => {
-    return() => {
-      this.setState({labelPosition: pos});
+    return () => {
+      this.setState({ labelPosition: pos });
     }
-  }
+  };
 
   updateFontSize = (e) => {
-    this.setState({fontSize: e.target.value});
+    this.setState({ fontSize: e.target.value });
+  };
+
+  componentDidMount() {
+    Prism.highlightAll();
   }
 
-  componentDidMount () {}
-
-  renderCodeString = () => {
-    const {
-      effect,
-      labelPosition,
-      label
-    } = this.state;
-
-    const es = 'effect="' + effect + '"';
-    const lps = 'labelPosition="' + labelPosition + '"';
-    const ls = 'label="' + label + '"';
-
-    return '<Toggle  ' + es + '  ' + lps + '   ' + ls + '  />';
-
+  componentDidUpdate(prevProps, prevState, prevContext) {
+    Prism.highlightAll();
   }
 
-  render () {
+
+  renderCode = () => {
     const {
       effect,
       labelPosition,
       label,
-      fontSize
+      mainChecked,
+    } = this.state;
+
+
+    const check = mainChecked ? 'checked' : '';
+
+    const codeString =
+      `import React from 'react';
+import Toggle  from 'react-input-toggle';
+import 'react-input-toggle/dist/react-input-toggle.css';
+
+function example () {
+    return ( 
+        <Toggle effect={'${effect}'} ${check} 
+            label={'${label}'} name={'${label}'} /* form name */ 
+            labelPosition={'${labelPosition}'} onChange={console.log} />
+      );
+  }`;
+
+    return codeString;
+  }
+
+  updateMain = (ev) => {
+    console.log("isChecked", ev.target.checked);
+    this.setState({
+      mainChecked: ev.target.checked
+    })
+  }
+
+  render() {
+    const {
+      effect,
+      labelPosition,
+      label,
+      fontSize,
+      mainChecked
     } = this.state;
 
     const options = Object.keys(effects).map((effect, i) => {
@@ -72,7 +102,6 @@ class Example extends React.Component {
 
     const propString = JSON.stringify(this.state, null, 2);
 
-    const codeString = this.renderCodeString();
 
     const isDark = (darkBackgroundEffects.indexOf(effect)) > -1
       ? true
@@ -86,19 +115,27 @@ class Example extends React.Component {
     }
     return (
       <div>
+        <small className="hint-text">(Hint: Hit the space bar. Or tap the middle switch)</small>
 
         <div className="playground-wrapper" style={playStyle}>
           <div className={playCSS}>
-            <Toggle effect={effect} labelPosition={labelPosition}/>
-            <Toggle label={label} effect={effect} labelPosition={labelPosition} defaultChecked={true}/>
-            <Toggle effect={effect} labelPosition={labelPosition} disabled/>
+            <div className="playground-example">
+              <Toggle effect={effect} labelPosition={labelPosition}/>
+
+            </div>
+            <div>
+              <Toggle onChange={this.updateMain} label={label} effect={effect} labelPosition={labelPosition} autoFocus
+                      defaultChecked={mainChecked} name={label}/>
+            </div>
+
+            <div>
+              <Toggle effect={effect} labelPosition={labelPosition} disabled/>
+            </div>
 
           </div>
         </div>
 
-        <div className="row propString">
-          <code className='u-full-width '>{codeString}</code>
-        </div>
+
         <div className="row ">
           <div className="four columns">
             <label htmlFor="effectchoice">Choose a toggle effect</label>
@@ -117,7 +154,8 @@ class Example extends React.Component {
             <label htmlFor="fontsize">
               Toggle Font Size
             </label>
-            <input className="u-full-width" type="number" id="fontsize" min={1} defaultValue={2} max={3} step={0.1} onChange={this.updateFontSize}/>
+            <input className="u-full-width" type="number" id="fontsize" min={1} defaultValue={2} max={3} step={0.1}
+                   onChange={this.updateFontSize}/>
           </div>
 
         </div>
@@ -134,6 +172,16 @@ class Example extends React.Component {
             </div>
           </div>
         </div>
+
+        <pre ref={(code) => {
+          this.code = code;
+        }}>
+          <code className="language-jsx">
+               {this.renderCode()}
+          </code>
+
+        </pre>
+
       </div>
     )
   }

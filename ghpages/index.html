@@ -3,125 +3,115 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-  <title>A React component for form inputs with subtle and interesting effects</title>
-  <link rel="stylesheet" href="normalize.css">
-  <link rel="stylesheet" href="skeleton.css">
-  <link rel="stylesheet" href="extras/prismtheme.css">
-  <link href="styles.css" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>A React component for form inputs with subtle and interesting effects</title>
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="skeleton.css">
+    <link rel="stylesheet" href="extras/github.css">
+    <link rel="stylesheet" href="extras/prism.css">
+    <link rel="stylesheet" href="extras/prismtheme.css">
+    <link href="styles.css" rel="stylesheet"/>
 </head>
 
 <body>
 
-  <div class="container">
+<div class="container">
 
     <header>
-      <h1>React Input Toggle</h1>
-      <h6>A collection of
-        <strong>customizable</strong>,
-        <strong>attractive</strong> and
-        <strong>accessible</strong>
-        toggles build with React.</h6>
-      <div class="badges">
+        <h1>React Input Toggle</h1>
+        <h6 class="tagline">A collection of
+            <strong>customizable</strong>,
+            <strong>attractive</strong> and
+            <strong>accessible</strong>
+            toggles build with React. </h6 >
 
-        <!-- <div class="badges__github">
-          <a class="github-button" href="https://github.com/enjoylife/react-input-toggle" data-icon="octicon-star" data-count-href="/enjoylife/react-input-toggle/stargazers" data-count-api="/repos/enjoylife/react-input-toggle#stargazers_count" data-count-aria-label="# stargazers on GitHub"
-          aria-label="Star enjoylife/react-input-toggle on GitHub">Star</a>
+        <div class="badges">
 
-          <a class="github-button" href="https://github.com/enjoylife/react-input-toggle/fork" data-icon="octicon-repo-forked" data-count-href="/enjoylife/react-input-toggle/network" data-count-api="/repos/enjoylife/react-input-toggle#forks_count" data-count-aria-label="# forks on GitHub"
-          aria-label="Fork enjoylife/react-input-toggle on GitHub">Fork</a>
+            <!-- <div class="badges__github">
+              <a class="github-button" href="https://github.com/enjoylife/react-input-toggle" data-icon="octicon-star" data-count-href="/enjoylife/react-input-toggle/stargazers" data-count-api="/repos/enjoylife/react-input-toggle#stargazers_count" data-count-aria-label="# stargazers on GitHub"
+              aria-label="Star enjoylife/react-input-toggle on GitHub">Star</a>
 
-        </div> -->
-        <div class="badges__build">
-          <a href="https://travis-ci.org/enjoylife/react-input-toggle">
-            <img src="http://img.shields.io/travis/enjoylife/react-input-toggle/master.svg?style=flat-square"
-            class="badge" alt='travis ci build status' />
-            <span class="sr-only">Travis ci project build
+              <a class="github-button" href="https://github.com/enjoylife/react-input-toggle/fork" data-icon="octicon-repo-forked" data-count-href="/enjoylife/react-input-toggle/network" data-count-api="/repos/enjoylife/react-input-toggle#forks_count" data-count-aria-label="# forks on GitHub"
+              aria-label="Fork enjoylife/react-input-toggle on GitHub">Fork</a>
+
+            </div> -->
+            <div class="badges__build">
+                <a href="https://travis-ci.org/enjoylife/react-input-toggle">
+                    <img src="http://img.shields.io/travis/enjoylife/react-input-toggle/master.svg?style=flat-square"
+                         class="badge" alt='travis ci build status'/>
+                    <span class="sr-only">Travis ci project build
               <status></status> page</span>
-          </a>
-          <a href="https://codecov.io/github/enjoylife/react-input-toggle?branch=master">
-            <img src="https://img.shields.io/codecov/c/github/enjoylife/react-input-toggle.svg?style=flat-square"
-            alt="Percentage of code coverage via Codecov" />
-            <span class="sr-only">Codecov project coverage page</span>
-          </a>
+                </a>
+                <a href="https://codecov.io/github/enjoylife/react-input-toggle?branch=master">
+                    <img src="https://img.shields.io/codecov/c/github/enjoylife/react-input-toggle.svg?style=flat-square"
+                         alt="Percentage of code coverage via Codecov"/>
+                    <span class="sr-only">Codecov project coverage page</span>
+                </a>
+            </div>
         </div>
-      </div>
     </header>
+     <div id='playground' class="docs">
 
+    <div class="docs" id="scenarios">
+        <h4>Why Use this?</h4>
+        <p>Heres a few scenarios: </p>
+        <p>
+            <i>Tap your space bar</i>. The focused toggle changes.
+            Submit the simple ajax form example and look at the console output data changes form data
+        </p>
+        <ul>
+            <li><i>Tap your space bar</i>. The focused toggle changes.</li>
+            <li>Submit the simple ajax form example and look at the console output data changes form data</li>
+            <li></li>
+        </ul>
 
-    <div id='playground' class="docs">
+    </div>
+
 
     </div>
 
     <div class="docs" id="install">
-      <h4>Install</h4>
-      <p>React Input Toggle is most easilily installed as an
-        <a href="https://www.npmjs.org/package/react-input-toggle">npm package</a>
-      </p>
-      <code>npm install --save react-input-toggle</code>
-    </div>
-
-
-    <div class="docs" id="usage">
-      <h4>Usage</h4>
-
-      <pre>
-<code class="language-jsx">
-import  Toggle  from 'react-input-toggle';
-import 'react-input-toggle/dist/react-input-toggle.css';
-
-export default class App extends Component {
-
-  onChange = (e)  => {
-    console.log("isChecked",  e.target.checked);
-  }
-  render () {
-    return (
-      &lt;div&gt;
-        &lt;h1&gt;Hello, world.&lt;/h1&gt;
-        &lt;Toggle label={'Test Label'} onChange={this.onChange} effect={'sierra'} labelPosition={'left'} /&gt;
-      &lt;/div&gt;
-    );
-  }
-}
-    </code>
-            </pre>
+        <h4>Install</h4>
+        <p>React Input Toggle is most easilily installed as an
+            <a href="https://www.npmjs.org/package/react-input-toggle">npm package</a>
+        </p>
+        <code>npm install --save react-input-toggle</code>
     </div>
 
     <div class="docs" id="custom">
-      <h4>Customization</h4>
-      <p>Each effect is definined using sass variables which can be overridden as necessary.
-        Take a look at the top of each effect's commented sass file for what can
-        be modified. Ex:
-        <a href="https://github.com/enjoylife/react-input-toggle/blob/master/lib/components/styles/switches/lima.scss">Lima's</a>
-      </p>
+        <h4>Customization</h4>
+        <p>Each effect is definined using sass variables which can be overridden as necessary.
+            Take a look at the top of each effect's commented sass file for what can
+            be modified. Ex:
+            <a href="https://github.com/enjoylife/react-input-toggle/blob/master/lib/components/styles/switches/lima.scss">Lima's</a>
+        </p>
     </div>
 
     <div class="docs" id='props'>
-      <h4>Properties Reference</h4>
-      <p>This component only requires a few properties,
-        <code>effect</code>, <code>labelPosition</code>, and <code>label</code>.
-         All other props such as <code>checked</code> or <code>onChange</code>
-          follow the same conventions and logic as any standard react form component. I.e. if you create a
-        <code>Toggle</code> with a <code>checked</code>prop of
-        <code>true</code> then it's checked state will always be
-        <code>true</code>. This is known as a <i>controlled</i> component. See the react
-        <a href="https://facebook.github.io/react/docs/forms.html">docs</a> for further details.</p>
-      <p>Since a
-        <code>Toggle</code> follows the same interface as a standard react
-        <code>
-          &lt;input type="checkbox"&gt;
-        </code> any event handlers such as
-        <code>onChage</code>,
-        <code>onFocus</code>, etc. have the same function signatures as a standard
-        react input. Additionly, props such as
-        <code>disabled</code>,
-        <code>data-*</code>, etc will correctly be passed down and be applied to
-        the underlying input component.</p>
+        <h4>Properties Reference</h4>
+        <p>This component only requires a few properties,
+            <code>effect</code>, <code>labelPosition</code>, and <code>label</code>.
+            All other props such as <code>checked</code> or <code>onChange</code>
+            follow the same conventions and logic as any standard react form component. I.e. if you create a
+            <code>Toggle</code> with a <code>checked</code>prop of
+            <code>true</code> then it's checked state will always be
+            <code>true</code>. This is known as a <i>controlled</i> component. See the react
+            <a href="https://facebook.github.io/react/docs/forms.html">docs</a> for further details.</p>
+        <p>Since a
+            <code>Toggle</code> follows the same interface as a standard react
+            <code>
+                &lt;input type="checkbox"&gt;
+            </code> any event handlers such as
+            <code>onChage</code>,
+            <code>onFocus</code>, etc. have the same function signatures as a standard
+            react input. Additionly, props such as
+            <code>disabled</code>,
+            <code>data-*</code>, etc will correctly be passed down and be applied to
+            the underlying input component.</p>
 
-      <h5>Ex:</h5>
-      <pre>
+        <h5>Ex:</h5>
+        <pre>
 <code class="language-jsx">
   /* making a controlled component, passing down custom attributes,
   setting default check state, event handlers, etc */
@@ -133,82 +123,84 @@ export default class App extends Component {
     </div>
 
     <div class="docs">
-      <h5>Custom Properties</h5>
-      <table class="docs__table">
-        <thead>
-          <tr>
-            <th>Property</th>
-            <th>Type</th>
-            <th>Default</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <code>effect</code>
-            </td>
-            <td>
-              <code>string</code>
-            </td>
-            <td>
-              <code>sierra</code>
-            </td>
-            <td>The style this element will take on.</td>
-          </tr>
-          <tr>
-            <td>
-              <code>labelPosition</code>
-            </td>
-            <td>
-              <code>string</code>
-            </td>
-            <td>
-              <code>left</code>
-            </td>
-            <td>The prefered position of the label. Will collapse to
-              <code>top</code> or
-              <code>bottom</code> if there is not enough space available.
-              <i>(uses flexbox layout model)</i>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <code>label</code>
-            </td>
-            <td>
-              <code>string</code>
-            </td>
-            <td>
-              <code>''</code>
-            </td>
-            <td>Text to be shown in the label.</td>
-          </tr>
+        <h5>Custom Properties</h5>
+        <table class="docs__table">
+            <thead>
+            <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <code>effect</code>
+                </td>
+                <td>
+                    <code>string</code>
+                </td>
+                <td>
+                    <code>sierra</code>
+                </td>
+                <td>The style this element will take on.</td>
+            </tr>
+            <tr>
+                <td>
+                    <code>labelPosition</code>
+                </td>
+                <td>
+                    <code>string</code>
+                </td>
+                <td>
+                    <code>left</code>
+                </td>
+                <td>The prefered position of the label. Will collapse to
+                    <code>top</code> or
+                    <code>bottom</code> if there is not enough space available.
+                    <i>(uses flexbox layout model)</i>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <code>label</code>
+                </td>
+                <td>
+                    <code>string</code>
+                </td>
+                <td>
+                    <code>''</code>
+                </td>
+                <td>Text to be shown in the label.</td>
+            </tr>
 
 
-        </tbody>
+            </tbody>
 
-      </table>
+        </table>
     </div>
     <h2>Visual Catalog</h2>
     <div id="anchor"></div>
-  </div>
+</div>
 
 
-  <!-- Place this tag right after the last button or just before your close body tag. -->
-  <script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
-  <script src="./ghpages.js"></script>
-  <script src="extras/prism.js" charset="utf-8"></script>
+<!-- Place this tag right after the last button or just before your close body tag. -->
+<script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
 
-  <a href="https://github.com/enjoylife/react-input-toggle" class="github-corner">
-    <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;">
-      <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
-      <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
-      fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
-      <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
-      fill="currentColor" class="octo-body"></path>
+<script src="./extras/prism.js"></script>
+<script src="./ghpages.js"></script>
+
+<a href="https://github.com/enjoylife/react-input-toggle" class="github-corner">
+    <svg width="80" height="80" viewBox="0 0 250 250"
+         style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
     </svg>
-  </a>
+</a>
 </body>
 
 </html>

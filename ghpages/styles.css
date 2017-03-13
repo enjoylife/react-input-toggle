@@ -11,16 +11,33 @@ header {
   text-align: center;
 }
 
+header h1 {
+  margin-bottom:0;
+}
+
+.tagline      {
+  margin-bottom: 15px;
+}
+
+.hint-text {
+  text-align: center;
+  display: block;
+  margin-bottom: -25px;
+  margin-top: 25px;
+}
 .playground-wrapper {
   font-size: 1em;
   text-align: center;
+  margin: 1rem;
 }
 
 .playground {
-  display: inline-block;
+
   border-radius: 10px;
   padding: .5em;
   background: white;
+  display: flex;
+  justify-content: center;
 }
 
 .playground .rt-toggle {
@@ -31,6 +48,15 @@ header {
 .playground--dark {
   background-color: rgb(50,50,50);
   color: white;
+}
+
+.playground-example {
+  display: flex;
+  flex-direction:column;
+}
+
+.playground-example small {
+  font-size: 0.5rem;
 }
 
 .container {
@@ -129,7 +155,6 @@ header {
 }
 
 .propString {
-  text-align: center;
   margin-bottom: 15px;
 }
 
@@ -154,6 +179,9 @@ pre[class*="language-jsx"] {
   padding: 0;
 }
 
+.badges {
+  transform: scale(0.5);
+}
 /* Larger than phone */
 @media (min-width: 550px) {
   .playground-wrapper {
@@ -163,7 +191,9 @@ pre[class*="language-jsx"] {
 
 /* Larger than tablet */
 @media (min-width: 750px) {
-
+  .badges {
+    transform: scale(0.8);
+  }
 }
 
 /*
