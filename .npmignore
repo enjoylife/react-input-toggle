@@ -1,5 +1,6 @@
 **/.*
 **/__tests__
+ghpages/
 examples
 coverage
 CONTRIBUTING.md
