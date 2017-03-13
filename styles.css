@@ -22,8 +22,6 @@ header h1 {
 .hint-text {
   text-align: center;
   display: block;
-  margin-bottom: -25px;
-  margin-top: 25px;
 }
 .playground-wrapper {
   font-size: 1em;
@@ -59,6 +57,9 @@ header h1 {
   font-size: 0.5rem;
 }
 
+
+
+
 .container {
   margin: 0 auto;
   text-align: center;
@@ -69,7 +70,7 @@ header h1 {
 .docs {
   text-align: left;
   border-top: 2px solid #eee;
-  margin-bottom: 30px;
+  padding: 25px 0;
 }
 
 .docs__header {
