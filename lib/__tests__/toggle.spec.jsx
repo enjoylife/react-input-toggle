@@ -10,16 +10,27 @@ import effects from '../components/effects';
 
 describe("Toggle", () => {
 
+  it("respects a checked prop", () => {
+    let unChecked = mount(
+      <Toggle checked={false}/>
+    );
+    expect(unChecked.node._input.checked).toBeFalsy();
+
+    let checked = mount(
+      <Toggle checked={true}/>
+    );
+    expect(checked.node._input.checked).toBeTruthy();
+  });
   it("respects a defaultChecked prop", () => {
-    let unChecked = shallow(
+    let unChecked = mount(
       <Toggle defaultChecked={false}/>
     );
-    expect(unChecked.state('fiChecked')).toBeFalsy();
+    expect(unChecked.node._input.checked).toBeFalsy();
 
-    let checked = shallow(
+    let checked = mount(
       <Toggle defaultChecked={true}/>
     );
-    expect(checked.state('fiChecked')).toBeTruthy();
+    expect(checked.node._input.checked).toBeTruthy();
   });
 
   it("modifies the css classes per the effect prop", () => {
