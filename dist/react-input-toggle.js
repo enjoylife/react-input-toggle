@@ -55,13 +55,13 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-
+	
 	var _Toggle = __webpack_require__(1);
-
+	
 	var _Toggle2 = _interopRequireDefault(_Toggle);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -74,13 +74,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	var _react = __webpack_require__(2);
 	
@@ -111,15 +111,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return _id++;
 	}
 	
-	var Toggle = (function (_React$Component) {
+	var Toggle = function (_React$Component) {
 	  _inherits(Toggle, _React$Component);
 	
 	  function Toggle(props) {
 	    _classCallCheck(this, Toggle);
 	
 	    // TODO: performance gains?
-	
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Toggle).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (Toggle.__proto__ || Object.getPrototypeOf(Toggle)).call(this, props));
 	
 	    _this.shouldComponentUpdate = _reactAddonsPureRenderMixin.shouldComponentUpdate.bind(_this);
 	
@@ -128,11 +127,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	    // TODO: Test if autofocus still works?
 	    _this.state = {
-	      isFocused: false,
-	      // Note: resorting to anti pattern of setting inital state from prop
-	      fiChecked: _this.props.defaultChecked
+	      isFocused: false
 	    };
-	
 	    return _this;
 	  }
 	
@@ -140,6 +136,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * Callback used get our switch's backing input element.
 	   * @param {DOMElement} c the mounted input created by a switch style
 	   */
+	
 	
 	  _createClass(Toggle, [{
 	    key: 'setRef',
@@ -151,7 +148,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function onChange(e) {
 	      // Set focus whenever a user interacts with our switch
 	      this._input.focus();
-	      this.setState({ fiChecked: e.target.checked });
 	
 	      // Inform our parents if needed
 	      this.props.onChange(e);
@@ -185,20 +181,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var _props = this.props;
 	      var label = _props.label;
 	      var labelPosition = _props.labelPosition;
-	      var propCheck = _props.checked;
 	      var effect = _props.effect;
 	      var defaultChecked = _props.defaultChecked;
 	      var disabled = _props.disabled;
 	
-	      var otherProps = _objectWithoutProperties(_props, ['label', 'labelPosition', 'checked', 'effect', 'defaultChecked', 'disabled']);
+	      var otherProps = _objectWithoutProperties(_props, ['label', 'labelPosition', 'effect', 'defaultChecked', 'disabled']);
 	
-	      var _state = this.state;
-	      var isFocused = _state.isFocused;
-	      var fiChecked = _state.fiChecked;
+	      var isFocused = this.state.isFocused;
 	
 	      // lock in a value no matter what our internal state is
 	
-	      var checked = (this.props.checked || fiChecked) && !disabled;
+	      var checkProp = this.props.hasOwnProperty('checked') ? this.props.checked : defaultChecked;
+	      var checked = checkProp && !disabled;
 	
 	      var outerCss = (0, _classnames2.default)('rt-toggle', 'rt-toggle--' + effect, 'rt-toggle--label-' + labelPosition, isFocused == true && !disabled && 'rt-toggle--focused', checked == true && 'rt-toggle--checked', disabled == true && 'rt-toggle--disabled');
 	
@@ -235,7 +229,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }]);
 	
 	  return Toggle;
-	})(_react2.default.Component);
+	}(_react2.default.Component);
 	
 	Toggle.propTypes = {
 	  defaultChecked: _react.PropTypes.bool,
@@ -277,11 +271,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
 	var _react = __webpack_require__(2);
 	
@@ -498,8 +492,8 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
-	  Copyright (c) 2015 Jed Watson.
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+	  Copyright (c) 2016 Jed Watson.
 	  Licensed under the MIT License (MIT), see
 	  http://jedwatson.github.io/classnames
 	*/
@@ -511,7 +505,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		var hasOwn = {}.hasOwnProperty;
 	
 		function classNames () {
-			var classes = '';
+			var classes = [];
 	
 			for (var i = 0; i < arguments.length; i++) {
 				var arg = arguments[i];
@@ -520,28 +514,28 @@ return /******/ (function(modules) { // webpackBootstrap
 				var argType = typeof arg;
 	
 				if (argType === 'string' || argType === 'number') {
-					classes += ' ' + arg;
+					classes.push(arg);
 				} else if (Array.isArray(arg)) {
-					classes += ' ' + classNames.apply(null, arg);
+					classes.push(classNames.apply(null, arg));
 				} else if (argType === 'object') {
 					for (var key in arg) {
 						if (hasOwn.call(arg, key) && arg[key]) {
-							classes += ' ' + key;
+							classes.push(key);
 						}
 					}
 				}
 			}
 	
-			return classes.substr(1);
+			return classes.join(' ');
 		}
 	
 		if (typeof module !== 'undefined' && module.exports) {
 			module.exports = classNames;
 		} else if (true) {
 			// register as 'classnames', consistent with npm package name
-			!(__WEBPACK_AMD_DEFINE_RESULT__ = function () {
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
 				return classNames;
-			}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			window.classNames = classNames;
 		}
