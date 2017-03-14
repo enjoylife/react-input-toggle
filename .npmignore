@@ -5,3 +5,5 @@ examples
 coverage
 CONTRIBUTING.md
 bower.json
+
+webpack.ghpages.config.js
