@@ -24,9 +24,9 @@
   "scripts": {
     "start": "webpack-dev-server",
     "dist": "webpack -p --config webpack.dist.config.js; node-sass lib/styles/switch.scss  dist/react-input-toggle.css",
-    "test": "jest",
+    "test": "jest --coverage",
     "test:dev": "jest --watch",
-    "cov": "codecov < ./coverage/lcov/lcov.info",
+    "cov": "codecov  ./coverage/lcov.info",
     "ghpages": "webpack --colors --progress -p --config webpack.ghpages.config.js;" ,
     "prepublish": "npm test; npm dist;"
   },
@@ -62,5 +62,8 @@
   "dependencies": {
     "react": "^15.4.2",
     "react-dom": "^15.4.2"
+  } ,
+  "jest": {
+    "coverageDirectory": "./coverage"
   }
 }
