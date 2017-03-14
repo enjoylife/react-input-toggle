@@ -28,7 +28,7 @@
     "test:dev": "jest --watch",
     "cov": "codecov  ./coverage/lcov.info",
     "ghpages": "webpack --colors --progress -p --config webpack.ghpages.config.js;" ,
-    "prepublish": "npm test; npm dist;"
+    "prepublish": "npm run dist;"
   },
   "authors": [
     "Matthew Clemens"
