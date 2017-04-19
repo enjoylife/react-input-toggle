@@ -10,7 +10,7 @@ A collection of aesthetically pleasing, accessible and customizable toggles buil
 
 # What problem does it solve you?
 
-You get an interesting selection of keyboard and screen reader accessible,  buttons. More show than business really. I would say this little set of toggles is more creative than practical. But in2 any case, enjoy.
+You get an interesting selection of keyboard and screen reader accessible buttons. I would say this little set of toggles is more creative than practical. But in any case, enjoy.
 
 ## Installation
 
